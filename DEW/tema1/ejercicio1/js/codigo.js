@@ -11,3 +11,13 @@ function age(){
   var age = prompt('Dime tu edad');
   alert('Tienes '+age+' años.');
 }
+
+//Inicializamos dos variables, una con el factorial a calcular y otro que
+//almacenará el resultado
+var fact = prompt('Dime el número del que quieres calcular el factorial');
+var resultado = 1;
+for (var i = fact; i > 0; i--) {
+  resultado = i * resultado;
+}
+
+alert('El resultado es: '+resultado);
