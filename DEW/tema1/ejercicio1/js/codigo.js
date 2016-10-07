@@ -26,8 +26,8 @@ function setNum() {
 }
 
 //Función que escribe el html en el div con ID sandbox
-function setSandbox(html) {
-  return document.getElementById('sandbox').innerHTML = html;
+function setSandbox(id,html) {
+  return document.getElementById(id).innerHTML = html;
 }
 
 //Función Fibonacci con for
@@ -50,18 +50,65 @@ function fibonacci(lim) {
 
 //TODO: HACER FUNCIÓN PARA QUE CREE FORMULARIO EN EL MODAL
 function setQuestion(quest) {
-
+  render('quest',quest);
+  modalShow();
 }
 
+//Conseguir el valor del input
+function getInput() {
+  return $( "#input1").val();
+}
+
+//AÑADIR FUNCIÓN PARA RESETAR EL INPUT
+
 //Muestra la ventana modal
-function modalShow(html) {
-  setSandbox(html)
+function modalShowById(id,html) {
+  render(id,html);
   $('#modal-content').modal({
     show: true
   });
 }
 
-//Serie de funciones que quedan a la espera del click en su div
+//Muestra la ventana modal
+function modalShow() {
+  render('sandbox','')
+  $('#modal-content').modal({
+    show: true
+  });
+}
+
+//Renderiza
+function render(id,html) {
+  document.getElementById(id).innerHTML = html;
+  $(id).fadeIn('slow',function(){});
+}
+
+//Comprobador de minúsculas (motor de un ejercicio)
+function caseChecker(rawText,lowText) {
+  var upper=0;
+  var lower=0;
+
+  for (var i = 0; i < rawText.length; i++) {
+    if (rawText[i] === lowText[i]) {
+      lower++;
+    }
+    else {
+      upper++;
+    }
+  }
+
+  if (upper>0 && lower>0) {
+    var html = '<h1 class="text-center">Orgía de Mayúsculas y Mínusculas!!</h1>';
+  } else if (upper>0) {
+    var html = '<h1 class="text-center">Todo mayúsculas, algunos considerarán que estás gritando.</h1>';
+  } else {
+    var html = '<h1 class="text-center">Todo en minúsculas. ¿Se te ha roto el <code>shift?</code></h1>';
+  }
+
+  return html;
+}
+
+//Serie de funciones que quedan a la espera del click del usuario
 $(document).ready(function() {
 
   /**
@@ -73,16 +120,16 @@ $(document).ready(function() {
     alert('Hola Mundo!');
   });
 
-  //Prueba para escapar comillas
-  $("#comillas").click(function() {
-    const easy = 'Es fácil usar \'comillas simples\' y "comillas dobles"'.toUpperCase();
-    modalShow('<h1 class="text-center lead">' + easy + '</h1>');
-  });
-
   //Lanzamos un prompt para preguntar la edad
   $("#age").click(function() {
     var age = prompt('Dime tu edad'.toLowerCase());
-    modalShow('<h1 class="text-center lead">' + 'Tienes ' + age + ' años.' + '</h1>');
+    modalShowById('sandbox','<h1 class="text-center lead">' + 'Tienes ' + age + ' años.' + '</h1>');
+  });
+
+  //Prueba para escapar comillas
+  $("#comillas").click(function() {
+    const easy = 'Es fácil usar \'comillas simples\' y "comillas dobles"'.toUpperCase();
+    modalShowById('sandbox','<h1 class="text-center lead">' + easy + '</h1>');
   });
 
   //Inicializamos dos variables, una con el factorial a calcular y otro que
@@ -95,7 +142,7 @@ $(document).ready(function() {
       resultado = i * resultado;
     }
 
-    modalShow('<h1 class="text-center lead">' + 'El resultado es: ' + resultado + '</h1>');
+    modalShowById('sandbox','<h1 class="text-center lead">' + 'El resultado es: ' + resultado + '</h1>');
   });
 
   $("#concat").click(function() {
@@ -103,7 +150,7 @@ $(document).ready(function() {
     var text2 = setStringConfirm();
     var text3 = text1 + text2;
 
-    modalShow('<div class="col-md-6"><h2>Primera Cadena</h2>' + text1 + '</div>' + '<div class="col-md-6"><h2>Segunda Cadena</h2>' + text2 + '</div></div>' + '<div class="row"><div class="col-md-12"><h2>Suma de Cadenas</h2>' + text3 + '</div>');
+    modalShowById('sandbox','<div class="col-md-6"><h2>Primera Cadena</h2>' + text1 + '</div>' + '<div class="col-md-6"><h2>Segunda Cadena</h2>' + text2 + '</div></div>' + '<div class="row"><div class="col-md-12"><h2>Suma de Cadenas</h2>' + text3 + '</div>');
   });
 
   $("#divideString").click(function() {
@@ -111,7 +158,21 @@ $(document).ready(function() {
     var text2 = text1.substring(0, text1.length / 2);
     var text3 = text1.substring((text1.length / 2) + 1);
 
-    modalShow('<div class="col-md-6"><h2>Primera Cadena</h2>' + text2 + '</div>' + '<div class="col-md-6"><h2>Segunda Cadena</h2>' + text3 + '</div></div>' + '<div class="row"><div class="col-md-12"><h2>Suma de Cadenas</h2>' + text1 + '</div>');
+    modalShowById('sandbox','<div class="col-md-6"><h2>Primera Cadena</h2>' + text2 + '</div>' + '<div class="col-md-6"><h2>Segunda Cadena</h2>' + text3 + '</div></div>' + '<div class="row"><div class="col-md-12"><h2>Suma de Cadenas</h2>' + text1 + '</div>');
+  });
+
+  $("#split").click(function() {
+    var words = setStringConfirm().split(" ");
+    var list = '';
+    for (var i = 0; i < words.length; i++) {
+      list += '<li>' + words[i] + '</li>';
+    }
+    modalShowById('sandbox','<ul>' + list + '</ul>');
+  });
+
+
+  $("#stringLength").click(function() {
+    modalShowById('sandbox','<p class="text-center">' + setStringConfirm().length + '</p>');
   });
 
   $("#charPosition").click(function() {
@@ -129,8 +190,30 @@ $(document).ready(function() {
       position = "No existen coincidencias.";
     }
 
-    modalShow('<div class="col-md-3">' + '<h3 class="text-center lead">Posiciones del carácter: <strong>' + char + '</strong></h3>' + '<ul>' + position + '</ul></div><div class="col-md-9"><h3 class="text-center">Texto a Analizar</h3><p>' + text + '</p></div>');
+    modalShowById('sandbox','<div class="col-md-3">' + '<h3 class="text-center lead">Posiciones del carácter: <strong>' + char + '</strong></h3>' + '<ul>' + position + '</ul></div><div class="col-md-9"><h3 class="text-center">Texto a Analizar</h3><p>' + text + '</p></div>');
   });
+
+  $("#substring").click(function() {
+    var text = setStringConfirm();
+    var start = parseInt(prompt('Dime en que posición quieres empezar el corte:'));
+    var end = parseInt(prompt('Dime en que posición quieres terminar el corte:'));
+
+    if (end&&start) {
+      var cut = text.substring(start,end);
+    }
+    else if (start) {
+      var cut = text.substring(start);
+    }
+    else{
+      var cut = 'Lo que me has pedido no tiene maldita lógica.'
+    }
+
+    modalShowById('sandbox','<div class="col-md-6"><h2>Texto original</h2>' + text + '</div>' + '<div class="col-md-6"><h2>Texto recortado</h2>' + cut + '</div>');
+  });
+
+  /**
+  ***EJERCICIO 2
+  **/
 
   //Comprobador de palíndromos
   $("#palindrome").click(function() {
@@ -150,7 +233,7 @@ $(document).ready(function() {
       var html ='<div class="container"><p>'+text+' no es un palíndromo</p></div>';
     }
 
-    modalShow(html);
+    modalShowById('sandbox',html);
   });
 
   //Asesino de vocales
@@ -164,12 +247,16 @@ $(document).ready(function() {
 
     var html ='<div class="container"><h3 class="text-primary">Tu texto sin vocales</h3><p>'+text+'</p></div>';
 
-    modalShow(html);
+    modalShowById('sandbox',html);
   });
 
   //Método reverse para cadenas con for
   $("#reverse").click(function () {
-    var text = setStringConfirm();
+    modalShow();
+  $("#submit").click(function () {
+
+
+    var text = getInput();
     var rev='';
 
     for (var i = text.length-1; i >= 0; i--) {
@@ -177,8 +264,9 @@ $(document).ready(function() {
     }
 
     var html ='<div class="pad"><h3 class="text-primary">Tu texto al revés</h3><p> <strong>Al derecho: </strong>'+text+'</p><p> <strong>Al réves: </strong>'+ rev +'</p></div>';
-    modalShow(html);
+    modalShowById('sandbox',html);
   });
+});
 
   $('#fibonacci').click(function () {
     var num= parseInt(setString());
@@ -202,41 +290,10 @@ $(document).ready(function() {
     }
     text+='.';
     var html ='<div class="pad"><h3 class="text-primary">Secuencia de Fibonacci</h3><p>'+text+'</p></div>';
-    modalShow(html);
+    modalShowById('sandbox',html);
   })
 
 
-  $("#split").click(function() {
-    var words = setStringConfirm().split(" ");
-    var list = '';
-    for (var i = 0; i < words.length; i++) {
-      list += '<li>' + words[i] + '</li>';
-    }
-    modalShow('<ul>' + list + '</ul>');
-  });
-
-
-  $("#stringLength").click(function() {
-    modalShow('<p class="text-center">' + setStringConfirm().length + '</p>');
-  });
-
-  $("#substring").click(function() {
-    var text = setStringConfirm();
-    var start = parseInt(prompt('Dime en que posición quieres empezar el corte:'));
-    var end = parseInt(prompt('Dime en que posición quieres terminar el corte:'));
-
-    if (end&&start) {
-      var cut = text.substring(start,end);
-    }
-    else if (start) {
-      var cut = text.substring(start);
-    }
-    else{
-      var cut = 'Lo que me has pedido no tiene maldita lógica.'
-    }
-
-    modalShow('<div class="col-md-6"><h2>Texto original</h2>' + text + '</div>' + '<div class="col-md-6"><h2>Texto recortado</h2>' + cut + '</div>');
-  });
 
   //Sumamos los pares y los impares de un número
   $("#suma-loca").click(function() {
@@ -262,16 +319,16 @@ $(document).ready(function() {
     var html = `
     <div class="row center-block">
     <h2 class="text-center">Suma de pares e impares para `+num+`</h2>
-      <div class="col-md-6">
-        <p>
-          <strong>Pares: </strong>`+sumpar+` = `+par+`</div>
-        </p>
-        <div class="col-md-6">
-          <p>
-            <strong>Impares: </strong>`+sumimpar+` = `+impar+`</div>
-          </p>
+    <div class="col-md-6">
+    <p>
+    <strong>Pares: </strong>`+sumpar+` = `+par+`</div>
+    </p>
+    <div class="col-md-6">
+    <p>
+    <strong>Impares: </strong>`+sumimpar+` = `+impar+`</div>
+    </p>
     </div>`;
-    modalShow(html);
+    modalShowById('sandbox',html);
   });
 
   //for mostrando los niveles de H
@@ -283,39 +340,55 @@ $(document).ready(function() {
 
     var html = `
     <div class="row center-block">`
-      +text+
+    +text+
     `</div>`;
-    modalShow(html);
+    modalShowById('sandbox',html);
   });
-
-  /**
-  ***EJERCICIO 2
-  **/
 
   //Calculadora de letra DNI
   $("#dni-checker").click(function() {
-    var dni = setString().toUpperCase();
-    var num = parseInt(dni.substring(0,dni.length-1));
-    var letraUser = dni[(dni.length)-1].toUpperCase();
-    var list="TRWAGMYFPDXBNJZSQVHLCKE";
-    var letra = list[num%23];
+    modalShow();
+    $("#submit").click(function() {
 
-    if (letra == letraUser) {
-      var html = `
-      <div class="row center-block">
-      <p class="text-center text-success">
+      var dni = getInput();
+      var num = parseInt(dni.substring(0,dni.length-1));
+      var letraUser = dni[(dni.length)-1].toUpperCase();
+      var list="TRWAGMYFPDXBNJZSQVHLCKE";
+      var letra = list[num%23];
+
+      if (letra == letraUser) {
+        var html = `
+        <div class="row center-block">
+        <p class="text-center text-success">
         El DNI `+dni+` es válido.
-      </p>
-      </div>`;
-    } else {
-      var html = `
-      <div class="row center-block">
-      <p class="text-center text-danger">
-      El DNI `+dni+` no es válido.
-      </p>
-      </div>`;
-    }
-    modalShow(html);
+        </p>
+        </div>`;
+      } else {
+        var html = `
+        <div class="row center-block">
+        <p class="text-center text-danger">
+        El DNI `+dni+` no es válido.
+        </p>
+        </div>`;
+      }
+      $( "#input1").val('');
+      modalShowById('sandbox',html);
+    });
+  });
+
+  //Definir una función que se le pase una cadena y devuelva un texto que ponga
+  //si está en mayúscula, minúscula o sea con mayúsculas y minúsculas.
+  $('#case-sensitive').click(function() {
+
+    modalShow();
+    $("#submit").click(function() {
+    var regex = /[/W_]/g;
+    var text = getInput();
+    var rawText = text.replace(regex, '');
+    var lowText = text.toLowerCase().replace(regex, '');
+
+    modalShowById('sandbox',caseChecker(rawText,lowText));
+  });
   });
 
 });

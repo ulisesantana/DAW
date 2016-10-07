@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="styles.css" href="/css/master.css" media="screen" title="no title">
+<!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <style media="screen">
+    .transp{opacity: 0.8; transition: all 0.2s;}
+    .blank{color:red;}
+    .space{padding-top: 5%;}
+    li{list-style-type: none;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section section-primary">
+      <h1>Cuadros espejo</h1>
+      <div class="input-group">
+        <input id="input1" type="text" class="form-control" placeholder="Escribe un texto...">
+        <span class="input-group-btn">
+          <button id="env" class="btn btn-primary" type="button">Enviar</button>
+        </span>
+        <span class="input-group-btn">
+          <button id="img" class="btn btn-alert" type="button">IMG</button>
+        </span>
+      </div>
+      <div class="space"></div>
+      <footer class="section section-primary">
+        <img class="img-responsive" src="http://screenrant.com/wp-content/uploads/Joker-Batman-DC-Movie-Universe.jpg" alt="" id="batman">
+        <div class="space"></div>
+        <div id="mirror" class="text-center primary hidden"></div>
+        <div class="space"></div>
+        <div class="row">
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <li><a href="">Enlace 1</a></li>
+            <li><a href="">Enlace 2</a></li>
+            <li><a href="">Enlace 3</a></li>
+            <li><a href="">Enlace 4</a></li>
+            <li><a href="">Enlace 5</a></li>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <li><a href="" class="blank" target="_blank">Enlace 1</a></li>
+            <li><a href="" class="blank" target="_blank">Enlace 2</a></li>
+            <li><a href="" class="blank" target="_blank">Enlace 3</a></li>
+            <li><a href="" class="blank" target="_blank">Enlace 4</a></li>
+            <li><a href="" class="blank" target="_blank">Enlace 5</a></li>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <li><a href="">Enlace 1</a></li>
+            <li><a href="">Enlace 2</a></li>
+            <li><a href="">Enlace 3</a></li>
+            <li><a href="">Enlace 4</a></li>
+            <li><a href="">Enlace 5</a></li>
+          </div>
+          <div class="col-xs-3 col-sm-3 col-md-3">
+            <li><a href="" target="_blank">Enlace 1</a></li>
+            <li><a href="" target="_blank">Enlace 2</a></li>
+            <li><a href="" target="_blank">Enlace 3</a></li>
+            <li><a href="" target="_blank">Enlace 4</a></li>
+            <li><a href="" target="_blank">Enlace 5</a></li>
+          </div>
+        </div>
+        <button id="target" class="btn center-block">Enlaces</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="app.js" charset="utf-8"></script>
+</body>
+</html>
