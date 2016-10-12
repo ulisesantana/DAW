@@ -39,8 +39,8 @@
           <li class="active"><a href="tabla.php">Ejercicio Tabla</a></li>
           <li><a href="primitiva.php">Ejercicio Primitiva</a></li>
           <li><a href="nota.php">Ejercicio Notas</a></li>
-          <li><a href="calculadora.php">Ejercicio Colores</a></li>
-
+          <li><a href="calculadora.php">Ejercicio Calculadora</a></li>
+          <li><a href="colores.php">Ejercicio Colores</a></li>
         </ul>
 
       </div><!-- /.navbar-collapse -->
@@ -52,7 +52,7 @@
         <?php
         $numbers=[];
         for ($i=0; $i < 6; $i++) {
-          $aux=rand(1,7);
+          $aux=rand(1,49);
            $numbers[$i] = $aux;
           for ($j=0; $j < $i; $j++) {
             if ($aux == $numbers[$j]) {

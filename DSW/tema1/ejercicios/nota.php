@@ -36,9 +36,9 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
           <li><a href="fechas.php">Ejercicio Fechas</a></li>
-          <li class="active"><a href="tabla.php">Ejercicio Tabla</a></li>
+          <li><a href="tabla.php">Ejercicio Tabla</a></li>
           <li><a href="primitiva.php">Ejercicio Primitiva</a></li>
-          <li><a href="nota.php">Ejercicio Notas</a></li>
+          <li class="active"><a href="nota.php">Ejercicio Notas</a></li>
           <li><a href="calculadora.php">Ejercicio Calculadora</a></li>
           <li><a href="colores.php">Ejercicio Colores</a></li>
 
@@ -48,21 +48,44 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <?php
+  $mark = (isset($_POST['nota'])) ? $_POST['nota'] : '' ;
+  $text = '';
+
+  function validarNota ($mark) {
+    $notaValidada = ($mark>=0 && $mark <= 10) ? true : false;
+    return $notaValidada;
+  }
+
+  if (isset($_POST['nota'])) {
+    if (validarNota($mark)) {
+      if ($mark < 5) {
+        $text = '<div class="alert alert-danger"><h3 class="text-center text-danger"> SUSPENSO </h3></div>';
+      } elseif ($mark >= 5 && $mark < 7) {
+        $text = '<div class="alert alert-warning"><h3 class="text-center text-warning"> APROBADO </h3></div>';
+      } elseif ($mark >= 7 && $mark < 9) {
+        $text = '<div class="alert alert-info"><h3 class="text-center text-info"> NOTABLE </h3></div>';
+      } else {
+        $text = '<div class="alert alert-success"><h3 class="text-center text-success"> SOBRESALIENTE </h3></div>';
+      }
+    } else {
+      $text = '<div class="alert alert-danger"><h3 class="text-center text-danger"> El formato de nota no es correcto. </h3></div>';
+    }
+  }
+  ?>
 
   <div class="container">
-    <table class="table">
-    <?php
-      $counter=1;
-      for ($i=0; $i < 5; $i++) {
-        echo '<tr>';
-        for ($j=0; $j < 7; $j++) {
-          echo '<td style="background-color:rgb('.$counter.','.$counter.','.$counter.'">'.$counter.'</td>';
-          $counter++;
-        }
-        echo '</tr>';
-      }
-     ?>
-   </table>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+      <div class="form-group">
+        <label for="fecha">Nota</label>
+        <input type="text" class="form-control" name="nota" placeholder="5" value="<?php echo $mark; ?>">
+        <p class="help-block">Introduce tu nota entre 1 y 10</p>
+        <input type="submit" class="btn btn-success" value="Comprobar">
+      </div>
+    </form>
+    <div class="center-block">
+      <?php echo $text; ?>
+    </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

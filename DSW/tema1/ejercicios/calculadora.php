@@ -36,33 +36,59 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
           <li><a href="fechas.php">Ejercicio Fechas</a></li>
-          <li class="active"><a href="tabla.php">Ejercicio Tabla</a></li>
+          <li><a href="tabla.php">Ejercicio Tabla</a></li>
           <li><a href="primitiva.php">Ejercicio Primitiva</a></li>
           <li><a href="nota.php">Ejercicio Notas</a></li>
-          <li><a href="calculadora.php">Ejercicio Calculadora</a></li>
+          <li class="active"><a href="calculadora.php">Ejercicio Calculadora</a></li>
           <li><a href="colores.php">Ejercicio Colores</a></li>
-
-
         </ul>
 
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <?php
+  $num1 = (isset($_POST['num1'])) ? $_POST['num1'] : '' ;
+  $mark = (isset($_POST['num2'])) ? $_POST['num2'] : '' ;
+  $ope = '';
+  $text = '';
+
+  if(isset($_POST['sum'])) $ope = $_POST['sum'];
+  if(isset($_POST['res'])) $ope = $_POST['res'];
+  if(isset($_POST['mul'])) $ope = $_POST['mul'];
+  if(isset($_POST['div'])) $ope = $_POST['div'];
+
+  ?>
 
   <div class="container">
-    <table class="table">
-    <?php
-      $counter=1;
-      for ($i=0; $i < 5; $i++) {
-        echo '<tr>';
-        for ($j=0; $j < 7; $j++) {
-          echo '<td style="background-color:rgb('.$counter.','.$counter.','.$counter.'">'.$counter.'</td>';
-          $counter++;
-        }
-        echo '</tr>';
-      }
-     ?>
-   </table>
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+      <h1 class="text-center text-info">Introduce dos números y haz operaciones con ellos</h1>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" name="num1" placeholder="000000000000000.00" value="<?php echo $num1; ?>">
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" name="num2" placeholder="000000000000000.00" value="<?php echo $num2; ?>">
+        </div>
+      </div>
+      <div class="row form-group" style="margin-left:20px;">
+        <label class="radio-inline col-md-3">
+          <input type="radio" name="sum">Sumar
+        </label>
+        <label class="radio-inline col-md-3">
+          <input type="radio" name="res">Restar
+        </label>
+        <label class="radio-inline col-md-3">
+          <input type="radio" name="mul">Multiplicar
+        </label>
+        <label class="radio-inline col-md-2">
+          <input type="radio" name="div">Dividir
+        </label>
+      </div>
+      <input type="submit" class="btn btn-success center-block" value="Comprobar">
+    </form>
+    <div class="center-block">
+      <?php echo $text; ?>
+    </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

@@ -68,7 +68,8 @@
     margin-right: 10px;
   }
 
-
+  .has-success input, .has-success select option{color:#3c763d}
+  .has-error input, .has-error select option{color:#a94442}
 
   </style>
 </head>
@@ -90,9 +91,9 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Ejercicio 1</a></li>
-          <li><a href="ejer2.html">Ejercicio 2</a></li>
-          <li><a href="#">Ejercicio 3</a></li>
+          <li class="active"><a href="#">Precios</a></li>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Gromenagüer</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -101,60 +102,63 @@
   <div class="container">
     <h1 class="text-center title">Servicios de Hosting</h1>
     <div id="main" class="row">
-      <div id="form" class="col-md-8 hidden">
+      <div id="form" class="col-md-8" style="display:none;">
         <h2 class="text-center text-primary">Registro</h2>
-        <form class="form-horizontal">
-          <div class="form-group">
+        <form data-toggle="validator" role="form" class="form-horizontal">
+          <div id="name-group" class="form-group">
             <label class="control-label col-sm-2" for="name">Nombre:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" placeholder="Introduce tu nombre">
+              <input required type="text" class="form-control" id="name" placeholder="Introduce tu nombre">
             </div>
           </div>
-          <div class="form-group">
+          <div id="surname-group" class="form-group">
             <label class="control-label col-sm-2" for="surname">Apellidos:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="surname" placeholder="Introduce tus apellidos">
+              <input required type="text" class="form-control" id="surname" placeholder="Introduce tus apellidos">
             </div>
           </div>
-          <div class="form-group">
+          <div id="nif-group" class="form-group">
             <label class="control-label col-sm-2" for="nif">NIF:</label>
             <div class="col-sm-10">
-              <input maxlength="10" type="text" class="form-control" id="nif" placeholder="12345678A">
+              <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" placeholder="12345678A">
             </div>
           </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="nif">Teléfono:</label>
+          <div id="tel-group" class="form-group">
+            <label class="control-label col-sm-2" for="tel">Teléfono:</label>
             <div class="col-sm-10">
-              <input maxlength="12" type="text" class="form-control" id="nif" placeholder="+34622725244">
+              <input required type="text" class="form-control" id="tel" placeholder="+34622725244">
             </div>
           </div>
-          <div class="form-group">
+          <div id="email-group" class="form-group">
             <label class="control-label col-sm-2" for="email">Email:</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" placeholder="Introduce tu email">
+              <input required type="email" class="form-control" id="email" placeholder="Introduce tu email">
             </div>
           </div>
-          <div class="form-group">
+          <div id="email-check-group" class="form-group">
             <label class="control-label col-sm-2" for="email-check">Repite tu email:</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="email-check" placeholder="Repite tu email">
+              <input required type="email" class="form-control" id="email-check" data-match="#email" placeholder="Repite tu email">
+              <div class="alert alert-danger hidden">
+                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+              </div>
             </div>
           </div>
-          <div class="form-group">
+          <div id="address-group" class="form-group">
             <label class="control-label col-sm-2" for="address">Dirección:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="address" placeholder="Introduce tu dirección">
+              <input required type="text" class="form-control" id="address" placeholder="Introduce tu dirección">
             </div>
           </div>
-          <div class="form-group">
+          <div id="prov-group" class="form-group">
             <label class="control-label col-sm-2" for="prov">Provincia:</label>
             <div class="col-sm-10">
-              <select class="form-control" id="prov"></select>
+              <select required class="form-control" id="prov"></select>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-lg btn-success center-block">Enviar</button>
+              <button id="submit" type="submit" class="btn btn-lg btn-success disabled center-block">Enviar</button>
             </div>
           </div>
         </form>

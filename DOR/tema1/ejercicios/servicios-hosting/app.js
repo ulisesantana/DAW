@@ -3,73 +3,32 @@ function render(id,html) {
   return document.getElementById(id).innerHTML = html;
 }
 
-function ctaForm(id) {
-var panel = document.getElementById(id)
+function getJSON() { //podría ser getJSON(url, callback)
+    var request = new XMLHttpRequest();
+    request.open('GET','prov.json'); //aquí usaríamos la url
+    request.responseType = 'json';
+    request.send();
+
+    request.onload = function(){ //este es el callback
+      var prov = request.response;
+      setProvForm(prov)
+    }
+
 }
 
-function setProvForm() {
+function setProvForm(prov) {
   var html = '';
-  var prov = {
-    '1' : 'A Coruña',
-    '2' : 'Álava',
-    '3' : 'Albacete',
-    '4' : 'Alicante',
-    '5' : 'Almería',
-    '6' : 'Asturias',
-    '7' : 'Ávila',
-    '8' : 'Badajoz',
-    '9' : 'Baleares',
-    '10' : 'Barcelona',
-    '11' : 'Burgos',
-    '12' : 'Cáceres',
-    '13' : 'Cádiz',
-    '14' : 'Cantabria',
-    '15' : 'Castellón',
-    '16' : 'Ciudad Real',
-    '17' : 'Córdoba',
-    '18' : 'Cuenca',
-    '19' : 'Girona',
-    '20' : 'Granada',
-    '21' : 'Guadalajara',
-    '22' : 'Gipuzkoa',
-    '23' : 'Huelva',
-    '24' : 'Huesca',
-    '25' : 'Jaén',
-    '26' : 'La Rioja',
-    '27' : 'Las Palmas',
-    '28' : 'León',
-    '29' : 'Lérida',
-    '30' : 'Lugo',
-    '31' : 'Madrid',
-    '32' : 'Málaga',
-    '33' : 'Murcia',
-    '34' : 'Navarra',
-    '35' : 'Orense',
-    '36' : 'Palencia',
-    '37' : 'Pontevedra',
-    '38' : 'Salamanca',
-    '39' : 'Segovia',
-    '40' : 'Sevilla',
-    '41' : 'Soria',
-    '42' : 'Tarragona',
-    '43' : 'Santa Cruz de Tenerife',
-    '44' : 'Teruel',
-    '45' : 'Toledo',
-    '46' : 'Valencia',
-    '47' : 'Valladolid',
-    '48' : 'Vizcaya',
-    '49' : 'Zamora',
-    '50' : 'Zaragoza'
-  }
   for(var key in prov) {
-            html += "<option value=" + key  + ">" +prov[key] + "</option>"
-        }
+    html += "<option value=" + key  + ">" +prov[key] + "</option>"
+  }
   return render('prov',html);
 }
 
-function toggleForm(){
+function toggleForm(id){
   var html =`<i class="fa fa-thumbs-up" aria-hidden="true"></i>`;
-  $('#form').toggleClass('hidden');
+  $('#form').fadeToggle();
+  $(id).fadeToggle();
+
   if ($('#form').hasClass('hidden')) {
     render('free-cta-text','CONTRATAR');
     render('premium-cta-text','CONTRATAR');
@@ -81,90 +40,153 @@ function toggleForm(){
   }
 }
 
-function setCol(id){
-  switch (id) {
-    case 'free':
-      var title = 'Yo me lo guiso, yo me lo como'
-      var icon = 'fa-rebel';
-      var price = '0€<small>¡GRATIS!</small>';
-      var reasons = `
-      <li class="items">Motivo para contratarnos nº1</li>
-      <li class="items">Motivo para contratarnos nº2</li>
-      <li class="items">Motivo para contratarnos nº3</li>
-      <li class="items">Motivo para contratarnos nº4</li>
-      <li class="items">Motivo para contratarnos nº5</li>
-      `;
-      break;
-    case 'premium':
-      var title = 'Premium'
-      var icon = 'fa-empire';
-      var price = '50€<small>/mes</small>';
-      var reasons = `
-      <li class="items">Motivo para contratarnos nº1</li>
-      <li class="items">Motivo para contratarnos nº2</li>
-      <li class="items">Motivo para contratarnos nº3</li>
-      <li class="items">Motivo para contratarnos nº4</li>
-      <li class="items">Motivo para contratarnos nº5</li>
-      `;
-      break;
-    case 'vip':
-      var title = 'Business Gromenagüer'
-      var icon = 'fa-first-order';
-      var price = '100€<small>/mes</small>';
-      var reasons = `
-      <li class="items">Motivo para contratarnos nº1</li>
-      <li class="items">Motivo para contratarnos nº2</li>
-      <li class="items">Motivo para contratarnos nº3</li>
-      <li class="items">Motivo para contratarnos nº4</li>
-      <li class="items">Motivo para contratarnos nº5</li>
-      `;
-      break;
-    default:
-      var colHTML = `<div class="col-md-4"></div>`;
-      return colHTML;
-
-
+function submitEnabler() {
+  if (nifValidator() && telValidator() && emailValidator() && emailChecker()) {
+    $('#submit').removeClass('disabled');
   }
+}
 
-var colHTML = `
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">`+title+`</h3>
-      </div>
-      <div class="panel-body">
-        <div class="row text-center"><i class="fa `+ icon + ` fa-5x text-primary"></i></div>
-        <div class="row">
-          <h1 class="text-primary text-center">`+price+`</h1>
-        </div>
-        <div class="row items">
-          <ul class="center">
-            `+reasons+`
-          </ul>
-        </div>
-      </div>
-      <div id="`+id+`-cta" class="panel-footer">
-        <p id="cta-text" class="text-center lead">CONTRATAR</p>
-      </div>
-    </div>`;
+function styleValidator(id, condition) {
+  if (condition) {
+    $(id).removeClass('has-error');
+    $(id).addClass('has-success');
+  } else {
+    $(id).removeClass('has-success');
+    $(id).addClass('has-error');
+  }
+}
 
-  return colHTML;
+function nameValidator() {
+  var name = $('#name').val();
+  styleValidator('#name-group', name.length>2);
+  return name.length>2;
+}
+
+function surnameValidator() {
+  var surname = $('#surname').val();
+  styleValidator('#surname-group', surname.length>2);
+  return  surname.length>2;
+}
+
+function nifValidator() {
+  var nif = $('#nif').val();
+  var num = parseInt(nif.substring(0,nif.length-1));
+  var letraUser = nif[(nif.length)-1].toUpperCase();
+  var list="TRWAGMYFPDXBNJZSQVHLCKE";
+  var letra = list[num%23];
+
+  styleValidator('#nif-group',letra == letraUser);
+  return letra == letraUser;
+}
+
+function telValidator() {
+  var tel = $("#tel").val();
+  var patt = new RegExp('(\\+{1})\\d{11}');
+  styleValidator('#tel-group', patt.test(tel));
+return patt.test(tel);
+}
+
+function emailValidator() {
+  var email = $("#email").val();
+  var patt = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$');
+  styleValidator('#email-group', patt.test(email));
+return patt.test(email);
+}
+
+function emailChecker() {
+  var email = $("#email").val();
+  var emailCheck = $("#email-check").val();
+  styleValidator('#email-check-group',email == emailCheck);
+  return email == emailCheck;
+}
+
+function addressValidator() {
+  var address = $('#address').val();
+  styleValidator('#address-group', address.length>2);
+  return  address.length>2;
+}
+
+function provValidator() {
+  var prov = $('#prov').val();
+  console.log(prov);
+  styleValidator('#prov-group', prov>0);
+  return  prov>0;
 }
 
 
+
 $(document).ready(function () {
-  setProvForm();
-  $("#free-cta").click(function() {
-    $('#premium,#vip').toggle();
-    toggleForm();
+  getJSON();
+
+  $("#free").click(function() {
+    if($('#form').css('display') == 'none'){
+      $('#premium,#vip,#free').fadeToggle().promise().done(function(){
+        toggleForm('#free');
+      });
+    }
+    else{
+      toggleForm('#free');
+      $('#premium,#vip,#free').fadeToggle();
+    }
   });
 
-  $("#premium-cta").click(function() {
-    $('#free,#vip').toggle();
-    toggleForm();
+  $("#premium").click(function() {
+    if($('#form').css('display') == 'none'){
+      $('#premium,#vip,#free').fadeToggle().promise().done(function(){
+        toggleForm('#premium');
+      });
+    }
+    else{
+      toggleForm('#premium');
+      $('#premium,#vip,#free').fadeToggle();
+    }
   });
 
-  $("#vip-cta").click(function() {
-    $('#premium,#free').toggle();
-    toggleForm();
+  $("#vip").click(function() {
+    if($('#form').css('display') == 'none'){
+      $('#premium,#vip,#free').fadeToggle().promise().done(function(){
+        toggleForm('#vip');
+      });
+    }
+    else{
+      toggleForm('#vip');
+      $('#premium,#vip,#free').fadeToggle();
+    }
+  });
+
+  $('#name').focusout(function() {
+    nameValidator();
+  });
+
+  $('#surname').focusout(function() {
+    surnameValidator();
+  });
+
+  $('#nif').focusout(function() {
+    nifValidator();
+  });
+
+  $('#tel').focusout(function() {
+    telValidator();
+  });
+
+  $('#email').focusout(function() {
+    emailValidator();
+  });
+
+  $('#email-check').focusout(function() {
+    emailChecker();
+  });
+
+  $('#address').focusout(function() {
+    addressValidator();
+  });
+
+  $('#prov').focusout(function() {
+    provValidator();
+  });
+
+  $('input').focusout(function(){
+    submitEnabler();
   });
 });

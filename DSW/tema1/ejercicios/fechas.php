@@ -39,8 +39,8 @@
           <li><a href="tabla.php">Ejercicio Tabla</a></li>
           <li><a href="primitiva.php">Ejercicio Primitiva</a></li>
           <li><a href="nota.php">Ejercicio Notas</a></li>
-          <li><a href="calculadora.php">Ejercicio Colores</a></li>
-
+          <li><a href="calculadora.php">Ejercicio Calculadora</a></li>
+          <li><a href="colores.php">Ejercicio Colores</a></li>
         </ul>
 
       </div><!-- /.navbar-collapse -->
