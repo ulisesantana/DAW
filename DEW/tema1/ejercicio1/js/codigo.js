@@ -379,8 +379,14 @@ $(document).ready(function() {
   //Definir una función que se le pase una cadena y devuelva un texto que ponga
   //si está en mayúscula, minúscula o sea con mayúsculas y minúsculas.
   $('#case-sensitive').click(function() {
+    let form = `
+    <div class="input-group">
+      <input id="input1" type="text" class="form-control" placeholder="Introduce tu string" value="">
+      <span id="submit" class="input-group-addon">USAR</span>
 
-    modalShow();
+    </div>
+    `;
+    modalShowById('sandbox',form);
     $("#submit").click(function() {
     var regex = /[/W_]/g;
     var text = getInput();
@@ -388,6 +394,32 @@ $(document).ready(function() {
     var lowText = text.toLowerCase().replace(regex, '');
 
     modalShowById('sandbox',caseChecker(rawText,lowText));
+  });
+  });
+
+  //Hacer una calculadora de impuestos
+  $('#tax').click(function() {
+    var price=' ';
+    var html = `
+    <h1 class="text-center">Calculadora de impuestos</h1>
+    <div class="input-group">
+      <input id="input1" type="text" class="form-control"
+        placeholder="Introduce tu string"
+        value="${price}">
+      <span id="iva" class="input-group-addon">IVA</span>
+      <span id="igic" class="input-group-addon">IGIC</span>
+    </div>
+    `;
+    modalShowById('sandbox',html);
+    $("#iva").click(function() {
+    price = Number(getInput()) * 1.21;
+    console.log(price);
+    modalShowById('sandbox',html);
+  });
+    $("#igic").click(function() {
+    price = Number(getInput()) * 1.07;
+    console.log(price);
+    modalShowById('sandbox',html);
   });
   });
 
