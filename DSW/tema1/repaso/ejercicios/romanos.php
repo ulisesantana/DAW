@@ -66,51 +66,64 @@
     <div id="main">
 
       <?php
+      function romanNumberHelper($arabicAux,$first,$second,$max){
+        $romanNumber='';
+        if($arabicAux == 9){
+          $romanNumber.=$max;
+        }
+        elseif($arabicAux < 5) {//Del 1 al 4
+          for ($i=0; $i < $arabicAux; $i++) {
+            if($arabicAux < 4) {//Si no es 4 entonces...
+              $romanNumber.=$first;
+            }
+            else {//Si no entonces directamente ponle el valor y sale del for
+              $romanNumber.=$first.$second;
+              break;
+            }
+          }
+        }
+        else {//Del 5 al 8
+          for ($i=0; $i < ($arabicAux-4); $i++) {
+            ($i==0) ? $romanNumber.=$second : $romanNumber.=$first;
+          }
+        }
+        return $romanNumber;
+      }
+
       //$arabicNumber => número que nos pasa el usuario.
       //$arabicString => $arabicNumber pasado a String para trabajar con sus posiciones
       //$arabicAux => int de una posición concreta de $arabicNumber
       //$romanNumber => string que devolverá la función
-      function romanNumberConverter($arabicNumber, $romanNumber=''){
+      function romanNumberConverter($arabicNumber){
+        $romanNumber='';
         $arabicString = str_split($arabicNumber);
+        $lim = count($arabicString);
 
-        for ($i=0; $i <= count($arabicString); $i++) {
-          if(count($arabicString) > 1){
-            if($arabicNumber >= 90){//Decenas del 90
-              $romanNumber.='XC';
-            } elseif($arabicNumber >= 50) { //Decenas del 50 al 80
-              //Pasamos el número del índice 0 a una variable
+        for ($i=0; $i <= $lim; $i++) {
+          $length = count($arabicString);
+          switch ($length) {
+            case 1://Unidades
               $arabicAux = intval($arabicString[0]);
-              for ($j=0; $j < $arabicAux-4; $j++)  {
-                ($j==0) ? $romanNumber.='L' : $romanNumber.='X';
-              }
-            } else {//Decenas hasta el 40
-              for ($j=0; $j < $arabicAux; $j++)  {
-                if($arabicAux < 4) {//Si la decena no empieza por 4 entonces...
-                  $romanNumber.='X';
-                } else {//Si no entonces directamente ponle el valor y sal del for
-                  $romanNumber.='XL';
-                  break;
+              $romanNumber.=romanNumberHelper($arabicAux,'I','V','IX');
+              break;
+            case 2://Decenas
+              $arabicAux = intval($arabicString[0]);
+              $romanNumber.=romanNumberHelper($arabicAux,'X','L','XC');
+              break;
+            case 3://Centenas
+              $arabicAux = intval($arabicString[0]);
+              $romanNumber.=romanNumberHelper($arabicAux,'C','D','CM');
+              break;
+            case 4://Millares
+              $arabicAux = intval($arabicString[0]);
+              for ($j=0; $j < ($arabicAux); $j++) {
+                if($j<3) {
+                  $romanNumber.='M';
                 }
               }
-            }
-          } else { //Números menores a 10
-            $arabicAux = intval($arabicString[0]);
-            if($arabicAux == 9){
-              $romanNumber.='IX';
-            } elseif($arabicAux < 5) {//Del 1 al 5
-              for ($j=0; $j < $arabicAux; $j++) {
-                ($j!=3) ? $romanNumber.='I' : $romanNumber.='V';
-              }
-            } else {//Del 5 al 8
-              for ($j=0; $j < ($arabicAux-4); $j++) {
-                ($j==0) ? $romanNumber.='V' : $romanNumber.='I';
-              }
-            }
+              break;
           }
-          $arabicString=implode($arabicString); //Pasa el array a un único valor
-          $arabicString=substr($arabicString,1);//Le quitamos el valor de la posición 0
-          //Volvemos a pasar a array para actualizar los valores que quedan
-          $arabicString = str_split($arabicString);
+          array_shift($arabicString); //Elimina el primer elemento
         }
         return $romanNumber;
       }
@@ -122,7 +135,7 @@
 
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
               <small>Número que quieres pasar a romano:</small>
-              <input required type="number" min="1" max="99" name="arabicNumber" value="<?php echo $arabicNumber;?>">
+              <input required type="number" min="1" max="3999" name="arabicNumber" value="<?php echo $arabicNumber;?>">
               <div class="space"></div>
                 <input class="btn btn-success center-block" type="submit" value="CONVERTIR">
             </form>
@@ -138,8 +151,9 @@
                 $arabicNumber = $_POST['arabicNumber'];
                 $output = romanNumberConverter($arabicNumber);
                 echo '<br>
-                <h3 class="text-center">El número '.$arabicNumber.' en romano</h3>
+                <h4 class="text-center">El número '.$arabicNumber.' en romano</h4>
                 <h4 class="text-center lead">'.$output.'</h4>';
+
               }
             }
             ?>
@@ -147,6 +161,42 @@
           </div>
 
         </div><!-- /row -->
+        <div class="row">
+          <h3 class="text-center">Números romanos del 1 al 3999 </h3>
+          <div class="col-md-3">
+            <h4 class="text-center"> Del 1 al 999</h4>
+            <?php
+            for ($i=1; $i < 1000; $i++) {
+              echo '<br><strong>'.$i.'</strong>.- '.romanNumberConverter($i);
+            }
+            ?>
+          </div>
+          <div class="col-md-3">
+            <h4 class="text-center"> Del 1000 al 1999</h4>
+            <?php
+            for ($i=1000; $i < 2000; $i++) {
+              echo '<br><strong>'.$i.'</strong>.- '.romanNumberConverter($i);
+            }
+            ?>
+          </div>
+          <div class="col-md-3">
+            <h4 class="text-center"> Del 2000 al 2999</h4>
+            <?php
+            for ($i=2000; $i < 3000; $i++) {
+              echo '<br><strong>'.$i.'</strong>.- '.romanNumberConverter($i);
+            }
+            ?>
+          </div>
+          <div class="col-md-3">
+            <h4 class="text-center"> Del 3000 al 3999</h4>
+            <?php
+            for ($i=3000; $i < 4000; $i++) {
+              echo '<br><strong>'.$i.'</strong>.- '.romanNumberConverter($i);
+            }
+            ?>
+          </div>
+
+        </div>
     </div> <!-- /main -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
