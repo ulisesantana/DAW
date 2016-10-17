@@ -134,8 +134,10 @@
             <div class="space"></div>
 
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-              <small>Número que quieres pasar a romano:</small>
-              <input required type="number" min="1" max="3999" name="arabicNumber" value="<?php echo $arabicNumber;?>">
+              <p>Número* que quieres pasar a romano:
+                <input required type="number" min="1" max="3999" name="arabicNumber" value="<?php echo $arabicNumber;?>">
+              </p>
+              <br><small class="text-info">*: Debe estar entre 1 y 3999</small>
               <div class="space"></div>
                 <input class="btn btn-success center-block" type="submit" value="CONVERTIR">
             </form>
