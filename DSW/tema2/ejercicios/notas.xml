@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE calificaciones [
+<!ELEMENT calificaciones (asignatura, alumno*)>
+<!ELEMENT asignatura (#PCDATA)>
+<!ELEMENT alumno (nombre, nota)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT nota (#PCDATA)>
+]>
+
+<calificaciones>
+  <asignatura>DPL</asignatura>
+  <alumno>
+    <nombre>Ulises Santana</nombre>
+    <nota>9.5</nota>
+  </alumno>
+  <alumno>
+    <nombre>Joaquín Monte</nombre>
+    <nota>9.2</nota>
+  </alumno>
+  <alumno>
+    <nombre>Jean Carlos</nombre>
+    <nota>7.2</nota>
+  </alumno>
+  <alumno>
+    <nombre>Antón Atonyan</nombre>
+    <nota>8</nota>
+  </alumno>
+  <alumno>
+    <nombre>Alba Herrerías</nombre>
+    <nota>10</nota>
+  </alumno>
+  <alumno>
+    <nombre>Carlos Santana</nombre>
+    <nota>9.8</nota>
+  </alumno>
+</calificaciones>
