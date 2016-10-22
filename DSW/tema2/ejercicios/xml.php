@@ -74,8 +74,9 @@
 
     <div id="main">
       <?php
-        libxml_use_internal_errors(true);
-        $xml = simplexml_load_file('notas.xml');
+        libxml_use_internal_errors(true); //Verifica que es un archivo XML, pero no lo valida
+
+        $xml = simplexml_load_file('notas.xml'); //Cargamos el fichero XML
         if ($xml === false) {
           echo 'Error en el archivo XML';
         } else {

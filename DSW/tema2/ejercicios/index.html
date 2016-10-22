@@ -48,7 +48,7 @@
         }
 
         #main {
-            width: 73vw;
+            max-width: 73vw;
             padding: 2% 3%;
             margin-left: 24vw;
         }
@@ -62,21 +62,21 @@
 <body>
 
     <div id="profile">
-        <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-img-responsive img-circle">
         <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav">
                 <li>
+                    <a href="xml.php">0. Testeando XML</a>
+                </li>
+                <li>
                     <a href="recuento.php">1. Recuento PHP</a>
                 </li>
                 <li>
-                    <a href="#"></a>
+                    <a href="justifica.php">2. Justifica PHP</a>
                 </li>
                 <li>
-                    <a href="#"></a>
-                </li>
-                <li>
-                    <a href="#"></a>
+                    <a href="coches/index.html">3. Web de Coches</a>
                 </li>
             </ul>
         </div>
@@ -84,7 +84,7 @@
     <!-- /profile -->
 
     <div id="main">
-        <h2>Ejercicio 1: Recuento</h2>
+        <h2><a href="recuento.php">Ejercicio 1: Recuento</a></h2>
         <p>
             Elabora un programa llamado recuento.php capaz de leer un archivo de texto guardado en el servidor y mostrarle al usuario:
             <li>El número de líneas que tiene.</li>
@@ -106,6 +106,113 @@
           caracteres y 22 letras a/A.
         </code>
       </pre>
+
+        <h2><a href="justifica.php">Ejercicio 2 - Justificar</a></h2>
+        <p>
+            Codifica un programa llamado justifica.php que abra un archivo de texto alojado en el servidor y justifique a la derecha todas sus líneas. Las líneas justificadas serán almacenadas en otro archivo a crear con el mismo nombre pero añadiéndole la palabra
+            “_justificado”:
+        </p>
+        <div class="row">
+            <div class="col-md-6">
+                <pre>
+            <code>
+Hola, soy un simple archivo
+de texto. He sido creado como
+ejemplo para probar el programa que
+hay que crear como simulacro de
+examen practico.
+Tras ejecutar el programa, todo mi texto
+quedara justificado hacia la derecha.
+            </code>
+          </pre>
+                <p class="text-center">Archivo.txt</p>
+            </div>
+            <div class="col-md-6">
+                <pre class="text-right">
+            <code>
+Hola, soy un simple archivo
+de texto. He sido creado como
+ejemplo para probar el programa que
+hay que crear como simulacro de
+examen practico.
+Tras ejecutar el programa, todo mi texto
+quedara justificado hacia la derecha.
+            </code>
+          </pre>
+                <p class="text-center">Archivo_justificado.txt</p>
+            </div>
+        </div>
+
+        <h2><a href="coches/index.html">Ejercicio 3: Web de Coches</a></h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    Desarrolla una simple aplicación web en PHP que permita publicar coches y consultarlos. La web principal (archivo index.html) mostrará 3 frames con la siguiente estructura:
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="coches/demo/1.png" alt="" class="img-responsive">
+            </div>
+        </div>
+        <p>Las dos opciones del menú de la web serán:</p>
+
+        <ul>
+            <li>
+                <p>
+                    <strong>Agregar coche:</strong> nos dirigirá hacia el archivo agregar.php; el cual muestra un formulario con los campos necesarios para añadir un coche: Marca y Modelo, Año, Precio y una Imagen.
+                </p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>
+                            <p>
+                                Este archivo PHP deberá validar que ninguno de estos campos está vacío. Además, en el caso del año y del precio, éstos deben ser valores numéricos y no pueden ser negativos. Por último; la imagen a subir sólo podrá ser de tipo JPG, GIF o PNG; y no podrá
+                                pesar más de 200 KB.
+                            </p>
+                        </p>
+                    </div>
+                    <div class="col-md-8">
+                        <img src="coches/demo/2.png" alt="" class="img-responsive">
+                    </div>
+                </div>
+
+                <ul>
+                    <p>
+                        Si se cumplen todas las condiciones; el script deberá guardar los siguientes archivos en una subcarpeta llamada <i>upload</i> :
+                    </p>
+                    <li>
+                        El archivo con la imagen del coche que se ha subido.
+                    </li>
+                    <li>
+                        Un archivo de texto creado con el mismo nombre que la Marca y Modelo (de tipo txt). En él escribiremos todos los datos del coche agregado. P.e. el archivo “Opel Astra.txt” contendrá:
+
+                        <pre>
+                        <code>
+                        Opel Astra
+                        2013
+                        16800
+                        ./upload/astra.jpg
+                      </code>
+                      </pre>
+                    </li>
+                </ul>
+            </li>
+            <li>
+              <p><strong>Ver Coche:</strong> nos dirigirá hacia el archivo ver.php; el cual muestra un formulario con una lista desplegable en la que aparecen todos los coches agregados hasta el momento. Esta lista se cargará de valores cuando
+                listemos los distintos archivos .txt de coches que existan en el directorio upload (ver la función scandir).
+              </p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>
+                            Si el usuario elige un coche de la lista, se le mostrará una tabla con los valores introducidos en su fichero .txt y con la imagen que se subió.
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="coches/demo/2.png" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
     <!-- /main -->
 
