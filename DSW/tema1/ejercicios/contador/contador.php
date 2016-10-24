@@ -19,14 +19,14 @@
   </head>
   <body>
     <?php
-        //abrimos el archivo en modo lectura
-        $file = fopen('contador.txt', 'a+');
-        //añadimos la cuenta a un espacio del array y la fecha a otro.
-        $visits = [intval(fgets($file)),fgets($file)];
-        //cerramos el fichero
-        fclose($file);
+      //abrimos el archivo en modo lectura
+      $file = fopen('contador.txt', 'a+');
+      //añadimos la cuenta a un espacio del array y la fecha a otro.
+      $visits = [intval(fgets($file)),fgets($file)];
+      //cerramos el fichero
+      fclose($file);
 
-        //Escribe en el archivo la fecha de la última visita y actualiza el contador
+      //Escribe en el archivo la fecha de la última visita y actualiza el contador
       function setLastVisit($visits){
         $counter = $visits[0];
         $file = fopen('contador.txt', 'w+');
