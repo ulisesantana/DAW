@@ -84,43 +84,53 @@
     <!-- /profile -->
 
     <div id="main">
-      <p>
         <?php
+        function giveMeSpaces($num_of_spaces){
+          $spaces='';
+          for ($i=0; $i < $num_of_spaces; $i++) {
+            $spaces .= ' ';
+          }
+          return $spaces;
+        }
+
         $text = [];
-        $lines = -1;//Aunque no haya texto en el archivo contará como una línea
-        $chars = 0;
-        $words = -1;//Cuenta el final como una palabra más
-        $a = 0;
+        $chars_in_a_line = 0;
+
         //abrimos el archivo en modo lectura
-        $file = fopen('texto_prueba.txt', 'r');
-        //añadimos la cuenta a un espacio del array y la fecha a otro.
+        $file = fopen('archivo.txt', 'r');
+        //abrimos el fichero que se va a justificar
+        $file_justified = fopen('archivo_justificado.txt', 'w+');
+
+        //Desglosamos línea a línea en un array de String
         for ($i=0; !feof($file); $i++) {
           $text[$i]=fgets($file);
-          $words += count(explode(' ', $text[$i]));
-          $lines++;
-          $a+=substr_count($text[$i],'a')+substr_count($text[$i],'A')+
-            substr_count($text[$i],'á')+substr_count($text[$i],'Á');
-          $chars += strlen($text[$i]);
         }
 
-        //cerramos el fichero
-        fclose($file);
-
+        //Comprobamos cuál es la línea más larga
         for ($i=0; $i < count($text); $i++) {
-          echo $text[$i].'</br>';
+          if(strlen($text[$i])>$chars_in_a_line) $chars_in_a_line = strlen($text[$i]);
         }
 
-        echo '</br>'.'</br>';
-        echo '<strong>Palabras:</strong> '.$words.'</br>';
-        echo '<strong>Caracteres: </strong>'.$chars.'</br>';
-        echo '<strong>Líneas: </strong>'.$lines.'</br>';
-        echo '<strong>A/a: </strong>'.$a.'</br>';
+        //Recorremos el array con la información del otro fichero
+        //le añadimos los espacios y lo escribimos en el fichero justificado
+        for ($i=0; $i < count($text); $i++) {
+          $length = strlen($text[$i]);
+          $text[$i] = giveMeSpaces($chars_in_a_line - $length).$text[$i];
+          fputs($file_justified, ($text[$i].PHP_EOL));
+        }
+
+        echo 'Soy ese límite todo loco: '.$chars_in_a_line;
 
         ?>
+      <div class="row">
+        <div class="col-md-6">
+            <?php include('archivo.txt'); ?>
+        </div>
+        <div class="col-md-6">
+          <?php include('archivo_justificado.txt'); ?>
+        </div>
+      </div>
 
-      </ul>
-
-      </p>
     </div>
     <!-- /main -->
 
