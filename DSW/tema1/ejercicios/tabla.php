@@ -1,70 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ejercicios Básicos de PHP</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ejercicios Básicos de PHP</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-  <style media="screen">
-  body{margin-top:70px}
-  </style>
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        body {
+            background-color: #eee;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #profile {
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            width: 25vw;
+            position: fixed;
+        }
+
+        #profile img {
+            max-width: 150px;
+            margin: 20px auto;
+        }
+
+        #profile h3 {
+            text-align: center;
+            padding: 15px;
+        }
+
+        #profile li.active {
+            background-color: #eee;
+        }
+
+        #main {
+            width: 73vw;
+            padding: 2% 3%;
+            margin-left: 24vw;
+        }
+
+        .space {
+            padding-top: 5%;
+        }
+    </style>
 </head>
+
 <body>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"></a>
-      </div>
+    <div id="profile">
+        <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav">
+                <li><a href="test.php">Ejercicio de testeo</a></li>
+                <li><a href="fechas.php">Ejercicio Fechas</a></li>
+                <li class="active"><a href="tabla.php">Ejercicio Tabla</a></li>
+                <li><a href="primitiva.php">Ejercicio Primitiva</a></li>
+                <li><a href="nota.php">Ejercicio Notas</a></li>
+                <li><a href="calculadora.php">Ejercicio Calculadora</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /profile -->
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav">
-          <li><a href="fechas.php">Ejercicio Fechas</a></li>
-          <li class="active"><a href="tabla.php">Ejercicio Tabla</a></li>
-          <li><a href="primitiva.php">Ejercicio Primitiva</a></li>
-          <li><a href="nota.php">Ejercicio Notas</a></li>
-          <li><a href="calculadora.php">Ejercicio Calculadora</a></li>
-          <li><a href="colores.php">Ejercicio Colores</a></li>
-
-
-        </ul>
-
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  <div class="container">
-    <table class="table">
-    <?php
-      $counter=1;
-      for ($i=0; $i < 5; $i++) {
-        echo '<tr>';
-        for ($j=0; $j < 7; $j++) {
-          echo '<td style="background-color:rgb('.$counter.','.$counter.','.$counter.'">'.$counter.'</td>';
-          $counter++;
+    <div id="main">
+      <table class="table">
+      <?php
+        $counter=1;
+        for ($i=0; $i < 5; $i++) {
+          echo '<tr>';
+          for ($j=0; $j < 7; $j++) {
+            echo '<td style="background-color:rgb('.$counter.','.$counter.','.$counter.'">'.$counter.'</td>';
+            $counter++;
+          }
+          echo '</tr>';
         }
-        echo '</tr>';
-      }
-     ?>
-   </table>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+       ?>
+     </table>
+    </div>
+    <!-- /main -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
+
 </html>
