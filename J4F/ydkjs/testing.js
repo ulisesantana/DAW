@@ -4,6 +4,19 @@ function write(code){
   return html;
 }
 
+// EJEMPLO COERCIÓN
+var a = [1,2,3];
+var b = [1,2,3];
+var c = "1,2,3";
+
+write(a == c);
+write(b == c);
+write(a == b);
+write(a === b);
+write(c == a);
+
+// FIN EJEMPLO COERCIÓN
+
 /* EJEMPLO DE CLOSURE*/
 function makeAdder(x) {
   function add(y) {
