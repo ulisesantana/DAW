@@ -35,22 +35,28 @@ function format ( d ) {
 	// `d` is the original data object for the row
 	return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 		'<tr>'+
-			'<td>Full name:</td>'+
-			'<td>'+d.name+'</td>'+
+			'<td>Municipio:</td>'+
+			'<td>'+d.town+'</td>'+
 		'</tr>'+
 		'<tr>'+
-			'<td>Extension number:</td>'+
-			'<td>'+d.extn+'</td>'+
+			'<td>Dirección:</td>'+
+			'<td>'+d.address+'</td>'+
 		'</tr>'+
 		'<tr>'+
-			'<td>Extra info:</td>'+
-			'<td>And any further details here (images etc)...</td>'+
-		'</tr>'+
-		'<tr>'+
-			'<td>Phone number:</td>'+
+			'<td>Teléfono</td>'+
 			'<td>'+d.phone+'</td>'+
 		'</tr>'+
 	'</table>';
+
+
+	//"nif": "B76106012",
+	//"name": "Antonio Jesús",
+	//"surname": "de Todos los Santo de Jesús",
+	//"email": "correo@falso.com",
+	//"state": "Las Palmas",
+	//"town": "Sardina del Sur",
+	//"address": "C/ Santo Domingo El Falso, 1",
+	//"phone": "987654321"
 }
 
 $(document).ready(function() {
@@ -63,10 +69,10 @@ $(document).ready(function() {
 				"data":           null,
 				"defaultContent": ''
 			},
+			{ "data": "nif" },
 			{ "data": "name" },
-			{ "data": "position" },
-			{ "data": "office" },
-			{ "data": "salary" }
+			{ "data": "email" },
+			{ "data": "state" }
 		],
 		"order": [[1, 'asc']]
 	} );
@@ -100,19 +106,19 @@ $(document).ready(function() {
 				<thead>
 					<tr>
 						<th></th>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Salary</th>
+						<th>DNI</th>
+						<th>Nombre y apellidos</th>
+						<th>Email</th>
+						<th>Provincia</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
 						<th></th>
-						<th>Name</th>
-						<th>Position</th>
-						<th>Office</th>
-						<th>Salary</th>
+						<th>DNI</th>
+						<th>Nombre y apellidos</th>
+						<th>Email</th>
+						<th>Provincia</th>
 					</tr>
 				</tfoot>
 			</table>

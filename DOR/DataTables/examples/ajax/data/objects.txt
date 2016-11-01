@@ -12,7 +12,7 @@
         },
         {
             "nif": "B76106012",
-            "name": "Antonio Jesús
+            "name": "Antonio Jesús",
             "surname": "de Todos los Santo de Jesús",
             "email": "correo@falso.com",
             "state": "Las Palmas",
@@ -42,7 +42,7 @@
         },
         {
             "nif": "B76106012",
-            "name": "Antonio Jesús
+            "name": "Antonio Jesús",
             "surname": "de Todos los Santo de Jesús",
             "email": "correo@falso.com",
             "state": "Las Palmas",

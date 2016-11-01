@@ -1,4 +1,4 @@
-//Función que escribe el html en el div con ID mirror
+//Función que escribe el html en el div con id
 function render(id,html) {
   return document.getElementById(id).innerHTML = html;
 }
