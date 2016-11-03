@@ -2,291 +2,333 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hola Mundo!</title>
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <script src="bootstrap/js/jquery-2.2.4.min.js"></script>
-  <script src="bootstrap/js/bootstrap.js" charset="utf-8"></script>
-  <script src="app.js" charset="utf-8"></script>
-  <style media="screen">
-  *{border-radius: 0 !important;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hola Mundo!</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="bootstrap/js/jquery-2.2.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
+    <style media="screen">
+        * {
+            border-radius: 0 !important;
+        }
 
-  .space{padding-top: 5%;}
+        .space {
+            padding-top: 5%;
+        }
 
-  .row {
-    padding-top: 5%;
-  }
+        .row {
+            padding-top: 5%;
+        }
 
-  h2 {
-    padding-bottom: 2%;
-  }
-  .pad{padding: 2%;}
-  body{
-    margin-top: 50px;
-    font-family: 'Montserrat';
-  }
+        h2 {
+            padding-bottom: 2%;
+        }
 
-  .title{
-    border: solid 5px #ff5000;
-    color: #ff5000;
-    padding: 2%;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 32px;
-  }
+        .pad {
+            padding: 2%;
+        }
 
-  .panel-primary{border-color: #ff5000;}
-  .panel-primary > .panel-heading {
-    color: #fff;
-    background-color: #ff5000;
-    border-color: #ff5000;
-  }
+        body {
+            margin-top: 50px;
+            font-family: 'Montserrat';
+        }
 
-  .panel-footer, .panel-footer p{
-    background-color: #ff5000;
-    padding-top: 5%;
-    color: #fff;
-    text-transform: uppercase;
-    font-family: Montserrat;
-    font-size: 28px
-  }
+        .title {
+            border: solid 5px #ff5000;
+            color: #ff5000;
+            padding: 2%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+        }
 
-  .center{margin: 0 auto;}
+        .panel-primary {
+            border-color: #ff5000;
+        }
 
-  .panel-footer:hover{cursor: pointer; }
+        .panel-primary> .panel-heading {
+            color: #fff;
+            background-color: #ff5000;
+            border-color: #ff5000;
+        }
 
-  li.items{
-    list-style-type: none;
-  }
+        .panel-footer,
+        .panel-footer p {
+            background-color: #ff5000;
+            padding-top: 5%;
+            color: #fff;
+            text-transform: uppercase;
+            font-family: Montserrat;
+            font-size: 28px
+        }
 
-  li.items::before{
-    font-family: 'FontAwesome';
-    content:'\f164';
-    color:#ff5000;
-    font-size: x-large;
-    margin-right: 10px;
-  }
+        .center {
+            margin: 0 auto;
+        }
 
-  .has-success input, .has-success select option{color:#3c763d}
-  .has-error input, .has-error select option{color:#aa4442}
-  footer{ padding: 0 20px 20px; color: #fff; background-color: #333;}
-  #form{
-    background-color: #a2a2a2;
-    border-radius: 5px !important;
-    padding: 0px 35px 0px 0px;
-  }
+        .panel-footer:hover {
+            cursor: pointer;
+        }
 
-  </style>
+        li.items {
+            list-style-type: none;
+        }
+
+        li.items::before {
+            font-family: 'FontAwesome';
+            content: '\f164';
+            color: #ff5000;
+            font-size: x-large;
+            margin-right: 10px;
+        }
+
+        .has-success input,
+        .has-success select option {
+            color: #3c763d
+        }
+
+        .has-error input,
+        .has-error select option {
+            color: #aa4442
+        }
+
+        footer {
+            padding: 0 20px 20px;
+            color: #fff;
+            background-color: #333;
+        }
+
+        #form {
+            background-color: #a2a2a2;
+            border-radius: 5px !important;
+            padding: 0px 35px 0px 0px;
+        }
+    </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><i class="fa fa-pied-piper fa-2x fa-inverse"></i></a>
+                <a class="navbar-brand" href="#"><i class="fa fa-pied-piper fa-2x fa-inverse"></i></a>
 
-      </div>
+            </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="navbar">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Precios</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Gromenagüer</a></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  <div class="container">
-    <h1 class="text-center title">Servicios de Hosting</h1>
-    <div id="main" class="row">
-      <div id="form" class="col-md-8" style="display:none;">
-        <h2 class="text-center text-primary">Registro</h2>
-        <form data-toggle="validator" role="form" class="form-horizontal">
-          <div id="name-group" class="form-group">
-            <label class="control-label col-sm-2" for="name">Nombre:</label>
-            <div class="col-sm-10">
-              <input required type="text" class="form-control" id="name" placeholder="Introduce tu nombre">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Precios</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Gromenagüer</a></li>
+                </ul>
             </div>
-          </div>
-          <div id="surname-group" class="form-group">
-            <label class="control-label col-sm-2" for="surname">Apellidos:</label>
-            <div class="col-sm-10">
-              <input required type="text" class="form-control" id="surname" placeholder="Introduce tus apellidos">
-            </div>
-          </div>
-          <div id="nif-group" class="form-group">
-            <label class="control-label col-sm-2" for="nif">NIF:</label>
-            <div class="col-sm-10">
-              <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" placeholder="12345678A" minlength="9">
-            </div>
-          </div>
-          <div id="tel-group" class="form-group">
-            <label class="control-label col-sm-2" for="tel">Teléfono:</label>
-            <div class="col-sm-10">
-              <input required type="text" class="form-control" id="tel" placeholder="+34622725244">
-            </div>
-          </div>
-          <div id="email-group" class="form-group">
-            <label class="control-label col-sm-2" for="email">Email:</label>
-            <div class="col-sm-10">
-              <input required type="email" class="form-control" id="email" placeholder="Introduce tu email">
-            </div>
-          </div>
-          <div id="email-check-group" class="form-group">
-            <label class="control-label col-sm-2" for="email-check">Repite tu email:</label>
-            <div class="col-sm-10">
-              <input required type="email" class="form-control" id="email-check" data-match="#email" placeholder="Repite tu email">
-              <div class="alert alert-danger hidden">
-                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-              </div>
-            </div>
-          </div>
-          <div id="prov-group" class="form-group">
-            <label class="control-label col-sm-2" for="prov">Provincia:</label>
-            <div class="col-sm-10">
-              <select required class="form-control" id="prov"></select>
-            </div>
-          </div>
-          <div id="town-group" class="form-group">
-            <label class="control-label col-sm-2" for="prov">Municipio:</label>
-            <div class="col-sm-10">
-              <input required type="text" class="form-control" id="town" placeholder="">
-            </div>
-          </div>
-          <div id="address-group" class="form-group">
-            <label class="control-label col-sm-2" for="address">Dirección:</label>
-            <div class="col-sm-10">
-              <input required type="text" class="form-control" id="address" placeholder="Introduce tu dirección">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button id="submit" type="submit" class="btn btn-lg btn-success disabled center-block">Enviar</button>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div id="free" class="col-md-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title text-center">Yo me lo guiso, yo me lo como</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row text-center"><i class="fa fa-rebel fa-5x text-primary"></i></div>
-            <div class="row">
-              <h1 class="text-primary text-center">0€<small>¡GRATIS!</small></h1>
-            </div>
-            <div class="row items">
-              <ul class="center">
-
-                <li class="items">Motivo para contratarnos nº1</li>
-                <li class="items">Motivo para contratarnos nº2</li>
-                <li class="items">Motivo para contratarnos nº3</li>
-                <li class="items">Motivo para contratarnos nº4</li>
-                <li class="items">Motivo para contratarnos nº5</li>
-
-              </ul>
-            </div>
-          </div>
-          <div id="free-cta" class="panel-footer">
-            <p id="free-cta-text"class="text-center">CONTRATAR</p>
-          </div>
+            <!-- /.navbar-collapse -->
         </div>
-      </div>
-      <div id="premium" class="col-md-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title text-center">Premium</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row text-center"><i class="fa fa-empire fa-5x text-primary"></i></div>
-            <div class="row">
-              <h1 class="text-primary text-center">50€<small>/mes</small></h1>
-            </div>
-            <div class="row items">
-              <ul class="center">
+        <!-- /.container-fluid -->
+    </nav>
 
-                <li class="items">Motivo para contratarnos nº1</li>
-                <li class="items">Motivo para contratarnos nº2</li>
-                <li class="items">Motivo para contratarnos nº3</li>
-                <li class="items">Motivo para contratarnos nº4</li>
-                <li class="items">Motivo para contratarnos nº5</li>
-
-              </ul>
+    <div class="container">
+        <h1 class="text-center title">Servicios de Hosting</h1>
+        <div id="main" class="row">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar algo por determinar...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </button>
+                    </span>
+                </div>
+                <!-- /input-group -->
             </div>
-          </div>
-          <div id="premium-cta" class="panel-footer">
-            <p id="premium-cta-text"class="text-center">CONTRATAR</p>
-          </div>
+            <div class="space"></div>
+            <div id="form" class="col-md-8" style="display:none;">
+                <h2 class="text-center text-primary">Registro</h2>
+                <form data-toggle="validator" role="form" class="form-horizontal">
+                    <div id="name-group" class="form-group">
+                        <label class="control-label col-sm-2" for="name">Nombre:</label>
+                        <div class="col-sm-10">
+                            <input required type="text" class="form-control" id="name" placeholder="Introduce tu nombre">
+                        </div>
+                    </div>
+                    <div id="surname-group" class="form-group">
+                        <label class="control-label col-sm-2" for="surname">Apellidos:</label>
+                        <div class="col-sm-10">
+                            <input required type="text" class="form-control" id="surname" placeholder="Introduce tus apellidos">
+                        </div>
+                    </div>
+                    <div id="nif-group" class="form-group">
+                        <label class="control-label col-sm-2" for="nif">NIF:</label>
+                        <div class="col-sm-10">
+                            <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" placeholder="12345678A" minlength="9">
+                        </div>
+                    </div>
+                    <div id="tel-group" class="form-group">
+                        <label class="control-label col-sm-2" for="tel">Teléfono:</label>
+                        <div class="col-sm-10">
+                            <input required type="text" class="form-control" id="tel" placeholder="+34622725244">
+                        </div>
+                    </div>
+                    <div id="email-group" class="form-group">
+                        <label class="control-label col-sm-2" for="email">Email:</label>
+                        <div class="col-sm-10">
+                            <input required type="email" class="form-control" id="email" placeholder="Introduce tu email">
+                        </div>
+                    </div>
+                    <div id="email-check-group" class="form-group">
+                        <label class="control-label col-sm-2" for="email-check">Repite tu email:</label>
+                        <div class="col-sm-10">
+                            <input required type="email" class="form-control" id="email-check" data-match="#email" placeholder="Repite tu email">
+                            <div class="alert alert-danger hidden">
+                                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                            </div>
+                        </div>
+                    </div>
+                    <div id="prov-group" class="form-group">
+                        <label class="control-label col-sm-2" for="prov">Provincia:</label>
+                        <div class="col-sm-10">
+                            <select required class="form-control" id="prov"></select>
+                        </div>
+                    </div>
+                    <div id="town-group" class="form-group">
+                        <label class="control-label col-sm-2" for="prov">Municipio:</label>
+                        <div class="col-sm-10">
+                            <input required type="text" class="form-control" id="town" placeholder="Introduce tu municipio o cuidad">
+                        </div>
+                    </div>
+                    <div id="address-group" class="form-group">
+                        <label class="control-label col-sm-2" for="address">Dirección:</label>
+                        <div class="col-sm-10">
+                            <input required type="text" class="form-control" id="address" placeholder="Introduce tu dirección">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="submit" type="submit" class="btn btn-lg btn-success disabled center-block">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="free" class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Yo me lo guiso, yo me lo como</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row text-center"><i class="fa fa-rebel fa-5x text-primary"></i></div>
+                        <div class="row">
+                            <h1 class="text-primary text-center">0€<small>¡GRATIS!</small></h1>
+                        </div>
+                        <div class="row items">
+                            <ul class="center">
+
+                                <li class="items">Motivo para contratarnos nº1</li>
+                                <li class="items">Motivo para contratarnos nº2</li>
+                                <li class="items">Motivo para contratarnos nº3</li>
+                                <li class="items">Motivo para contratarnos nº4</li>
+                                <li class="items">Motivo para contratarnos nº5</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="free-cta" class="panel-footer">
+                        <p id="free-cta-text" class="text-center">CONTRATAR</p>
+                    </div>
+                </div>
+            </div>
+            <div id="premium" class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Premium</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row text-center"><i class="fa fa-empire fa-5x text-primary"></i></div>
+                        <div class="row">
+                            <h1 class="text-primary text-center">50€<small>/mes</small></h1>
+                        </div>
+                        <div class="row items">
+                            <ul class="center">
+
+                                <li class="items">Motivo para contratarnos nº1</li>
+                                <li class="items">Motivo para contratarnos nº2</li>
+                                <li class="items">Motivo para contratarnos nº3</li>
+                                <li class="items">Motivo para contratarnos nº4</li>
+                                <li class="items">Motivo para contratarnos nº5</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="premium-cta" class="panel-footer">
+                        <p id="premium-cta-text" class="text-center">CONTRATAR</p>
+                    </div>
+                </div>
+            </div>
+            <div id="vip" class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Business Gromenagüer</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row text-center"><i class="fa fa-first-order fa-5x text-primary"></i></div>
+                        <div class="row">
+                            <h1 class="text-primary text-center">100€<small>/mes</small></h1>
+                        </div>
+                        <div class="row items">
+                            <ul class="center">
+
+                                <li class="items">Motivo para contratarnos nº1</li>
+                                <li class="items">Motivo para contratarnos nº2</li>
+                                <li class="items">Motivo para contratarnos nº3</li>
+                                <li class="items">Motivo para contratarnos nº4</li>
+                                <li class="items">Motivo para contratarnos nº5</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="vip-cta" class="panel-footer">
+                        <p id="vip-cta-text" class="text-center">CONTRATAR</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div id="vip" class="col-md-4">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title text-center">Business Gromenagüer</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row text-center"><i class="fa fa-first-order fa-5x text-primary"></i></div>
-            <div class="row">
-              <h1 class="text-primary text-center">100€<small>/mes</small></h1>
-            </div>
-            <div class="row items">
-              <ul class="center">
-
-                <li class="items">Motivo para contratarnos nº1</li>
-                <li class="items">Motivo para contratarnos nº2</li>
-                <li class="items">Motivo para contratarnos nº3</li>
-                <li class="items">Motivo para contratarnos nº4</li>
-                <li class="items">Motivo para contratarnos nº5</li>
-
-              </ul>
-            </div>
-          </div>
-          <div id="vip-cta" class="panel-footer">
-            <p id="vip-cta-text"class="text-center">CONTRATAR</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="space"></div>
+    <div class="space"></div>
     <footer class="section section-primary">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6">
-            <h1>Footer header</h1>
-            <ul>
-              <li>TODO: Añadir breadcumbs</li>
-              <li>TODO: Añadir buscardor al inicio</li>
-              <li>TODO: Añadir Paginación</li>
-            </ul>
-          </div>
-          <div class="col-sm-6">
-            <div class="space"></div>
-            <div class="space"></div>
-            <div class="center-block">
-                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
-                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
-                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
-                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
-              </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Footer header</h1>
+                    <ul>
+                        <li>TODO: Añadir breadcumbs</li>
+                        <li>TODO: Añadir buscardor al inicio</li>
+                        <li>TODO: Añadir Paginación</li>
+                    </ul>
+                </div>
+                <div class="col-sm-6">
+                    <div class="space"></div>
+                    <div class="space"></div>
+                    <div class="center-block">
+                        <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                        <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                        <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                        <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+        </div>
     </footer>
-  </body>
+</body>
 
-  </html>
+</html>

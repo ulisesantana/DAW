@@ -75,8 +75,14 @@ function nifValidator() {
   var list="TRWAGMYFPDXBNJZSQVHLCKE";
   var letra = list[num%23];
 
-  styleValidator('#nif-group',letra == letraUser);
-  return letra == letraUser;
+  if(nif.length == 9) {
+    var validator = letra == letraUser
+  } else {
+    var validator = false;
+  }
+
+  styleValidator('#nif-group',validator);
+  return validator;
 }
 
 function telValidator() {
@@ -96,7 +102,7 @@ return patt.test(email);
 function emailChecker() {
   var email = $("#email").val();
   var emailCheck = $("#email-check").val();
-  styleValidator('#email-check-group',email == emailCheck);
+  styleValidator('#email-check-group',((email == emailCheck)&&(emailValidator())));
   return email == emailCheck;
 }
 
