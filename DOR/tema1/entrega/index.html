@@ -5,109 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hola Mundo!</title>
+    <title>Hosting Gromenagüer</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="bootstrap/js/jquery-2.2.4.min.js"></script>
     <script src="bootstrap/js/bootstrap.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
-    <style media="screen">
-        * {
-            border-radius: 0 !important;
-        }
-
-        .space {
-            padding-top: 5%;
-        }
-
-        .row {
-            padding-top: 5%;
-        }
-
-        h2 {
-            padding-bottom: 2%;
-        }
-
-        .pad {
-            padding: 2%;
-        }
-
-        body {
-            margin-top: 50px;
-            font-family: 'Montserrat';
-        }
-
-        .title {
-            border: solid 5px #ff5000;
-            color: #ff5000;
-            padding: 2%;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 32px;
-        }
-
-        .panel-primary {
-            border-color: #ff5000;
-        }
-
-        .panel-primary> .panel-heading {
-            color: #fff;
-            background-color: #ff5000;
-            border-color: #ff5000;
-        }
-
-        .panel-footer,
-        .panel-footer p {
-            background-color: #ff5000;
-            padding-top: 5%;
-            color: #fff;
-            text-transform: uppercase;
-            font-family: Montserrat;
-            font-size: 28px
-        }
-
-        .center {
-            margin: 0 auto;
-        }
-
-        .panel-footer:hover {
-            cursor: pointer;
-        }
-
-        li.items {
-            list-style-type: none;
-        }
-
-        li.items::before {
-            font-family: 'FontAwesome';
-            content: '\f164';
-            color: #ff5000;
-            font-size: x-large;
-            margin-right: 10px;
-        }
-
-        .has-success input,
-        .has-success select option {
-            color: #3c763d
-        }
-
-        .has-error input,
-        .has-error select option {
-            color: #aa4442
-        }
-
-        footer {
-            padding: 0 20px 20px;
-            color: #fff;
-            background-color: #333;
-        }
-
-        #form {
-            background-color: #a2a2a2;
-            border-radius: 5px !important;
-            padding: 0px 35px 0px 0px;
-        }
-    </style>
 </head>
 
 <body>
@@ -129,7 +33,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Precios</a></li>
                     <li><a href="#">Nosotros</a></li>
-                    <li><a href="back.html">Gromenagüer</a></li>
+                    <li><a href="#">Gromenagüer</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -158,37 +62,37 @@
                     <div id="name-group" class="form-group">
                         <label class="control-label col-sm-2" for="name">Nombre:</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="name" placeholder="Introduce tu nombre">
+                            <input required type="text" class="form-control" id="name" name="name" placeholder="Introduce tu nombre">
                         </div>
                     </div>
                     <div id="surname-group" class="form-group">
                         <label class="control-label col-sm-2" for="surname">Apellidos:</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="surname" placeholder="Introduce tus apellidos">
+                            <input required type="text" class="form-control" id="surname" name="surname" placeholder="Introduce tus apellidos">
                         </div>
                     </div>
                     <div id="nif-group" class="form-group">
                         <label class="control-label col-sm-2" for="nif">NIF:</label>
                         <div class="col-sm-10">
-                            <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" placeholder="12345678A" minlength="9">
+                            <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" name="nif" placeholder="12345678A" minlength="9">
                         </div>
                     </div>
                     <div id="tel-group" class="form-group">
                         <label class="control-label col-sm-2" for="tel">Teléfono:</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="tel" placeholder="+34622725244">
+                            <input required type="text" class="form-control" id="tel" name="tel" placeholder="+34622725244">
                         </div>
                     </div>
                     <div id="email-group" class="form-group">
                         <label class="control-label col-sm-2" for="email">Email:</label>
                         <div class="col-sm-10">
-                            <input required type="email" class="form-control" id="email" placeholder="Introduce tu email">
+                            <input required type="email" class="form-control" id="email" name="email" placeholder="Introduce tu email">
                         </div>
                     </div>
                     <div id="email-check-group" class="form-group">
                         <label class="control-label col-sm-2" for="email-check">Repite tu email:</label>
                         <div class="col-sm-10">
-                            <input required type="email" class="form-control" id="email-check" data-match="#email" placeholder="Repite tu email">
+                            <input required type="email" class="form-control" id="email-check" name="email-check" data-match="#email" placeholder="Repite tu email">
                             <div class="alert alert-danger hidden">
                                 <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
                             </div>
@@ -197,19 +101,19 @@
                     <div id="prov-group" class="form-group">
                         <label class="control-label col-sm-2" for="prov">Provincia:</label>
                         <div class="col-sm-10">
-                            <select required class="form-control" id="prov"></select>
+                            <select required class="form-control" id="prov" name="prov"></select>
                         </div>
                     </div>
                     <div id="town-group" class="form-group">
-                        <label class="control-label col-sm-2" for="prov">Municipio:</label>
+                        <label class="control-label col-sm-2" for="town">Municipio:</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="town" placeholder="Introduce tu municipio o cuidad">
+                            <input required type="text" class="form-control" id="town" name="town" placeholder="Introduce tu municipio o cuidad">
                         </div>
                     </div>
                     <div id="address-group" class="form-group">
                         <label class="control-label col-sm-2" for="address">Dirección:</label>
                         <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="address" placeholder="Introduce tu dirección">
+                            <input required type="text" class="form-control" id="address" name="address" placeholder="Introduce tu dirección">
                         </div>
                     </div>
                     <div class="form-group">
@@ -308,17 +212,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h1>Footer header</h1>
-                    <ul>
-                        <li>TODO: Añadir breadcumbs</li>
-                        <li>TODO: Añadir buscardor al inicio</li>
-                        <li>TODO: Añadir Paginación</li>
-                    </ul>
+                    <p class="lead text-center">¡Gromenagüer para todos!</p>
                 </div>
                 <div class="col-sm-6">
-                    <div class="space"></div>
-                    <div class="space"></div>
-                    <div class="center-block">
+                    <div class="text-center">
                         <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
                         <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
                         <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+    border-radius: 0 !important;
+}
+
+.space {
+    padding-top: 5%;
+}
+
+.row {
+    padding-top: 5% !important;
+}
+
+h2 {
+    padding-bottom: 2% !important;
+}
+
+.pad {
+    padding: 2%;
+}
+
+body {
+    margin-top: 50px !important;
+    font-family: 'Montserrat';
+}
+
+.title {
+    border: solid 5px #ff5000;
+    color: #ff5000;
+    padding: 2%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+}
+
+.panel-primary {
+    border-color: #ff5000 !important;
+}
+
+.panel-primary> .panel-heading {
+    color: #fff !important;
+    background-color: #ff5000 !important;
+    border-color: #ff5000 !important;
+}
+
+.panel-footer,
+.panel-footer p {
+    background-color: #ff5000 !important;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 28px
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.panel-footer:hover {
+    cursor: pointer;
+}
+
+li.items {
+    list-style-type: none;
+}
+
+li.items::before {
+    font-family: 'FontAwesome';
+    content: '\f164';
+    color: #ff5000;
+    font-size: x-large;
+    margin-right: 10px;
+}
+
+.has-success input,
+.has-success select option {
+    color: #3c763d
+}
+
+.has-error input,
+.has-error select option {
+    color: #aa4442
+}
+
+footer {
+    padding: 0 20px 20px;
+    color: #fff;
+    background-color: #333;
+}
+
+#form {
+    background-color: #a2a2a2;
+    border-radius: 5px !important;
+    padding: 0px 35px 0px 0px;
+}

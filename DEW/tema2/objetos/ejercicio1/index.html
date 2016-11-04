@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Objetos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style media="screen">
+      .space{
+        padding-top: 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="space"></div>
+    <div class="container">
+      <p class="lead">Crear el objeto coche con las propiedades marca, modelo,
+        año y concesionario. El concesionario es a su vez un objeto con las
+        propiedades oficina, ciudad y responsable. Crear 4 instancias de coche
+        y guardarlas en un array. Y que tenga como método una función que
+        imprima todos los datos del coche en una tabla HTML, donde cada
+        instancia del objeto sea una línea (<tr>) y cada valor de cada propiedad
+          una celda (<td>).
+      </p>
+      <table class="table">
+        <tr>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Año</th>
+          <th>Concesionario</th>
+        </tr>
+        <tbody id="cars"></tbody>
+      </table>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
