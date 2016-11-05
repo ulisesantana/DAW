@@ -55,74 +55,8 @@
                 </div>
                 <!-- /input-group -->
             </div>
+
             <div class="space"></div>
-            <div id="form" class="col-md-8" style="display:none;">
-                <h2 class="text-center text-primary">Registro</h2>
-                <form data-toggle="validator" role="form" class="form-horizontal">
-                    <div id="name-group" class="form-group">
-                        <label class="control-label col-sm-2" for="name">Nombre:</label>
-                        <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="name" name="name" placeholder="Introduce tu nombre">
-                        </div>
-                    </div>
-                    <div id="surname-group" class="form-group">
-                        <label class="control-label col-sm-2" for="surname">Apellidos:</label>
-                        <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="surname" name="surname" placeholder="Introduce tus apellidos">
-                        </div>
-                    </div>
-                    <div id="nif-group" class="form-group">
-                        <label class="control-label col-sm-2" for="nif">NIF:</label>
-                        <div class="col-sm-10">
-                            <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" name="nif" placeholder="12345678A" minlength="9">
-                        </div>
-                    </div>
-                    <div id="tel-group" class="form-group">
-                        <label class="control-label col-sm-2" for="tel">Teléfono:</label>
-                        <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="tel" name="tel" placeholder="+34622725244">
-                        </div>
-                    </div>
-                    <div id="email-group" class="form-group">
-                        <label class="control-label col-sm-2" for="email">Email:</label>
-                        <div class="col-sm-10">
-                            <input required type="email" class="form-control" id="email" name="email" placeholder="Introduce tu email">
-                        </div>
-                    </div>
-                    <div id="email-check-group" class="form-group">
-                        <label class="control-label col-sm-2" for="email-check">Repite tu email:</label>
-                        <div class="col-sm-10">
-                            <input required type="email" class="form-control" id="email-check" name="email-check" data-match="#email" placeholder="Repite tu email">
-                            <div class="alert alert-danger hidden">
-                                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-                            </div>
-                        </div>
-                    </div>
-                    <div id="prov-group" class="form-group">
-                        <label class="control-label col-sm-2" for="prov">Provincia:</label>
-                        <div class="col-sm-10">
-                            <select required class="form-control" id="prov" name="prov"></select>
-                        </div>
-                    </div>
-                    <div id="town-group" class="form-group">
-                        <label class="control-label col-sm-2" for="town">Municipio:</label>
-                        <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="town" name="town" placeholder="Introduce tu municipio o cuidad">
-                        </div>
-                    </div>
-                    <div id="address-group" class="form-group">
-                        <label class="control-label col-sm-2" for="address">Dirección:</label>
-                        <div class="col-sm-10">
-                            <input required type="text" class="form-control" id="address" name="address" placeholder="Introduce tu dirección">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button id="submit" type="submit" class="btn btn-lg btn-success disabled center-block">Enviar</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
 
             <div id="free" class="col-md-4">
                 <div class="panel panel-primary">
@@ -205,6 +139,76 @@
                     </div>
                 </div>
             </div>
+
+            <div id="form" class="col-md-8" style="display:none;">
+                <h2 class="text-center">Registro</h2>
+                <form data-toggle="validator" role="form" class="form-horizontal">
+                    <div id="name-group" class="form-group">
+                        <label class="col-sm-12" for="name">Nombre:</label>
+                        <div class="col-sm-4">
+                            <input required type="text" class="form-control" id="name" name="name" placeholder="Introduce tu nombre">
+                        </div>
+                    </div>
+                    <div id="surname-group" class="form-group">
+                        <label class="col-sm-12" for="surname">Apellidos:</label>
+                        <div class="col-sm-8">
+                            <input required type="text" class="form-control" id="surname" name="surname" placeholder="Introduce tus apellidos">
+                        </div>
+                    </div>
+                    <div id="nif-group" class="form-group">
+                        <label class="col-sm-12" for="nif">NIF:</label>
+                        <div class="col-sm-4">
+                            <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" name="nif" placeholder="12345678A" minlength="9">
+                        </div>
+                    </div>
+                    <div id="tel-group" class="form-group">
+                        <label class="col-sm-12" for="tel">Teléfono:</label>
+                        <div class="col-sm-4">
+                            <input required type="text" class="form-control" id="tel" name="tel" placeholder="+34622725244">
+                        </div>
+                    </div>
+                    <div id="email-group" class="form-group">
+                        <label class="col-sm-12" for="email">Email:</label>
+                        <div class="col-sm-6">
+                            <input required type="email" class="form-control" id="email" name="email" placeholder="Introduce tu email">
+                        </div>
+                    </div>
+                    <div id="email-check-group" class="form-group">
+                        <label class="col-sm-12" for="email-check">Repite tu email:</label>
+                        <div class="col-sm-6">
+                            <input required type="email" class="form-control" id="email-check" name="email-check" data-match="#email" placeholder="Repite tu email">
+                            <div class="alert alert-danger hidden">
+                                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                            </div>
+                        </div>
+                    </div>
+                    <div id="prov-group" class="form-group">
+                        <label class="col-sm-6" for="prov">Provincia:</label>
+                        <div class="col-sm-10">
+                            <select required class="form-control" id="prov" name="prov"></select>
+                        </div>
+                    </div>
+                    <div id="town-group" class="form-group">
+                        <label class="col-sm-6" for="town">Municipio:</label>
+                        <div class="col-sm-10">
+                            <input required type="text" class="form-control" id="town" name="town" placeholder="Introduce tu municipio o cuidad">
+                        </div>
+                    </div>
+                    <div id="address-group" class="form-group">
+                        <label class="col-sm-12" for="address">Dirección:</label>
+                        <div class="col-sm-8">
+                            <input required type="text" class="form-control" id="address" name="address" placeholder="Introduce tu dirección">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button id="submit" type="submit" class="btn btn-lg btn-success disabled center-block">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
         </div>
     </div>
     <div class="space"></div>

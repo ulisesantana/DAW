@@ -1,0 +1,45 @@
+<?xml version ="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE Noticias [
+	<!ELEMENT Noticias (Noticia*) >
+	<!ELEMENT Noticia (X, Y, Ancho, Alto, ColorTexto, TamanoTexto, Texto)>
+	<!ELEMENT X (#PCDATA)>
+	<!ELEMENT Y (#PCDATA)>
+	<!ELEMENT Ancho (#PCDATA)>
+	<!ELEMENT Alto (#PCDATA)>
+	<!ELEMENT ColorTexto (#PCDATA)>
+	<!ELEMENT TamanoTexto (#PCDATA)>
+	<!ELEMENT Texto (#PCDATA)>
+]>
+
+<Noticias>
+	<Noticia>
+		<X>80px</X>
+		<Y>112px</Y>
+		<Ancho>250px</Ancho>
+		<Alto>130px</Alto>
+		<ColorTexto>#8822FF</ColorTexto>
+		<TamanoTexto>100%</TamanoTexto>
+		<Texto>Esta es la noticia 1</Texto>
+	</Noticia>
+
+	<Noticia>
+		<X>250px</X>
+		<Y>345px</Y>
+		<Ancho>300px</Ancho>
+		<Alto>80px</Alto>
+		<ColorTexto>#EE00A0</ColorTexto>
+		<TamanoTexto>160%</TamanoTexto>
+		<Texto>Esta es la noticia 2</Texto>
+	</Noticia>
+
+	<Noticia>
+		<X>510px</X>
+		<Y>140px</Y>
+		<Ancho>235px</Ancho>
+		<Alto>160px</Alto>
+		<ColorTexto>#EEFFEE</ColorTexto>
+		<TamanoTexto>150%</TamanoTexto>
+		<Texto>Esta es la noticia 3</Texto>
+	</Noticia>
+</Noticias>

@@ -20,6 +20,15 @@ h2 {
     padding: 2%;
 }
 
+body, h1, h2, {
+  font-family: 'Montserrat';
+}
+
+label{
+  font-family: 'Montserrat';
+  margin: 10px 0 5px;
+}
+
 body {
     margin-top: 50px !important;
     font-family: 'Montserrat';
@@ -89,7 +98,7 @@ footer {
 }
 
 #form {
-    background-color: #a2a2a2;
+    background-color: rgba(255, 80, 0, 0.6);
     border-radius: 5px !important;
-    padding: 0px 35px 0px 0px;
+    padding: 2%;
 }
