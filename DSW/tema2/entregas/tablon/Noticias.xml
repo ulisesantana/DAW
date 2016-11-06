@@ -8,17 +8,19 @@
 	<!ELEMENT Ancho (#PCDATA)>
 	<!ELEMENT Alto (#PCDATA)>
 	<!ELEMENT ColorTexto (#PCDATA)>
+	<!ELEMENT ColorNoticia (#PCDATA)>
 	<!ELEMENT TamanoTexto (#PCDATA)>
 	<!ELEMENT Texto (#PCDATA)>
 ]>
 
 <Noticias>
 	<Noticia>
-		<X>80px</X>
+		<X>25px</X>
 		<Y>112px</Y>
 		<Ancho>250px</Ancho>
-		<Alto>130px</Alto>
+		<Alto>150px</Alto>
 		<ColorTexto>#8822FF</ColorTexto>
+		<ColorNoticia>#F4EC49</ColorNoticia>
 		<TamanoTexto>100%</TamanoTexto>
 		<Texto>Esta es la noticia 1</Texto>
 	</Noticia>
@@ -27,8 +29,9 @@
 		<X>250px</X>
 		<Y>345px</Y>
 		<Ancho>300px</Ancho>
-		<Alto>80px</Alto>
+		<Alto>160px</Alto>
 		<ColorTexto>#EE00A0</ColorTexto>
+		<ColorNoticia>#4992f4</ColorNoticia>
 		<TamanoTexto>160%</TamanoTexto>
 		<Texto>Esta es la noticia 2</Texto>
 	</Noticia>
@@ -39,6 +42,7 @@
 		<Ancho>235px</Ancho>
 		<Alto>160px</Alto>
 		<ColorTexto>#EEFFEE</ColorTexto>
+		<ColorNoticia>#f181ff</ColorNoticia>
 		<TamanoTexto>150%</TamanoTexto>
 		<Texto>Esta es la noticia 3</Texto>
 	</Noticia>

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Handlee');
+
+body {
+    background-color: #00BBAA;
+    font-family: 'Handlee', cursive;
+    font-size: 16px;
+}
+.space{padding-top: 5%;}
+
+#tablon{
+  background: url('imagenes/tablon.jpg') no-repeat;
+	background-size: cover;
+  position: absolute;
+  width: 910px;
+  height: 620px;
+  padding: 5px 20px;
+}
+
+.post-it{
+  /*background-color: #F4EC49;*/
+  position: absolute;
+  display: block;
+}
+
+.post-it::before{
+  content: url('imagenes/chincheta.png');
+  margin-left: -5px;
+  margin-top: -25px;
+  display: block;
+}
+
+.noticia{
+  position:absolute;
+  left: 20px;
+  top: 40px;
+}
