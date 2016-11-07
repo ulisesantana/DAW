@@ -15,7 +15,8 @@ El repositorio tiene este árbol de archivos:
 │   ├── styles.css
 │   └── usuarios.dat
 ├── doc
-│   └── Actividad XML.pdf
+│   ├── ActividadXML.pdf
+│   └── README.pdf
 ├── imagenes
 │   ├── chincheta.png
 │   └── tablon.jpg

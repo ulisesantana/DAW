@@ -82,7 +82,7 @@ if (isset($_COOKIE['login'])) {
           $error .= 'El tamaño del texto debe ser mayor a 0.<br>';
         }
 
-        if (isset($_POST['text']) && strlen($_POST['text'])>=0){
+        if (isset($_POST['text']) && strlen(trim($_POST['text']))>2){
           $noticia['text'] = $_POST['text'];
         } else{
           $error .= 'Tienes que escribir algo en la noticia.';
@@ -146,7 +146,7 @@ if (isset($_COOKIE['login'])) {
                 <label>Eje X: </label>
               </div>
               <div class="col-md-8">
-                <input required type="text" name="x" placeholder="Mayor a cero">
+                <input required type="number" name="x" min=0 placeholder="Mayor a cero">
               </div>
             </div>
             <div class="row">
@@ -154,7 +154,7 @@ if (isset($_COOKIE['login'])) {
                 <label>Eje Y: </label>
               </div>
               <div class="col-md-8">
-                <input required type="text" name="y" placeholder="Mayor a cero">
+                <input required type="number" name="y" min=0 placeholder="Mayor a cero">
               </div>
             </div>
             <div class="row">
@@ -162,7 +162,7 @@ if (isset($_COOKIE['login'])) {
                 <label>Ancho: </label>
               </div>
               <div class="col-md-8">
-                <input required type="text" name="ancho" placeholder="Mayor o igual a 250">
+                <input required type="number" name="ancho" min=250 placeholder="Mayor o igual a 250">
               </div>
             </div>
             <div class="row">
@@ -170,7 +170,7 @@ if (isset($_COOKIE['login'])) {
                 <label>Alto: </label>
               </div>
               <div class="col-md-8">
-                <input required type="text" name="alto" placeholder="Mayor o igual a 160">
+                <input required type="number" name="alto" min=160 placeholder="Mayor o igual a 160">
               </div>
             </div>
             <div class="row">
@@ -186,7 +186,7 @@ if (isset($_COOKIE['login'])) {
                 <label>Tamaño del texto: </label>
               </div>
               <div class="col-md-8">
-                <input required type="text" name="text-size" placeholder="Mayor a cero">
+                <input required type="number" name="text-size" min=0 placeholder="Mayor a cero">
               </div>
             </div>
             <div class="row">
