@@ -25,11 +25,11 @@ function login($auth){
 }
 
 
-
+//Añade la cookie para el control de usuarios
 function setLogin($auth){
   $cookie_name = 'login';
   $cookie_value = $auth;
-  $cookie_expiration_date = time()+10; //En segundos (86400s = 1 día)
+  $cookie_expiration_date = time()+600; //10 Minutos
   setcookie($cookie_name, $cookie_value, $cookie_expiration_date);
 }
 
@@ -67,7 +67,7 @@ function updateXML($noticia){
       <Alto>'.$noticia["alto"].'px</Alto>
       <ColorTexto>'.$noticia["color-text"].'</ColorTexto>
       <ColorNoticia>'.$noticia["color-news"].'</ColorNoticia>
-      <TamanoTexto>'.$noticia["text-size"].'</TamanoTexto>
+      <TamanoTexto>'.$noticia["text-size"].'%</TamanoTexto>
       <Texto>'.$noticia["text"].'</Texto>
       <TipoLetra>'.$noticia["typo"].'</TipoLetra>
     </Noticia>
@@ -83,7 +83,7 @@ function updateXML($noticia){
 
 
 
-//Añadir los usuarios
+//Añadir usuarios
 function addUsers($auth){
   $readFile = fopen('usuarios.dat', 'r');
 
@@ -101,10 +101,9 @@ function addUsers($auth){
   }
   fclose($writeFile);
 
-  return '
-    <div id="error" class="alert alert-success">
-      Usuario añadido.
-    </div>';
+  return '<div id="error" class="alert alert-success">
+            Usuario añadido.
+          </div>';
 }
 
 //Comprueba si el usuario a añadir existe

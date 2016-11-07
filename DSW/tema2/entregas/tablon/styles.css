@@ -11,8 +11,8 @@ body {
   background: url('imagenes/tablon.jpg') no-repeat;
 	background-size: cover;
   position: absolute;
-  width: 910px;
-  height: 620px;
+  width: 684px;
+  height: 465px;
   padding: 5px 20px;
 }
 
@@ -36,5 +36,5 @@ body {
 }
 
 #contador{
-  padding-top: 640px;
+  padding-top: 520px;
 }

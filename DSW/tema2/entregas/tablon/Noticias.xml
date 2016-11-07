@@ -35,6 +35,7 @@
 		<ColorNoticia>#4992f4</ColorNoticia>
 		<TamanoTexto>160%</TamanoTexto>
 		<Texto>Esta es la noticia 2</Texto>
+		<TipoLetra>Times New Roman</TipoLetra>
 	</Noticia>
 
 	<Noticia>
@@ -46,5 +47,7 @@
 		<ColorNoticia>#f181ff</ColorNoticia>
 		<TamanoTexto>150%</TamanoTexto>
 		<Texto>Esta es la noticia 3</Texto>
+		<TipoLetra>Handlee</TipoLetra>
 	</Noticia>
-</Noticias>
+
+  </Noticias>

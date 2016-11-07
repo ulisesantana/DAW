@@ -116,11 +116,11 @@ if (isset($_COOKIE['login'])) {
             '</div>';
         }
 
-      } elseif ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['form'] == 'usuarios'){
+      } elseif ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['form'] == 'usuario'){
         //Ejecución del formulario para añadir usuarios
         $user = (isset($_POST['user'])) ? $_POST['user'] : null;
         $pass = (isset($_POST['pass'])) ? $_POST['pass'] : null;
-        $auth = $user.'-'.$pass;
+        $auth = $user.'#'.$pass;
 
         if(userChecker($user) && strlen($user)>3){
           $userAlert = addUsers($auth);

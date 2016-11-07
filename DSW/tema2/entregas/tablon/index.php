@@ -53,7 +53,11 @@ if (!isset($_COOKIE[$cookie_name])) {
     </div>
     <div id="contador" class="text-center">
       <?php
+      if ($visits == 1) {
+        echo 'Has estado aquí <strong>'.$visits.'</strong> vez';
+      } else {
         echo 'Has estado aquí <strong>'.$visits.'</strong> veces';
+      }
        ?>
     </div>
 </body>
