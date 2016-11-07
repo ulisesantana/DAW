@@ -23,6 +23,7 @@
 		<ColorNoticia>#F4EC49</ColorNoticia>
 		<TamanoTexto>100%</TamanoTexto>
 		<Texto>Esta es la noticia 1</Texto>
+		<TipoLetra>Arial</TipoLetra>
 	</Noticia>
 
 	<Noticia>

@@ -1,3 +1,16 @@
+<?php
+$cookie_name = 'contador';
+$cookie_expiration_date = time()+(86400 * 365); //En segundos (86400s = 1 día)
+
+if (!isset($_COOKIE[$cookie_name])) {
+  $visits = 0;
+  setcookie($cookie_name, $visits, $cookie_expiration_date);
+} else {
+  $visits = $_COOKIE['contador'];
+  $visits++;
+  setcookie($cookie_name, $visits, $cookie_expiration_date);
+}
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -27,15 +40,20 @@
                 >
                 <p class="noticia"
                   style="
-                    color:'.$noticia->ColorTexto.'; 
-                    font-size:'.$noticia->TamanoTexto.';"
+                    color:'.$noticia->ColorTexto.';
+                    font-size:'.$noticia->TamanoTexto.';
+                    font-family:'.$noticia->TipoLetra.'"
                   >
                     '.$noticia->Texto.'
                 </p>
               </div>';
           }
         }
-
+       ?>
+    </div>
+    <div id="contador" class="text-center">
+      <?php
+        echo 'Has estado aquí <strong>'.$visits.'</strong> veces';
        ?>
     </div>
 </body>

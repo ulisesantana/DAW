@@ -1,130 +1,126 @@
 <?php
 //Para limpiar las strings de los archivos
-function cleanValue (&$data) {
+function clean (&$data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
 
-function show($id){
-  echo '<script>
-          $("#'.$id.'").show();
-        </script>';
-}
 
-function hide($id){
-  echo '<script>
-          $("#'.$id.'").hide();
-        </script>';
-}
 
 //Gestión del Login
 function login($auth){
   $file = fopen('usuarios.dat', 'r');
-  $login = false;
 
-  for ($i=0; !feof($file); $i++) {
-    if(cleanValue(fgets($file)) == cleanValue($auth)) {
-      $login = true;
-      hide('login');
-      newsForm();
-      show('news');
-      break;
+  while(!feof($file)) {
+    if(clean(fgets($file)) == clean($auth)) {
+      fclose($file);
+      return true;
     }
   }
 
-  if(!$login) {
-    echo 'Sesión fallida.';
-  }
-  //cerramos el fichero
   fclose($file);
+  return false;
 }
 
-function checkLogin(){
 
+
+function setLogin($auth){
+  $cookie_name = 'login';
+  $cookie_value = $auth;
+  $cookie_expiration_date = time()+10; //En segundos (86400s = 1 día)
+  setcookie($cookie_name, $cookie_value, $cookie_expiration_date);
 }
 
-//Escribir el xml
-function newNews(){
 
+
+//Checker de las respuestas del formulario
+function checkValues($noticia){
+  foreach ($noticia as $key => $value) {
+    if (is_null($noticia[$key])) {
+      return false;
+    }
+  }
+  return true;
 }
 
-//Renderizar formulario para añadir noticias
-function newsForm(){
-  echo '
-  <script>
-    document.getElementById("news").innerHTML = `
-    <h3 class="text-center">Añadir una noticia</h3>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Eje X: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="text" name="x">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Eje Y: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="text" name="y"><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Ancho: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="text" name="ancho"><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Alto: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="text" name="alto"><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Color del texto: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="color" name="color-text"><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Tamaño del texto: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="text" name="text-size"><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Texto de noticia: </label>
-      </div>
-      <div class="col-md-8">
-        <input required type="text" name="text"><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4">
-        <label>Tipografía: </label>
-      </div>
-      <div class="col-md-8">
-        <select required name="typo">
-          <option class="serif" value="">Times New Roman</option>
-          <option class="arial" value="">Arial</option>
-        </select>
-      </div>
-    </div>
-  <input class="btn btn-success center-block" type="submit" value="Acceder">`;
-  </script>
+
+
+//Actualizar el xml
+function updateXML($noticia){
+  $readFile = fopen('../Noticias.xml', 'r');
+
+  for ($i=0; !feof($readFile); $i++) {
+    $xml[$i]=fgets($readFile);
+  }
+  fclose($readFile);
+  array_pop($xml);
+  array_pop($xml);
+
+  //Añadimos la nueva noticia
+  $xml[] = '
+    <Noticia>
+      <X>'.$noticia["x"].'px</X>
+      <Y>'.$noticia["y"].'px</Y>
+      <Ancho>'.$noticia["ancho"].'px</Ancho>
+      <Alto>'.$noticia["alto"].'px</Alto>
+      <ColorTexto>'.$noticia["color-text"].'</ColorTexto>
+      <ColorNoticia>'.$noticia["color-news"].'</ColorNoticia>
+      <TamanoTexto>'.$noticia["text-size"].'</TamanoTexto>
+      <Texto>'.$noticia["text"].'</Texto>
+      <TipoLetra>'.$noticia["typo"].'</TipoLetra>
+    </Noticia>
+  </Noticias>
   ';
+
+  $writeFile = fopen('../Noticias.xml', 'w');
+  for ($i=0; $i < count($xml); $i++) {
+    fputs($writeFile, $xml[$i]);
+  }
+  fclose($writeFile);
+}
+
+
+
+//Añadir los usuarios
+function addUsers($auth){
+  $readFile = fopen('usuarios.dat', 'r');
+
+  for ($i=0; !feof($readFile); $i++) {
+    $users[$i]=fgets($readFile);
+  }
+  fclose($readFile);
+  array_pop($users);
+
+  $users[] = $auth;
+
+  $writeFile = fopen('usuarios.dat', 'w');
+  for ($i=0; $i < count($users); $i++) {
+    fputs($writeFile, $users[$i]);
+  }
+  fclose($writeFile);
+
+  return '
+    <div id="error" class="alert alert-success">
+      Usuario añadido.
+    </div>';
+}
+
+//Comprueba si el usuario a añadir existe
+function userChecker($user){
+  $file = fopen('usuarios.dat', 'r');
+
+  while(!feof($file)) {
+    $aux = clean(fgets($file));
+    $aux = explode('#',$aux);
+
+    if($aux[0] == $user) {
+      fclose($file);
+      return false;
+    }
+  }
+  fclose($file);
+  return true;
 }
  ?>
