@@ -25,6 +25,8 @@ class Coche {
         <td>${this.modelo}</td>
         <td>${this.anio}</td>
         <td>${this.concesionario.office}</td>
+        <td>${this.concesionario.city}</td>
+        <td>${this.concesionario.manager}</td>
       </tr>`;
   }
 }
