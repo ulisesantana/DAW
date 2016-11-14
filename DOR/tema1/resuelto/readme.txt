@@ -1,6 +1,6 @@
-Instalación del ejemplo:
+InstalaciÃ³n del ejemplo:
 
-1.- Copiar la carpeta eHosting en la ruta del servidor web donde está instalado DataTables:
+1.- Copiar la carpeta eHosting en la ruta del servidor web donde estï¿½ instalado DataTables:
 htdocs/Datatables/example
 
 2.- Lanzar el html, index.html
@@ -10,5 +10,5 @@ Fichero SQL con la BBDD
 Fichero php
 Fichero html Datatables.
 
-Para ejecutar el ejemplo Datatables hay que crear previamente la BBDD dtdor y luego lanzar el sql 
+Para ejecutar el ejemplo Datatables hay que crear previamente la BBDD dtdor y luego lanzar el sql
 del fichero adjunto.
