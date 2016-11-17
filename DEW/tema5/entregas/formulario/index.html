@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+      <style media="screen">
+          @import url('https://fonts.googleapis.com/css?family=Montserrat');
+          body {
+              background-color: #eee;
+              font-family: "Montserrat", sans-serif;
+          }
+
+          #profile {
+              background-color: #333;
+              color: #fff;
+              height: 100vh;
+              width: 25vw;
+              position: fixed;
+          }
+
+          #profile img {
+              max-width: 150px;
+              margin: 20px auto;
+          }
+
+          #profile h3 {
+              text-align: center;
+              padding: 15px;
+          }
+
+          #profile li.active{
+            background-color: #eee;
+          }
+
+          #main {
+              width: 73vw;
+              padding: 2% 3%;
+              margin-left: 24vw;
+          }
+
+          .space{padding-top:5%;}
+          .has-success .form-control{
+            border: solid 2px #3c763d;
+          }
+      </style>
+</head>
+
+
+<body>
+
+
+    <div id="profile">
+        <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav">
+              <!--  <li><a href="#"></a></li>  -->
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="main">
+      <div id="form" class="row">
+          <h2 class="text-center">Registro</h2>
+          <form data-toggle="validator" role="form" class="form-horizontal">
+              <div id="name-group" class="form-group">
+                  <label class="col-sm-12" for="name">Nombre:</label>
+                  <div class="col-sm-4">
+                      <input required type="text" class="form-control" id="name" name="name" placeholder="Introduce tu nombre">
+                  </div>
+              </div>
+              <div id="surname-group" class="form-group">
+                  <label class="col-sm-12" for="surname">Apellidos:</label>
+                  <div class="col-sm-8">
+                      <input required type="text" class="form-control" id="surname" name="surname" placeholder="Introduce tus apellidos">
+                  </div>
+              </div>
+              <div id="nif-group" class="form-group">
+                  <label class="col-sm-12" for="nif">NIF:</label>
+                  <div class="col-sm-4">
+                      <input required pattern="([0-9]{8})([A-z])" type="text" class="form-control" id="nif" name="nif" placeholder="12345678A" minlength="9">
+                  </div>
+              </div>
+              <div id="email-group" class="form-group">
+                  <label class="col-sm-12" for="email">Email:</label>
+                  <div class="col-sm-6">
+                      <input required type="email" class="form-control" id="email" name="email" placeholder="Introduce tu email">
+                  </div>
+              </div>
+              <div id="password-group" class="form-group">
+                  <label class="col-sm-12" for="password">Password:</label>
+                  <div class="col-sm-6">
+                      <input required type="password" class="form-control" id="password" name="password" placeholder="Introduce tu password">
+                  </div>
+              </div>
+              <div id="password-check-group" class="form-group">
+                  <label class="col-sm-12" for="password-check">Repite tu password:</label>
+                  <div class="col-sm-6">
+                      <input required type="password" class="form-control" id="password-check" name="password-check" data-match="#password" placeholder="Repite tu password">
+                  </div>
+              </div>
+              <div id="studies-group" class="form-group">
+                  <label class="col-sm-6" for="studies">Titulación:</label>
+                  <div class="col-sm-10">
+                      <select required class="form-control" id="prov" name="prov">
+                        <option value="DAW">Técnico Superior en Desarrollo de Aplicaciones Web</option>
+                        <option value="DAM">Técnico Superior en Desarrollo de Aplicaciones Multiplataforma</option>
+                      </select>
+                  </div>
+              </div>
+              <div id="course-group" class="form-group">
+                  <label class="col-sm-6" for="course">Cursos</label>
+                  <div class="col-sm-10">
+                      <select required class="form-control" id="prov" name="prov">
+                        <option value="1">Primero</option>
+                        <option value="2">Segundo</option>
+                      </select>
+                  </div>
+              </div>
+              <div id="year-group" class="form-group">
+                <label class="col-sm-12" for="year">Año académico</label>
+                <div class="col-sm-4">
+                  <input required type="text" class="form-control" id="year" name="year" placeholder="2016">
+                </div>
+              </div>
+              <div class="form-group">
+                  <div class="col-sm-12">
+                      <button id="submit" type="submit" class="btn btn-lg btn-success disabled center-block">Enviar</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="main.js" charset="utf-8"></script>
+</body>
+
+
+</html>

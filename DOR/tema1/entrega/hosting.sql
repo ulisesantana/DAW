@@ -20,13 +20,16 @@ SET time_zone = "+00:00";
 -- Base de datos: `datatables`
 --
 
+CREATE DATABASE hosting  DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `hosting`
 --
 
-CREATE TABLE `hosting` (
+CREATE TABLE hosting.form (
   `id` int(6) NOT NULL,
   `nif` varchar(13) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -43,7 +46,7 @@ CREATE TABLE `hosting` (
 -- Volcado de datos para la tabla `hosting`
 --
 
-INSERT INTO `hosting` (`id`, `nif`, `name`, `surname`, `email`, `state`, `town`, `address`, `phone`, `createdDate`) VALUES
+INSERT INTO hosting.form (`id`, `nif`, `name`, `surname`, `email`, `state`, `town`, `address`, `phone`, `createdDate`) VALUES
 (2, '123456789A', 'Antonio', 'del Carmen', 'correo@falso.com', 'Las Palmas', 'Vecindario', 'C/ Velero, 80', '+34680240934', '2016-11-04 08:41:51'),
 (3, '123456789A', 'Antonio', 'del Carmen', 'correo@falso.com', 'Las Palmas', 'Vecindario', 'C/ Velero, 80', '+34680240934', '2016-11-04 08:42:41'),
 (4, '123456789A', 'Antonio', 'del Carmen', 'correo@falso.com', 'Las Palmas', 'Vecindario', 'C/ Velero, 80', '+34680240934', '2016-11-04 08:42:41'),
@@ -64,7 +67,7 @@ INSERT INTO `hosting` (`id`, `nif`, `name`, `surname`, `email`, `state`, `town`,
 --
 -- Indices de la tabla `hosting`
 --
-ALTER TABLE `hosting`
+ALTER TABLE hosting.form
   ADD PRIMARY KEY (`id`);
 
 --
@@ -74,7 +77,7 @@ ALTER TABLE `hosting`
 --
 -- AUTO_INCREMENT de la tabla `hosting`
 --
-ALTER TABLE `hosting`
+ALTER TABLE hosting.form
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
