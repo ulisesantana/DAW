@@ -1,11 +1,9 @@
-//Función que escribe el html en el div con id
-function render(id,html) {
-  return document.getElementById(id).innerHTML = html;
-}
-
-
 function submitEnabler() {
-  if (nifValidator() && telValidator() && emailValidator() && passChecker()) {
+  if (nifValidator() &&
+      nameValidator() &&
+      surnameValidator() &&
+      emailValidator() &&
+      passChecker()) {
     $('#submit').removeClass('disabled');
   }
 }
@@ -34,26 +32,16 @@ function surnameValidator() {
 
 function nifValidator() {
   var nif = $('#nif').val();
-  var num = parseInt(nif.substring(0,nif.length-1));
-  var letraUser = nif[(nif.length)-1].toUpperCase();
-  var list="TRWAGMYFPDXBNJZSQVHLCKE";
-  var letra = list[num%23];
+  var patt = new RegExp('([\\d]{8})([- | \\s]?)([A-z])')
 
-  if(nif.length == 9) {
-    var validator = letra == letraUser;
+  if (patt.test(nif)) {
+    var validator = true;
   } else {
     var validator = false;
   }
 
   styleValidator('#nif-group',validator);
   return validator;
-}
-
-function telValidator() {
-  var tel = $("#tel").val();
-  var patt = new RegExp('(\\+{1})\\d{11}');
-  styleValidator('#tel-group', patt.test(tel));
-return patt.test(tel);
 }
 
 function emailValidator() {
@@ -63,72 +51,36 @@ function emailValidator() {
 return patt.test(email);
 }
 
+function passwordValidator() {
+  var password = $("#password").val();
+  var patt = new RegExp('^(?=.*[A-z])(?=.*\\d)[A-z\\d]{8,}$');
+  styleValidator('#password-group', patt.test(password));
+  return patt.test(password);
+}
+
 function passChecker() {
-  var email = $("#email").val();
-  var emailCheck = $("#email-check").val();
-  styleValidator('#email-check-group',((email == emailCheck)&&(emailValidator())));
-  return email == emailCheck;
+  var password = $("#password").val();
+  var passwordCheck = $("#password-check").val();
+  styleValidator('#password-check-group',((password == passwordCheck)&&(passwordValidator())));
+  return password == passwordCheck;
 }
 
-function addressValidator() {
-  var address = $('#address').val();
-  styleValidator('#address-group', address.length>2);
-  return  address.length>2;
+function yearValidator() {
+  var year = $('#year').val();
+  var date = new Date();
+  var limit = date.getFullYear();
+
+  if (year <= limit) {
+    var validator = true;
+  } else {
+    var validator = false;
+  }
+
+  styleValidator('#year-group',validator);
+  return validator;
 }
-
-function townValidator() {
-  var town = $('#town').val();
-  styleValidator('#town-group', town.length>2);
-  return  town.length>2;
-}
-
-function provValidator() {
-  var prov = $('#prov').val();
-  console.log(prov);
-  styleValidator('#prov-group', prov>0);
-  return  prov>0;
-}
-
-
 
 $(document).ready(function () {
-
-  $("#free").click(function() {
-    if($('#form').css('display') == 'none'){
-      $('#premium,#vip,#free').fadeToggle().promise().done(function(){
-        toggleForm('#free');
-      });
-    }
-    else{
-      toggleForm('#free');
-      $('#premium,#vip,#free').fadeToggle();
-    }
-  });
-
-  $("#premium").click(function() {
-    if($('#form').css('display') == 'none'){
-      $('#premium,#vip,#free').fadeToggle().promise().done(function(){
-        toggleForm('#premium');
-      });
-    }
-    else{
-      toggleForm('#premium');
-      $('#premium,#vip,#free').fadeToggle();
-    }
-  });
-
-  $("#vip").click(function() {
-    if($('#form').css('display') == 'none'){
-      $('#premium,#vip,#free').fadeToggle().promise().done(function(){
-        toggleForm('#vip');
-      });
-    }
-    else{
-      toggleForm('#vip');
-      $('#premium,#vip,#free').fadeToggle();
-    }
-  });
-
   $('#name').focusout(function() {
     nameValidator();
   });
@@ -141,28 +93,20 @@ $(document).ready(function () {
     nifValidator();
   });
 
-  $('#tel').focusout(function() {
-    telValidator();
-  });
-
   $('#email').focusout(function() {
     emailValidator();
   });
 
-  $('#email-check').focusout(function() {
+  $('#password').focusout(function() {
+    passwordValidator();
+  });
+
+  $('#password-check').focusout(function() {
     passChecker();
   });
 
-  $('#address').focusout(function() {
-    addressValidator();
-  });
-
-  $('#town').focusout(function() {
-    townValidator();
-  });
-
-  $('#prov').focusout(function() {
-    provValidator();
+  $('#year').focusout(function() {
+    yearValidator();
   });
 
   $('input').focusout(function(){

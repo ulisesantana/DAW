@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repaso</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        body {
+            background-color: #eee;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #profile {
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            width: 25vw;
+            position: fixed;
+        }
+
+        #profile img {
+            max-width: 150px;
+            margin: 20px auto;
+        }
+
+        #profile h3 {
+            text-align: center;
+            padding: 15px;
+        }
+
+        #profile li.active{
+          background-color: #eee;
+        }
+
+        #main {
+            width: 73vw;
+            padding: 2% 3%;
+            margin-left: 24vw;
+        }
+
+        .space{padding-top:5%;}
+    </style>
+</head>
+
+
+<body>
+
+
+    <div id="profile">
+        <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav">
+                <li><a href="ejercicio1.php">Ejercicio 1 - Subida de Ficheros</a></li>
+                <li><a href="ejercicio2.php">Ejercicio 2 - XML</a></li>
+                <li><a href="ejercicio3.php">Ejercicio 3 - Cookies</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div id="main">
+      <div class="row">
+        <h2 class="text-center"><a href="ejercicio1.php">
+          Ejercicio 1
+        </a></h2>
+        <div class="col-md-6">
+          <p>
+            Elabora un programa en PHP llamado
+            subirfichero.php capaz de subir un fichero (de
+            cualquier tipo pero que no exceda los 10 MB) a un
+            directorio particular del servidor.
+          </p>
+          <p>
+            El usuario indicará
+            en un formulario el archivo a subir y el directorio
+            remoto donde copiarlo. Los directorios de destino
+            que podrá elegir el usuario para subir su fichero
+            deben ser subdirectorios de la carpeta pública del
+            server (los subdirectorios de C:\xampp\htdocs).
+          </p>
+          <p>
+            Tras subir el archivo, la página le listará el contenido
+            de dicho directorio:
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src="img/ejer1.png" alt="" class="img-responsive center-block">
+        </div>
+      </div>
+      <div class="space"></div>
+      <div class="row">
+        <h2 class="text-center"><a href="ejercicio2.php">
+          Ejercicio 2
+        </a></h2>
+        <div class="col-md-6">
+          <p>
+            Codifica un programa llamado libreria.php que abra un archivo XML almacenado en el
+            server llamado catalogo.xml. Deberá representar su contenido mediante una tabla HTML en
+            la que cada fila contiene un libro.
+          </p>
+          <p>
+            Para cada libro
+             se indicará por columnas: el título, su autor y el
+             precio. Además, si se trata de una novedad
+             deberemos resaltarlo en la columna del autor
+             mediante una imagen GIF animada.
+          </p>
+          <p>
+            La tabla se
+            deberá construir de manera que los libros se
+            listen ordenados de manera decreciente según
+            su precio:
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src="img/ejer2.png" alt="" class="img-responsive center-block">
+        </div>
+      </div>
+      <div class="space"></div>
+        <h2 class="text-center"><a href="ejercicio3.php">
+          Ejercicio 3
+        </a></h2>
+          <p>
+            Desarrolla una simple aplicación web en PHP llamada cookiebuscador.php que permita
+            realizar búsquedas a través de Google. La aplicación recogerá de un formulario la búsqueda
+            a realizar, y redirigirá la página hacia el buscador de Google empleando la siguiente URL
+            para realizar la búsqueda en Internet:
+          </p>
+          <pre><code>http://www.google.com/search?q=busqueda</code></pre>
+          <p>
+            La aplicación deberá además almacenar en una cookie la última búsqueda realizada por el
+            usuario para que se le presente en el formulario cuando éste vuelva a acceder la web.
+          </p>
+          <img src="img/ejer3.png" alt="" class="img-responsive center-block">
+      </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
