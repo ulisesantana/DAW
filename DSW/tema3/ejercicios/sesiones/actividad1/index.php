@@ -2,9 +2,9 @@
 session_name('session'); // Nombre de la sesión a crear/continuar.Mismo nombre que la cookie a crear
 session_start();
 
-$name = $_SESSION['name'] = $_POST['name'];
-$bg =  $_SESSION['bg'] = $_POST['bg'];
-$lang = $_SESSION['lang'] = $_POST['lang'];
+$name = (isset($_SESSION['name'])) ? $_SESSION['name'] : null;
+$bg = (isset($_SESSION['bg'])) ? $_SESSION['bg'] : null;
+$lang = (isset($_SESSION['lang'])) ? $_SESSION['lang'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +33,7 @@ $lang = $_SESSION['lang'] = $_POST['lang'];
       <style media="screen">
           @import url('https://fonts.googleapis.com/css?family=Montserrat');
           body {
-              background-color: <?php $bg ?>;
+              background-color: #eee;
               font-family: "Montserrat", sans-serif;
           }
 
@@ -68,11 +68,7 @@ $lang = $_SESSION['lang'] = $_POST['lang'];
           .space{padding-top:5%;}
       </style>
 </head>
-
-
 <body>
-
-
     <div id="profile">
         <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
         <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
@@ -86,9 +82,56 @@ $lang = $_SESSION['lang'] = $_POST['lang'];
         </div>
     </div>
 
-
     <div id="main">
-      <h1 class="lead">Mi web</h1>
+      <?php
+      if ($_SERVER['REQUEST_METHOD'] == "POST"){
+        $_SESSION['name'] = $_POST['name'];
+        $_SESSION['bg'] = $_POST['bg'];
+        $_SESSION['lang'] = $_POST['lang'];
+        $_SESSION['date'] = date("j/n/Y"); ;
+        header('Location: siguiente.php');
+      }
+
+      ?>
+
+      <h1>Mi web</h1>
+
+      <form id="session" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+        Nombre: <input required name="name" type="text"
+                  value="<?php if(!is_null($name)) echo $name; ?>">
+
+        <select required name="bg">
+          <option value="" disabled <?php if(is_null($bg)) echo 'selected'; ?> >
+            Elige un color
+          </option>
+          <option style="color:aqua;" value="aqua"
+            <?php if($bg == 'aqua') echo 'selected'; ?> >
+            Azul
+          </option>
+          <option style="color:red;"value="red"
+            <?php if($bg == 'red') echo 'selected'; ?> >
+            Rojo
+          </option>
+          <option style="color:green;"value="green"
+            <?php if($bg == 'green') echo 'selected'; ?> >
+            Verde
+          </option>
+        </select>
+
+        <select required name="lang">
+          <option value="" disabled
+            <?php if(is_null($lang)) echo 'selected'; ?> >
+            Elige un idioma
+          </option>
+          <option value="es" <?php if($lang == 'es') echo 'selected'; ?> >
+            Español
+          </option>
+          <option value="en" <?php if($lang == 'en') echo 'selected'; ?> >
+            Inglés
+          </option>
+        </select>
+        <input type="submit" class="btn btn-info" value="ACCEDER">
+      </form>
 
     </div>
 
@@ -98,6 +141,4 @@ $lang = $_SESSION['lang'] = $_POST['lang'];
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
-
-
 </html>

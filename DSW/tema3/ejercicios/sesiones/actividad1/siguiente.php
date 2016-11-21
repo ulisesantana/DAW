@@ -1,3 +1,25 @@
+<?php
+session_name('session'); // Nombre de la sesión a crear/continuar.Mismo nombre que la cookie a crear
+session_start();
+
+$name = $_SESSION['name'];
+$bg =  $_SESSION['bg'];
+$lang = $_SESSION['lang'];
+$date = $_SESSION['date'];
+
+switch ($lang) {
+  case 'es':
+    $text = 'Hola '.$name.', esta es tu web en español. Y se inició el '.$date;
+    $head = 'La web de '.$name;
+    break;
+  case 'en':
+    $text = 'Hi '.$name.', this is your web and was started at '.$date;
+    $head = ($name[strlen($name)-1]=='s') ? $name.'\' web.' : $name.'\'s web.';
+    break;
+  default:
+    $text = 'No tengo claro en que idioma lo quieres. Supongo que español.';
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,7 +47,7 @@
       <style media="screen">
           @import url('https://fonts.googleapis.com/css?family=Montserrat');
           body {
-              background-color: #eee;
+              background-color: <?php echo $bg ?>;
               font-family: "Montserrat", sans-serif;
           }
 
@@ -80,31 +102,12 @@
 
 
     <div id="main">
-      <?php
-        session_name('session'); // Nombre de la sesión a crear/continuar.Mismo nombre que la cookie a crear
-        session_start();
+      <a class="pull-right lead" href="logout.php">Logout</a>
+      <h1 class="lead"><?php echo $head; ?></h1>
 
-        // Asigna un valor a la variable de sesión
-      ?>
+      <p><?php echo $text; ?></p>
 
-      <h1>Mi web</h1>
-
-      <form id="session" method="post" action="siguiente.php">
-        Nombre: <input required name="name" type="text">
-        <select required name="bg">
-          <option value="" disabled selected>Elige un color</option>
-          <option style="color:aqua;" value="aqua">Azul</option>
-          <option style="color:red;"value="red">Rojo</option>
-          <option style="color:green;"value="green">Verde</option>
-        </select>
-        <select required name="lang">
-          <option value="" disabled selected>Elige un idioma</option>
-          <option value="es">Español</option>
-          <option value="en">Inglés</option>
-        </select>
-        <input type="submit" class="btn btn-info" value="ACCEDER">
-      </form>
-
+      <a href="index.php"><div class="btn btn-info">VOLVER</div></a>
     </div>
 
 
