@@ -1,6 +1,4 @@
-<?php
-require('functions.php');
-?>
+<?php include('functions.php'); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,7 +7,7 @@ require('functions.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Orlando Rent a Car</title>
 
 
     <!-- Bootstrap -->
@@ -61,9 +59,17 @@ require('functions.php');
           }
 
           .space{padding-top:5%;}
+
+          input[type = 'radio']{
+            margin-left: 15px;
+          }
       </style>
 </head>
+
+
 <body>
+
+
     <div id="profile">
         <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
         <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
@@ -77,55 +83,24 @@ require('functions.php');
         </div>
     </div>
 
+
     <div id="main">
       <?php
-      if ($_SERVER['REQUEST_METHOD'] == "POST"){
-        $_SESSION['name'] = $_POST['name'];
-        $_SESSION['bg'] = $_POST['bg'];
-        $_SESSION['lang'] = $_POST['lang'];
-        $_SESSION['date'] = date("j/n/Y"); ;
-        header('Location: siguiente.php');
-      }
-
+        post($_SERVER['REQUEST_METHOD'], 1);
       ?>
+      <h2 class="text-center lead">
+        ¿De qué marca es el coche que quieres asegurar?
+      </h2>
 
-      <h1>Mi web</h1>
-
-      <form id="session" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-        Nombre: <input required name="name" type="text"
-                  value="<?php if(!is_null($name)) echo $name; ?>">
-
-        <select required name="bg">
-          <option value="" disabled <?php if(is_null($bg)) echo 'selected'; ?> >
-            Elige un color
-          </option>
-          <option style="color:aqua;" value="aqua"
-            <?php if($bg == 'aqua') echo 'selected'; ?> >
-            Azul
-          </option>
-          <option style="color:red;"value="red"
-            <?php if($bg == 'red') echo 'selected'; ?> >
-            Rojo
-          </option>
-          <option style="color:green;"value="green"
-            <?php if($bg == 'green') echo 'selected'; ?> >
-            Verde
-          </option>
-        </select>
-
-        <select required name="lang">
-          <option value="" disabled
-            <?php if(is_null($lang)) echo 'selected'; ?> >
-            Elige un idioma
-          </option>
-          <option value="es" <?php if($lang == 'es') echo 'selected'; ?> >
-            Español
-          </option>
-          <option value="en" <?php if($lang == 'en') echo 'selected'; ?> >
-            Inglés
-          </option>
-        </select>
-        <input type="submit" class="btn btn-info" value="ACCEDER">
+      <form class="text-center" action="paso1.php" method="post">
+        <input type="radio" name="brand" value="audi"> AUDI
+        <input type="radio" name="brand" value="bmw"> BMW
+        <input type="radio" name="brand" value="citroen"> CITROËN
+        <input type="radio" name="brand" value="dacia"> DACIA
+        <input type="radio" name="brand" value="ford"> FORD
+        <input type="radio" name="brand" value="fiat"> FIAT
+        <div class="space"></div>
+        <input class="btn btn-info" type="submit" name="submit" value="SIGUIENTE">
       </form>
 
     </div>
@@ -136,4 +111,6 @@ require('functions.php');
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
+
+
 </html>

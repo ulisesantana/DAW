@@ -13,8 +13,11 @@ function styleValidator(id, condition) {
     $(id).removeClass('has-error');
     $(id).addClass('has-success');
   } else {
+    var focus = id.split('-');
+    console.log(focus[0]);
     $(id).removeClass('has-success');
     $(id).addClass('has-error');
+    $(focus[0]).focus();
   }
 }
 
@@ -60,17 +63,22 @@ function passwordValidator() {
 
 function passChecker() {
   var password = $("#password").val();
-  var passwordCheck = $("#password-check").val();
-  styleValidator('#password-check-group',((password == passwordCheck)&&(passwordValidator())));
+  var passwordCheck = $("#check-password").val();
+  styleValidator('#check-password-group',((password == passwordCheck)));
   return password == passwordCheck;
 }
 
 function yearValidator() {
-  var year = $('#year').val();
+  var fullYear = $('#year').val();
   var date = new Date();
   var limit = date.getFullYear();
 
-  if (year <= limit) {
+  var patt = new RegExp('\\b(\\d{4})-(\\d{4})\\b');
+  fullYear = fullYear.split('-');
+  var year = fullYear[0];
+  var nextYear = fullYear[1];
+
+  if (year <= limit && year == (nextYear-1)) {
     var validator = true;
   } else {
     var validator = false;
@@ -101,7 +109,7 @@ $(document).ready(function () {
     passwordValidator();
   });
 
-  $('#password-check').focusout(function() {
+  $('#check-password').focusout(function() {
     passChecker();
   });
 
