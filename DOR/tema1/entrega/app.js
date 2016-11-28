@@ -142,6 +142,8 @@ $(document).ready(function () {
     }
   });
 
+  $('#free-cta').hover
+
   $("#premium").click(function() {
     if($('#form').css('display') == 'none'){
       $('#premium,#vip,#free').fadeToggle().promise().done(function(){

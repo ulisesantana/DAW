@@ -124,10 +124,24 @@
         ?>
       <div class="row">
         <div class="col-md-6">
-            <?php include('archivo.txt'); ?>
+          <?php
+          $arrayLineasDelFichero = file("archivo.txt");
+          echo "<pre>";
+          foreach($arrayLineasDelFichero as $linea) {
+            echo $linea;
+          }
+          echo "</pre>";
+          ?>
         </div>
         <div class="col-md-6">
-          <?php include('archivo_justificado.txt'); ?>
+          <?php
+          $arrayLineasDelFichero = file("archivo_justificado.txt");
+          echo "<pre>";
+        	foreach($arrayLineasDelFichero as $linea) {
+        		echo $linea;
+        	}
+        	echo "</pre>";
+          ?>
         </div>
       </div>
 

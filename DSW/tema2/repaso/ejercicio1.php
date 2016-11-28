@@ -82,7 +82,7 @@
 
       <form enctype="multipart/form-data" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
         <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-        <input type="hidden" name="MAX_FILE_SIZE" value="102400" />
+        <!-- <input type="hidden" name="MAX_FILE_SIZE" value="10240000" /> -->
         <label for="upload">Fichero:</label><input type="file" name="upload">
         <br>
         <label for="directory">Diretorio del servidor: </label>
@@ -100,35 +100,40 @@
       if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_FILES['upload']['name'])) {
         // Copia el archivo temporal a la carpeta de destino
         $dir = "./".$_POST['directory'].'/';
-        $fileName = $_FILES['upload']['name'];
+        $master = $_FILES['upload'];
+        $fileName = $master['name'];
+        $fileSize = $master['size'];
         $file = $dir.$fileName;
 
-        if (!is_dir($dir)) mkdir($dir);
+        if ($fileSize < 10000000 && $fileSize > 0) {
+          if (!is_dir($dir)) mkdir($dir);
 
-        if (move_uploaded_file($_FILES['upload']['tmp_name'], $file)) {
-          // Crea el archivo .zip dentro de la carpeta de destino
-          $zip = $file.".zip";
-          $zipFile = new ZipArchive;
-          if ($zipFile->open($zip, ZipArchive::CREATE) !== true) exit("No se puede crear el archivo".$zipFile);
-          // Añade el archivo al .zip
-          $zipFile->addFile($file);
-          // se puede añadir más archivos al mismo .zip: $zipFile->addFile(otro,otro);
-          // Cierra el archivo .zip
-          $zipFile->close();
-          // Borra el archivo original subido para dejar solo el comprimido
-          unlink($file);
-          // Lista el directorio de Destino con todos los .zip
-          echo "<h3>Listado de archivos subidos al servidor:</h3>";
-          $fileList = scandir($dir);
+          if (move_uploaded_file($_FILES['upload']['tmp_name'], $file)) {
+            // Crea el archivo .zip dentro de la carpeta de destino
+            $zip = $file.".zip";
+            $zipFile = new ZipArchive;
+            if ($zipFile->open($zip, ZipArchive::CREATE) !== true) exit("No se puede crear el archivo".$zipFile);
+            // Añade el archivo al .zip
+            $zipFile->addFile($file);
+            // se puede añadir más archivos al mismo .zip: $zipFile->addFile(otro,otro);
+            // Cierra el archivo .zip
+            $zipFile->close();
+            // Borra el archivo original subido para dejar solo el comprimido
+            unlink($file);
+            // Lista el directorio de Destino con todos los .zip
+            echo "<h3>Listado de archivos subidos al servidor:</h3>";
+            $fileList = scandir($dir);
 
-          for ($i = 2; $i < count($fileList); $i++) {
-            $fileItem = $fileList[$i];
-            echo $fileItem . "<br>";
+            for ($i = 2; $i < count($fileList); $i++) {
+              $fileItem = $fileList[$i];
+              echo $fileItem . "<br>";
+            }
+          } else {
+            echo "¡Posible ataque de subida de ficheros!\n";
           }
         } else {
-          echo "¡Posible ataque de subida de ficheros!\n";
+          echo "Tamaño de archivo incorrecto";
         }
-
       }
       ?>
     </div>

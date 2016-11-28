@@ -102,3 +102,7 @@ footer {
     border-radius: 5px !important;
     padding: 2%;
 }
+
+#free-cta:hover, #free-cta-text:hover{
+  background-color: green !important;
+}
