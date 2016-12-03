@@ -1,5 +1,5 @@
 <?php
-session_name('session'); // Nombre de la sesión a crear/continuar.Mismo nombre que la cookie a crear
+session_name('session'); // Nombre de la sesión a continuar
 session_start();
 
 $_SESSION = array();

@@ -32,7 +32,7 @@ var loadMunicipios = function (provinciaId) {
 };
 
 $(document).ready(function () {
-    
+
     $.getJSON("data/provincias.json", function (data) {
         provincias = data;
     });
@@ -43,7 +43,7 @@ $(document).ready(function () {
             if (municipios !== undefined) {
                 loadProvincias();
             }
-        }, 2000);
+        }, 2000); // Se usa para darle un pequeño margen para que no pete
     });
 
     $("#provinciaId").change(function () {
@@ -51,7 +51,3 @@ $(document).ready(function () {
         loadMunicipios(provinciaId);
     });
 });
-
-
-
-

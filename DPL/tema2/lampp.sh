@@ -23,7 +23,7 @@ apt-get install -y phpmyadmin
 apt-get install -y python3
 rm /usr/bin/python
 ln -s /usr/bin/python3
-apt-get install python3-pip
+apt-get install -y python3-pip
 pip3 install -y pymysql
 
 # python/apache settings
@@ -33,3 +33,6 @@ a2enmod mpm_prefork cgi
 
 # perl install
 apt-get install -y perl libapache2-mod-perl2
+
+# mysql reconfigure if you fucked
+# dpkg-reconfigure mysql-server-5.5
