@@ -63,7 +63,7 @@ function passwordValidator() {
 
 function passChecker() {
   var password = $("#password").val();
-  var passwordCheck = $("#check-password").val();
+  var passwordCheck = $("#password-check").val();
   styleValidator('#check-password-group', ((password == passwordCheck)));
   return password == passwordCheck;
 }
