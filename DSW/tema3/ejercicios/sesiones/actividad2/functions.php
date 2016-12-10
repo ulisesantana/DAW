@@ -7,12 +7,18 @@ $fuel = (isset($_SESSION['fuel'])) ? $_SESSION['fuel'] : null;
 $date = (isset($_SESSION['date'])) ? $_SESSION['date'] : null;
 $email = (isset($_SESSION['email'])) ? $_SESSION['email'] : null;
 
+function destroy(){
+  $_SESSION = array();
+  setcookie(session_name(),'',time()-3600,'/');
+  session_destroy();
+}
+
 function post($method, $form){
   if ($method == "POST"){
     switch ($form) {
       case 1:
-        $_SESSION['brand'] = $_POST['brand'];
-        header('Location: paso2.php');
+        $_SESSION['brand'] = $_POST['brand']; //Setea la variable de sesión
+        header('Location: paso2.php'); //Redirecciona al siguiente paso
         break;
       case 2:
         $_SESSION['fuel'] = $_POST['fuel'];
@@ -24,18 +30,15 @@ function post($method, $form){
         break;
       case 4:
         $_SESSION['email'] = $_POST['email'];
-        //Envía el email
-
-        //Borra la sesión
-
-        //Redirecciona
-        header('Location: paso1.php');
+        header('Location: paso5.php');
         break;
       case 5:
-
+        destroy();  //Borra la sesión
+        header('Location: index.php');
         break;
       default:
         // ERROR
+        header('Location: index.php');
         break;
     }
   }
