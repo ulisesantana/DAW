@@ -1,5 +1,6 @@
 <?php
 include('functions.php');
+notSetted('fuel','paso2.php');
 $session = $_SESSION;
 print_r($session);
 ?>

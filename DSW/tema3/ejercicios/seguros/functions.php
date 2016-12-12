@@ -38,4 +38,8 @@ function post($method, $form){
     }
   }
 }
+
+function notSetted($name, $url){
+  if(!isset($_SESSION[$name])) header('Location: '.$url);
+}
 ?>

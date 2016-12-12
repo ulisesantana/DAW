@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!DOCTYPE Usuarios [
+    <!ELEMENT Usuarios (Usuario*)>
+    <!ELEMENT Usuario (user, pass)>
+    <!ELEMENT user (#PCDATA)>
+    <!ELEMENT pass (#PCDATA)>
+]>
+<Usuarios>
+    <Usuario>
+        <user>ulises</user>
+        <pass>1234</pass>
+    </Usuario>
+    <Usuario>
+        <user>admin</user>
+        <pass>admin</pass>
+    </Usuario>
+    <Usuario>
+        <user>test</user>
+        <pass>test</pass>
+    </Usuario>
+</Usuarios>

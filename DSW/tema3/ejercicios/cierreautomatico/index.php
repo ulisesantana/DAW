@@ -1,3 +1,40 @@
+<?php
+include('functions.php');
+$time = 30; // Segundos tras los cuales se cerrará automáticamente la sesión
+$tiempoTranscurrido = 0;
+$sessionName = 'autodestruct';
+
+$aux = cookieSetted($sessionName, $time);
+
+setSessionCookie($sessionName,$time);
+echo "ID: ".session_id().'<br>';
+echo  "Cookie: ";
+$cookie = session_get_cookie_params();
+print_r($cookie);
+
+if (isset($_SESSION['horaInicio'])) { // Si existe la variable de sesión -> calcular el tiempo de sesión transcurrido
+  $horaInicio = $_SESSION['horaInicio'];
+  $ahora = date("Y-n-j H:i:s");
+  $tiempoTranscurrido = strtotime($ahora) - strtotime($horaInicio);
+  $tiempoRestante = ($cookie['lifetime'] - $tiempoTranscurrido) + 2;
+
+  if ($tiempoTranscurrido >= $time) { // HA EXPIRADO EL TIEMPO --> CERRAR LA SESIÓN
+    destroy();
+  } else {
+    $aux['msg'] .= "<p style=\"color:blue;\">
+                  Quedan <span id='countdown'></span> seg para que se cierre la sesión.
+                </p>
+                &nbsp
+                <a href=\"index.php\">
+                  RECARGAR CONTINUANDO EL VÍDEO
+                </a> <br> <br>";
+    $self = $_SERVER['PHP_SELF'];
+    header("refresh:$tiempoRestante; url=$self"); // recarga la web para comprobar si ha alcanzado el tiempo
+  }
+} else { // No existe la sesión --> primera vez que se visita --> guardar la hora
+  $_SESSION['horaInicio']= date("Y-n-j H:i:s");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,7 +49,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+    <script src="countDown.js" charset="utf-8"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,10 +117,18 @@
 
 
     <div id="main">
-      <div class="row">
-        <div class="col-md-4 center-block btn btn-info btn-lg">
-          <a class="text-center" href="cierreautomatico.php">IR AL VÍDEO</a>
-        </div>
+      <script type="text/javascript">
+        updateTime(<?php echo $tiempoRestante; ?>);
+        // updateTime(<?php echo ((strtotime('now') - $cookie['lifetime']) * -1); ?>); //versión con now + $time
+      </script>
+      <?php
+      echo $aux['msg'];
+      if (!$aux['finSesion']) {
+        $paramVideo = "?rel=0&showinfo=0&autoplay=1&start=".$tiempoTranscurrido."\" frameborder=\"0\" allowfullscreen";
+        echo "<iframe width=\"580\" height=\"390\" src=\"https://www.youtube.com/embed/JbR999N5MiA".$paramVideo."></iframe>";
+      }
+
+      ?>
       </div>
     </div>
 

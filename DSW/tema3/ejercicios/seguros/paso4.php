@@ -1,5 +1,6 @@
 <?php
 include('functions.php');
+notSetted('date','paso3.php');
 $session = $_SESSION;
 print_r($session);
 ?>

@@ -1,5 +1,6 @@
 <?php
 include('functions.php');
+notSetted('brand','index.php');
 $session = $_SESSION;
 print_r($session);
 ?>

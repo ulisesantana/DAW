@@ -1,5 +1,6 @@
 <?php
 include('functions.php');
+notSetted('email','paso4.php');
 $session = $_SESSION;
 print_r($session);
 ?>
