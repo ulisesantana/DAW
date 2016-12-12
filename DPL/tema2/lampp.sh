@@ -34,5 +34,4 @@ a2enmod mpm_prefork cgi
 # perl install
 apt-get install -y perl libapache2-mod-perl2
 
-# mysql reconfigure if you fucked
-# dpkg-reconfigure mysql-server-5.5
+# mysql reconfigure if you broke dpkg-reconfigure mysql-server-5.5
