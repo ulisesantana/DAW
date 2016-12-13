@@ -1,0 +1,20 @@
+/* ESTILOS GLOBALES
+-------------------------------------------------- */
+
+
+
+
+/* CLASES PERSONALIZADAS
+-------------------------------------------------- */
+
+/* Clase para las etiquetas del formulario */
+.formLabel {
+  font-size:16px;
+ }
+
+
+@media (min-width: 992px) {
+  .featurette-heading {
+    margin-top: 120px;
+  }
+}
