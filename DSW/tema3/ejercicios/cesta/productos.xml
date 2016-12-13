@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!DOCTYPE Productos [
+    <!ELEMENT Productos (Producto*)>
+    <!ELEMENT Producto (Nombre, Imagen, Precio)>
+    <!ELEMENT Nombre (#PCDATA)>
+    <!ELEMENT Imagen (#PCDATA)>
+    <!ELEMENT Precio (#PCDATA)>
+]>
+<Productos>
+    <Producto>
+        <Nombre>Tablet Samsung View</Nombre>
+        <Imagen>img/tablet.png</Imagen>
+        <Precio>640</Precio>
+    </Producto>
+    <Producto>
+        <Nombre>Móvil iPhone7</Nombre>
+        <Imagen>img/iphone.jpg</Imagen>
+        <Precio>750</Precio>
+    </Producto>
+    <Producto>
+        <Nombre>Portátil HP Pavilion</Nombre>
+        <Imagen>img/hp.png</Imagen>
+        <Precio>550</Precio>
+    </Producto>
+</Productos>
