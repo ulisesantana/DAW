@@ -1,6 +1,32 @@
 <?php
 include('functions.php');
+setcookie('color', '#BBDDAA', 60, '/');
 session_start();
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['usuario'])) {
+}
+
+$error = "";
+
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+  if (!empty($_POST['usuario']) || !empty($_POST['password'])) { // error en la validación
+    if (login($_POST['usuario'], $_POST['password'])) {
+      $_SESSION['auth'] = [
+        'user' => $_POST['usuario'],
+        'pass' => $_POST['password'],
+        'time' => gmdate("H:i:s", $_SERVER['REQUEST_TIME']),
+        'ip' => $_SERVER['SERVER_ADDR']
+      ];
+      header("Location: index.php");
+
+    } else { // Login erróneo
+      $error = "Usuario o clave incorrectos";
+    }
+
+  } else {
+    $error = "Debes rellenar todos los datos";
+  }
+}
 
 ?>
  <!DOCTYPE html>
@@ -85,32 +111,6 @@ session_start();
 
 
      <div id="main">
-       <?php
-
-       $error = "";
-
-       if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-         if (empty($_POST['usuario']) || empty($_POST['password'])) { // error en la validación
-           $error = "Debes rellenar todos los datos";
-
-         } else {
-           if (login($_POST['usuario'], $_POST['password'])) {
-             $_SESSION['auth'] = [
-               'user' => $_POST['usuario'],
-               'pass' => $_POST['password'],
-               'time' => gmdate("H:i:s", $_SERVER['REQUEST_TIME']),
-               'ip' => $_SERVER['SERVER_ADDR']
-             ];
-             header("Location: index.php");
-
-           } else { // Login erróneo
-             $error = "Usuario o clave incorrectos";
-           }
-         }
-       }
-
-       ?>
 
     <br>
      <form name="login" method="post" action="">

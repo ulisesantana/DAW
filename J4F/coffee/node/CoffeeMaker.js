@@ -1,8 +1,8 @@
-class CoffeeMaker {
-  constructor(coffee, water, model, owner) {
+module.exports = class CoffeeMaker {
+  constructor(coffee, water, owner) {
     this._coffee = coffee;
     this._water = water;
-    this._model = model;
+    this._model = 'Single Coffee';
     this._owner = owner;
     this._total = 0;
   }
@@ -23,8 +23,16 @@ class CoffeeMaker {
     return this._water += water;
   }
 
-  get total(){
-    return this._total;
+  total(){
+    return 'Se han servido '+ this._total +' tazas de café.';
+  }
+
+  remainCoffee(){
+    return 'Hay '+ this.coffee +' unidades de café.';
+  }
+
+  remainWater(){
+    return 'Hay '+ this.water +' unidades de agua.';
   }
 
   makeCoffee(){
@@ -33,21 +41,9 @@ class CoffeeMaker {
       this._coffee--;
       this._total++;
       return console.log('Café servido.');
-      console.log(this.coffee);
     } else {
       return console.log('Materia prima insuficiente');
     }
   }
 
-
 }
-
-let c = new CoffeeMaker(10,10,'CoffeeMaker 3000', 'Ulises Santana Suárez');
-
-console.log(c.coffee);
-c.coffee = 5;
-console.log(c.coffee);
-c.makeCoffee();
-console.log(c.coffee);
-console.log(c.total);
-console.log(c);

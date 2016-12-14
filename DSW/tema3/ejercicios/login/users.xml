@@ -11,11 +11,11 @@
         <pass>1234</pass>
     </Usuario>
     <Usuario>
-        <user>admin</user>
-        <pass>admin</pass>
-    </Usuario>
-    <Usuario>
         <user>test</user>
         <pass>test</pass>
+    </Usuario>
+    <Usuario>
+        <user>juan</user>
+        <pass>juan</pass>
     </Usuario>
 </Usuarios>

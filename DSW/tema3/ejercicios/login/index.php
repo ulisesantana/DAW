@@ -1,15 +1,16 @@
 <?php
   include('functions.php');
   setSessionCookie();
-  $color = (isset($_COOKIE['color'])) ? $_COOKIE['color'] : '#BBDDAA';
-
   if (isset($_SESSION['auth'])) { //existe sesión
     $auth = $_SESSION['auth'];
+    $cookie = 'color'.$auth['user'];
+    $color = (isset($_COOKIE[$cookie])) ? $_COOKIE[$cookie] : '#BBDDAA';
 
     if ($_SERVER['REQUEST_METHOD'] == "POST"){
-      colorCookie($_POST['color']);
-      $color = (isset($_POST['color'])) ? $_POST['color'] : $_COOKIE['color'];
+      setcookie($cookie, $_POST['color'], time()+3600, '/');
+      $color = (isset($_POST['color'])) ? $_POST['color'] : $_COOKIE[$cookie];
     }
+
   } else { // no existe la sesión
     header("Location: login.php");
   }
