@@ -90,12 +90,13 @@
               Tu nombre menos las 3 primeras letras es: ${name.substring(3)}<br>
               Tu nombre todo mayúsculas es: ${name.toUpperCase()}<br>
               Tu edad es: ${d.getFullYear() - Number(birth.substring(6))}<br>
-              El coseno de 180º es: ${Math.cos(1)}<br>
+              El coseno de 180º es: ${Math.cos(Math.PI)}<br>
               Número al azar entre 2 y 8: ${Math.round(Math.random() * (8 - 2) + 2)}<br>
               Número al azar entre 100 y 200: ${Math.round(Math.random() * (200 - 100) + 100)}<br>
           `;
           return document.getElementById('main').innerHTML = result;
         }
+
         let name = prompt('Dime tu nombre completo. Sin tildes ;-)');
         let birth = prompt('Dime tu fecha de nacimient en formato dd/mm/aaaa');
         ejercicio3(name,birth);

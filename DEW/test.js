@@ -1,10 +1,10 @@
 // return masked string
 function maskify(cc) {
-  var cc = cc.split('');
-  for (var i = 0; i < (cc.length - 4); i++){
-    cc[i] = '#';
+  let mask = cc.split('');
+  for (let i = 0; i < (mask.length - 4); i++){
+    mask[i] = '#';
   }
-  return cc.join('');
+  return mask.join('');
 }
 
 console.log(maskify('12345678901234567')); // return #############4567

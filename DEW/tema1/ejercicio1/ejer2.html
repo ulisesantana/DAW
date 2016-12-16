@@ -13,15 +13,11 @@
   <script src="bootstrap/js/bootstrap.js" charset="utf-8"></script>
   <script src="js/codigo.js" charset="utf-8"></script>
   <style media="screen">
-  .row {
-    padding-top: 5%;
-  }
-
-  h2 {
-    padding-bottom: 2%;
-  }
-  .pad{padding: 2%;}
-  body{margin-top: 50px;}
+    h2 {padding-bottom: 2%;}
+    body{margin-top: 50px;}
+    .row {padding-top: 5%;}
+    .pad{padding: 2%;}
+    #sandbox{padding:10px;}
   </style>
 </head>
 
@@ -44,7 +40,6 @@
         <ul class="nav navbar-nav">
           <li><a href="ejer1.html">Ejercicio 1</a></li>
           <li class="active"><a href="#">Ejercicio 2</a></li>
-          <li><a href="#">Ejercicio 3</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -56,16 +51,16 @@
           <h1>Aquí debería verse un par de alerts muy bonitos.</h1>
         </noscript>
         <script>
-        var d = new Date();
-        var dia = new Array(7);
-        dia[0] = "Domingo";
-        dia[1] = "Lunes";
-        dia[2] = "Martes";
-        dia[3] = "Miercoles";
-        dia[4] = "Jueves";
-        dia[5] = "Viernes";
-        dia[6] = "Sabado";
-        document.write("Hoy es " + dia[d.getDay()]);
+          var d = new Date();
+          var dia = new Array(7);
+          dia[0] = "Domingo";
+          dia[1] = "Lunes";
+          dia[2] = "Martes";
+          dia[3] = "Miercoles";
+          dia[4] = "Jueves";
+          dia[5] = "Viernes";
+          dia[6] = "Sabado";
+          document.write("Hoy es " + dia[d.getDay()]);
         </script>
       </div>
 
@@ -95,7 +90,7 @@
           <div class="btn btn-lg btn-primary center-block" id="case-sensitive">Case Sensitive</div>
         </div>
         <div class="col-md-3 center-block">
-          <div class="btn btn-lg btn-danger center-block" id="tax">Calculadora de impuestos</div>
+          <div class="btn btn-lg btn-primary center-block" id="tax">Calculadora de impuestos</div>
         </div>
         <div class="col-md-3 center-block">
           <div class="btn btn-lg btn-danger center-block" id="stringLength">Calcular longitud de string</div>

@@ -10,7 +10,7 @@ function setString() {
 
 //Función para solicitar una string al usuario con posibilidad de default
 function setStringConfirm() {
-  var msg = confirm('Escribe la cadena de texto con la que vas a trabajar:');
+  var msg = confirm('¿Quieres utilizar una cadena o usar la que tenemos por defecto?\n\n Si quieres utilizar la cadena por defecto haz click en "Cancelar"');
   if (msg) {
     msg = prompt('Escribe la cadena de texto con la que vas a trabajar:');
   } else {
@@ -30,6 +30,19 @@ function setSandbox(id,html) {
   return document.getElementById(id).innerHTML = html;
 }
 
+//Conseguir el valor del input
+function getInput() {
+  return $( "#input1").val();
+}
+
+//TODO: HACER FUNCIÓN PARA QUE CREE FORMULARIO EN EL MODAL
+function setQuestion(quest) {
+  render('quest',quest);
+  modalShow();
+}
+
+//AÑADIR FUNCIÓN PARA RESETAR EL INPUT
+
 //Función Fibonacci con for
 function fibonacci(lim) {
   var a = 0;
@@ -47,19 +60,6 @@ function fibonacci(lim) {
   }
   return html;
 }
-
-//TODO: HACER FUNCIÓN PARA QUE CREE FORMULARIO EN EL MODAL
-function setQuestion(quest) {
-  render('quest',quest);
-  modalShow();
-}
-
-//Conseguir el valor del input
-function getInput() {
-  return $( "#input1").val();
-}
-
-//AÑADIR FUNCIÓN PARA RESETAR EL INPUT
 
 //Muestra la ventana modal
 function modalShowById(id,html) {
@@ -245,90 +245,110 @@ $(document).ready(function() {
     //Eliminamos las vocales con el replace
     var text = text.replace(regex, '');
 
-    var html ='<div class="container"><h3 class="text-primary">Tu texto sin vocales</h3><p>'+text+'</p></div>';
+    var html ='<h3 class="text-primary">Tu texto sin vocales</h3><p>'+text+'</p>';
 
     modalShowById('sandbox',html);
   });
 
   //Método reverse para cadenas con for
   $("#reverse").click(function () {
-    modalShow();
-  $("#submit").click(function () {
-
-
-    var text = getInput();
+    var text = setStringConfirm();
     var rev='';
 
     for (var i = text.length-1; i >= 0; i--) {
       rev += text[i];
     }
 
-    var html ='<div class="pad"><h3 class="text-primary">Tu texto al revés</h3><p> <strong>Al derecho: </strong>'+text+'</p><p> <strong>Al réves: </strong>'+ rev +'</p></div>';
+    var html =`
+    <h3 class="text-primary">Tu texto al revés</h3>
+    <p> <strong>Al derecho: </strong>${text}</p>
+    <p> <strong>Al réves: </strong>${rev}</p>`;
     modalShowById('sandbox',html);
-  });
+  // });
 });
 
   $('#fibonacci').click(function () {
-    var num= parseInt(setString());
-    var a = 0;
-    var b = 1;
-    var text = '0, 1';
+    let form = `
+    <div class="input-group">
+      <input id="input1" type="text" class="form-control"
+        placeholder="Número de iteraciones que quieres ver" value="">
+      <span id="submit" class="input-group-addon">MOSTRAR</span>
+    </div>
+    `;
+    modalShowById('sandbox',form);
+    $("#submit").click(function() {
+      var num = Number(getInput());
+      var a = 0;
+      var b = 1;
+      var text = '0, 1';
 
-    if (num<2) {
-      text='Trata de usar un número de repeticiones mayor'
-    }
-    else {
-      for (var i = 0; i < num-2; i++) {
-        if (a<b) {
-          a+=b;
-          text += ', '+a;
-        } else {
-          b+=a;
-          text += ', '+b;
+      if (num<2) {
+        text='Trata de usar un número de repeticiones mayor'
+      }
+      else {
+        for (var i = 0; i < num-2; i++) {
+          if (a<b) {
+            a+=b;
+            text += ', '+a;
+          } else {
+            b+=a;
+            text += ', '+b;
+          }
         }
       }
-    }
-    text+='.';
-    var html ='<div class="pad"><h3 class="text-primary">Secuencia de Fibonacci</h3><p>'+text+'</p></div>';
-    modalShowById('sandbox',html);
-  })
+      text+='.';
+      var html ='<div class="pad"><h3 class="text-primary">Secuencia de Fibonacci</h3><p>'+text+'</p></div>';
+      modalShowById('sandbox',html);
+    });
+  });
 
 
 
   //Sumamos los pares y los impares de un número
+
+  // TODO: Añadir formulario modal
   $("#suma-loca").click(function() {
-    var num = setNum();
-    var par = 0;
-    var impar = 0;
-    var sumpar = '';
-    var sumimpar = '';
+    let form = `
+    <div class="input-group">
+      <input id="input1" type="text" class="form-control" placeholder="Introduce un número" value="">
+      <span id="submit" class="input-group-addon">CALCULAR</span>
+    </div>
+    `;
+    modalShowById('sandbox',form);
+    $("#submit").click(function() {
+      var num = getInput();
+      var par = 0;
+      var impar = 0;
+      var sumpar = '';
+      var sumimpar = '';
 
-    for (var i = 0; i <= num; i++) {
-      if (i%2) {
-        par+=i;
-        sumpar += ' + '+i;
-      } else {
-        impar+=i;
-        sumimpar += ' + '+i;
+      for (var i = 1; i <= num; i++) {
+        if (i%2) {
+          par += i;
+          sumpar += ' + '+i;
+        } else {
+          impar += i;
+          sumimpar += ' + '+i;
+        }
       }
-    }
 
-    sumpar = sumpar.substring(3);
-    sumimpar = sumimpar.substring(3);
+      sumpar = sumpar.substring(3);
+      sumimpar = sumimpar.substring(3);
 
-    var html = `
-    <div class="row center-block">
-    <h2 class="text-center">Suma de pares e impares para `+num+`</h2>
-    <div class="col-md-6">
-    <p>
-    <strong>Pares: </strong>`+sumpar+` = `+par+`</div>
-    </p>
-    <div class="col-md-6">
-    <p>
-    <strong>Impares: </strong>`+sumimpar+` = `+impar+`</div>
-    </p>
-    </div>`;
-    modalShowById('sandbox',html);
+      var html = `
+      <h2 class="text-center">Suma de pares e impares para ${num}</h2>
+      <div class="col-md-6">
+        <p>
+          <strong>Pares: </strong>${sumpar} = <strong>${par}</strong>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <strong>Impares: </strong>${sumimpar} = <strong>${impar}</strong>
+        </p>
+      </div>`;
+      modalShowById('sandbox',html);
+    });
   });
 
   //for mostrando los niveles de H
@@ -339,39 +359,41 @@ $(document).ready(function() {
     }
 
     var html = `
-    <div class="row center-block">`
-    +text+
-    `</div>`;
+    <div class="row center-block">${text}</div>`;
     modalShowById('sandbox',html);
   });
 
   //Calculadora de letra DNI
   $("#dni-checker").click(function() {
-    modalShow();
+    let form = `
+    <div class="input-group">
+      <input id="input1" type="text" class="form-control" placeholder="Introduce tu DNI" value="">
+      <span id="submit" class="input-group-addon">VALIDAR</span>
+    </div>
+    `;
+    modalShowById('sandbox',form);
     $("#submit").click(function() {
-
       var dni = getInput();
       var num = parseInt(dni.substring(0,dni.length-1));
       var letraUser = dni[(dni.length)-1].toUpperCase();
       var list="TRWAGMYFPDXBNJZSQVHLCKE";
       var letra = list[num%23];
 
-      if (letra == letraUser) {
+      if (letra == letraUser && dni.length == 9) {
         var html = `
         <div class="row center-block">
-        <p class="text-center text-success">
-        El DNI `+dni+` es válido.
-        </p>
+          <p class="text-center text-success">
+            El DNI `+dni+` es válido.
+          </p>
         </div>`;
       } else {
         var html = `
         <div class="row center-block">
-        <p class="text-center text-danger">
-        El DNI `+dni+` no es válido.
-        </p>
+          <p class="text-center text-danger">
+            El DNI `+dni+` no es válido.
+          </p>
         </div>`;
       }
-      $( "#input1").val('');
       modalShowById('sandbox',html);
     });
   });
@@ -383,24 +405,23 @@ $(document).ready(function() {
     <div class="input-group">
       <input id="input1" type="text" class="form-control" placeholder="Introduce tu string" value="">
       <span id="submit" class="input-group-addon">USAR</span>
-
     </div>
     `;
     modalShowById('sandbox',form);
     $("#submit").click(function() {
-    var regex = /[/W_]/g;
-    var text = getInput();
-    var rawText = text.replace(regex, '');
-    var lowText = text.toLowerCase().replace(regex, '');
+      let regex = /[/W_]/g;
+      let text = getInput();
+      let rawText = text.replace(regex, '');
+      let lowText = text.toLowerCase().replace(regex, '');
 
-    modalShowById('sandbox',caseChecker(rawText,lowText));
-  });
+      modalShowById('sandbox',caseChecker(rawText,lowText));
+    });
   });
 
   //Hacer una calculadora de impuestos
   $('#tax').click(function() {
-    var price=' ';
-    var html = `
+    let price=' ';
+    let html = `
     <h1 class="text-center">Calculadora de impuestos</h1>
     <div class="input-group">
       <input id="input1" type="text" class="form-control"
@@ -412,15 +433,17 @@ $(document).ready(function() {
     `;
     modalShowById('sandbox',html);
     $("#iva").click(function() {
-    price = Number(getInput()) * 1.21;
-    console.log(price);
-    modalShowById('sandbox',html);
-  });
+      price = Number(getInput());
+      let tax = Math.round((price * 0.21) * 100) / 100;
+      html = `De tus ${price}€ tienes que pagar ${tax}€, haciendo un total de ${price+tax}€`;
+      modalShowById('sandbox',html);
+    });
     $("#igic").click(function() {
-    price = Number(getInput()) * 1.07;
-    console.log(price);
-    modalShowById('sandbox',html);
-  });
+      price = Number(getInput());
+      let tax = Math.round((price * 0.07 )* 100) / 100;
+      html = `De tus ${price}€ tienes que pagar ${tax}€, haciendo un total de ${price+tax}€`;
+      modalShowById('sandbox',html);
+    });
   });
 
 });

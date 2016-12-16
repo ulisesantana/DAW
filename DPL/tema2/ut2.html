@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DPL - UT2</title>
+
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+  <style media="screen">
+    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+    body {
+      background-color: #eee;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    #profile {
+      background-color: #333;
+      color: #fff;
+      height: 100vh;
+      width: 25vw;
+      position: fixed;
+      overflow-y: scroll;
+    }
+
+    #profile img {
+      max-width: 150px;
+      margin: 20px auto;
+    }
+
+    #profile h3 {
+      text-align: center;
+      padding: 15px;
+    }
+
+    #profile li.active {
+      background-color: #eee;
+    }
+
+    #main {
+      width: 73vw;
+      padding: 2% 3%;
+      margin-left: 24vw;
+    }
+
+    .space {
+      padding-top: 5%;
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <div id="profile">
+    <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+    <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav text-center">
+        <li>
+          <a href="#apache">Apache</a>
+        </li>
+        <li>
+          <a href="#php">PHP</a>
+        </li>
+        <li>
+          <a href="#mysql">MySQL</a>
+        </li>
+        <li>
+          <a href="#python">Python</a>
+        </li>
+        <li>
+          <a href="#perl">Perl</a>
+        </li>
+        <li>
+          <a href="#linux">Linux</a>
+        </li>
+        <li>
+          <a href="#joomla">Joomla!</a>
+        </li>
+        <li>
+          <a href="#webalizer">Webalizer & Cron</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="main">
+    <h2 id="lamp">LAMP</h2>
+
+    <pre><code class="bash language-bash">apt-get install -y apache2
+apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
+apt-get install -y mysql-server libapache2-mod-auth-mysql php5-mysql
+apt-get install -y phpmyadmin
+</code></pre>
+
+    <p>En caso de que la líes parda y dejaras la contraseña del root de MySQL en blanco puede volver a setearla con el comando <code>dpkg-reconfigure mysql-server-5.5</code></p>
+
+    <p>Una vez instalado comprobar en la configuración que está añadido el index.php</p>
+
+    <div class="space"></div>
+    <h3 id="apache">Apache</h3>
+
+    <h4 id="otroscomandostilesparaapache">Otros comandos útiles para Apache</h4>
+
+    <ul>
+      <li><strong>Directorio de configuración</strong>: <code>/etc/apache2</code></li>
+
+      <li><strong>Directorio de logs</strong>: <code>/var/log/apache2</code></li>
+
+      <li><strong>Configuración general</strong>: <code>/etc/apache2/apache2.conf</code></li>
+
+      <li><strong>Configuración de los puertos de eschucha</strong>: <code>/etc/apache2/ports.conf</code></li>
+    </ul>
+
+    <p><em>Para que los cambios que hagamos en la configuración surtan efecto deberemos hacer un <code>service apache2 reload</code> o <code>service apache2 restart</code></em></p>
+
+    <h4 id="comandosbsicosdeapache">Comandos básicos de Apache</h4>
+
+    <ul>
+      <li><code>service apache2 start</code></li>
+
+      <li><code>service apache2 stop</code></li>
+
+      <li><code>service apache2 reload</code></li>
+
+      <li><code>service apache2 restart</code></li>
+
+      <li><code>service apache2 status</code></li>
+
+      <li><code>a2ensite sitio</code></li>
+
+      <li><code>a2dissite sitio</code></li>
+
+      <li><code>a2enmod modulo</code></li>
+
+      <li><code>a2dismod modulo</code></li>
+
+      <li><code>a2enconf configuracion</code></li>
+
+      <li><code>a2disconf configuracion</code></li>
+    </ul>
+
+    <div class="space"></div>
+    <h3 id="php">PHP</h3>
+
+    <ul>
+      <li><strong>Buscar un módulo:</strong> <code>apt-cache search php5-</code></li>
+
+      <li><strong>Instalar un módulo:</strong> <code>apt-get install nombre-modulo</code></li>
+
+      <li><strong>Borrar binarios un módulo:</strong> <code>apt-get remove nombre-modulo</code></li>
+
+      <li><strong>Borrar configuración de un módulo:</strong> <code>apt-get purge nombre-modulo</code></li>
+    </ul>
+
+    <div class="space"></div>
+    <h3 id="mysql">MYSQL</h3>
+
+    <ul>
+      <li><strong>Cambiar clave de root</strong>: <code>mysqladmin --user=root password "nuevacontraseña"</code></li>
+      <li><strong>Saber si MySQL está corriento</strong>: <code>netstat -tunap | grep 3306</code></li>
+      <li><strong>Crear base de datos para la estructura de tablas del sistema:</strong> <code>mysql_install_db</code></li>
+    </ul>
+
+    <h4 id="comandosbsicosdemysql">Comandos básicos de MySQL</h4>
+
+    <ul>
+      <li><code>service mysql start</code></li>
+
+      <li><code>service mysql stop</code></li>
+
+      <li><code>service mysql restart</code></li>
+    </ul>
+
+    <div class="space"></div>
+    <h2 id="python">Python</h2>
+
+    <h3 id="instalarpython">Instalar python</h3>
+
+    <p><code>apt-get install -y python3</code></p>
+
+    <h3 id="ponerpordefectopython3">Poner por defecto python3</h3>
+
+    <pre><code>rm /usr/bin/python
+ln -s /usr/bin/python3 /usr/bin/python
+</code></pre>
+
+    <h3 id="instalarpipyeldriverdemysqlparapython">Instalar pip y el driver de MySQL para python</h3>
+
+    <pre><code>apt-get update
+apt-get install -y python3-pip
+pip3 install -y pymysql</code></pre>
+
+    <h3 id="configurarapache2parapython">Configurar Apache2 para python</h3>
+
+    <pre><code>apt-get install -y apache2-mpm-prefork
+a2dismod mpm_event
+a2enmod mpm_prefork cgi
+</code></pre>
+
+    <p>Añadir <code>index.py</code> en <code>/etc/apache2/mods-enabled/dir.conf</code></p>
+
+    <p>Añade tal cual esta sección
+      &lt;Directory&gt; tras la etiqueta VirtualHost antes de la directiva DocumentRoot en el archivo <code>/etc/apache2/sites-enabled/000-default.conf</code>:</p>
+
+    <pre><code>&lt;Directory /var/www&gt;
+  Options +ExecCGI
+  DirectoryIndex index.py
+&lt;/Directory&gt;
+AddHandler cgi-script .py
+</code></pre>
+
+    <div class="space"></div>
+    <h2 id="perl">Perl</h2>
+
+    <ul>
+      <li><strong>Instalar perl:</strong> <code>apt-get install perl libapache2-mod-perl2</code></li>
+
+      <li><strong>Añadir AddHandler en <code>/etc/apache2/sites-enabled/000-default.conf</code></strong> => AddHandler cgi-script .pl</li>
+    </ul>
+
+    <p>Si te peta al ejecutar algo en perl ejecuta <code>tail /var/log/apache2/error.log</code> para ver que está pasando.</p>
+
+    <div class="space"></div>
+    <h2 id="linux">Linux</h2>
+
+    <ul>
+      <li><strong>Desactivar ventana de avisos de error:</strong> editar <code>/etc/default/apport</code> y poner <code>enabled=0</code></li>
+
+      <li><strong>Listar procesos y consumo de RAM:</strong> <code>top</code></li>
+
+      <li><strong>Listar servidores en ejecución:</strong> <code>netstat -tunap</code></li>
+
+      <li><strong>Comprobar uso del disco duro:</strong> <code>df</code></li>
+    </ul>
+
+    <h3 id="habilitarelusuarioroot">Habilitar el usuario root</h3>
+
+    <ol>
+      <li>Entrar en modo superusuario (<code>sudo su</code>)</li>
+
+      <li>Asignar contraseña (<code>passwd root</code>)</li>
+
+      <li>Abrimos el archivo <code>/etc/lightdm/lightdm.conf</code> y le añadimos la siguiente línea:</li>
+
+    <pre><code>greeter-show-manual-login=true
+</code></pre>
+
+      <li>Reiniciar el equipo y cambiar la última línea de <code>/root/.profile</code> por <code>tty -s &amp;&amp; mesg n</code></li>
+  </ol>
+
+    <div class="space"></div>
+    <h2 id="joomla">Joomla!</h2>
+
+    <ul>
+      <li><strong>Artículos:</strong> Contenido que se publica. Va desde un artículo hasta una página entera.</li>
+
+      <li><strong>Extensiones:</strong> todo aquello que se añade para modificar Joomla!:
+
+
+        <ul>
+          <li><strong>Plantillas:</strong> cambio de aspecto, pero no de funcionalidad. Una plantilla de toda la vida.</li>
+
+          <li><strong>Plugins:</strong> funcionalidad simple que sólo modifica dentro del artículo (botón de leer más, por ejemplo).</li>
+
+          <li><strong>Módulos:</strong> funcionalidad sencilla que por lo general se añaden al sidebar (contador de visitas, tag cloud, archivo del blog, etc )</li>
+
+          <li><strong>Componentes:</strong> funcionalidad compleja que se ejecutará dentro del sitio. En sí mismo puede ser un artículo como una tienda online por ejemplo.</li>
+
+          <li><strong>Idiomas:</strong> paquetes para cambiar el lenguaje del sitio.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3 id="instalarjoomla">Instalar Joomla!</h3>
+
+    <ol>
+      <li>Crear en MySQL la BBDD y el usuario necesarios para la instalación de Joomla! en el servidor web.</li>
+
+      <li>Crear subdirectorio en /var/www</li>
+
+      <li>Descargar el .zip de Joomla! y llevarlo hasta el directorio.</li>
+
+      <li>Descomprimir el .zip: <code>unzip Joomla.zip</code></li>
+
+      <li>Cambiar el propietario y los permisos de la carpeta del sitio para que pueda ser ejecutado y escrito por el usuario del sistema encargado de manejar los archivos del sitio:
+        <pre><code>chown -R www-data:www-data /var/www/joomla
+chmod -R 755 /var/www/joomla
+</code></pre></li>
+
+      <li>Lanzar el instalador visitando <code>http://localhost/joomla/index.php</code> y seguir los pasos.</li>
+
+      <li>Finalmente borra la carpeta de instalación: <code>rm -Rf /var/www/joomla/installation</code></li>
+    </ol>
+
+    <h3 id="otrascosassobrejoomla">Otras cosas sobre Joomla!</h3>
+
+    <ul>
+      <li><strong>Previsualizar los módulos</strong>: Primero tienes que ir a la opciones de plantillas y habilitar <em>Previsualizar la posición de los módulos</em>, después sólo tienes que visitar la página que quieres mirar añadiendo <code>?tp=1</code>        al final.</li>
+    </ul>
+
+    <div class="space"></div>
+    <h2 id="webalizer">Webalizer</h2>
+
+    <ul>
+      <li><strong>Instalar webalizer:</strong> <code>apt-get install -y webalizer</code></li>
+
+      <li><strong>Configuración básica de webalizer</strong>: Entrar en <code>/etc/webalizer/webalizer.conf</code> y establecer esta configuración:
+
+        <pre><code>LogFile /var/log/apache2/access.log
+OutputDir /var/www/webalizer
+Incremental yes
+ReportTitle Estidísticas del servidor web de PDL
+Hostname Servidor web DPL
+IgnoreSite localhost
+</code></pre></li>
+
+      <li><strong>Generar informe</strong>:
+
+
+        <ul>
+          <li><code>webalizer</code></li>
+
+          <li><code>webalizer -d</code> => nos muestra los errores generados al crear el informe.</li>
+        </ul>
+      </li>
+
+      <li><strong>Ver el informe</strong>: visitar <code>http://localhost/webalizer</code> (porque es el OutputDir que hemos configurado)</li>
+    </ul>
+
+    <h3 id="crearinformeperidicoconwebalizerycron">Crear informe periódico con Webalizer y Cron</h3>
+
+    <ol>
+      <li>
+        <p>Crear un script dentro del OutputDir que nos haga el informe y nos lo muestre en firefox (por ejemplo):</p>
+
+        <pre><code>#!/bin/bash
+
+webalizer
+firefox file:///informesweb/index.html
+</code></pre></li>
+
+      <li>
+        <p>Editar el cron para añadir la tarea: <code>crontab -e</code></p>
+      </li>
+
+      <li>
+        <p>Añadir a la última línea: <code>* * * * * export DISPLAY=:0 &amp;&amp; informesweb/script.sh</code></p>
+      </li>
+    </ol>
+
+    <p>Tal como se ha escrito el cron saltará cada minuto. Para poder configurarlo como quieras puedes fijarte de esta referencia:</p>
+
+    <pre><code>De izquierda a derecha, los asteriscos representan:
+1. Minutos: de 0 a 59.
+2. Horas: de 0 a 23.
+3. Día del mes: de 1 a 31.
+4. Mes: de 1 a 12.
+5. Día de la semana: de 0 a 6, siendo 0 el domingo.
+</code></pre>
+
+    <p>Puedes usar intervalos o concatenar con comas:</p>
+
+    <p><code>0 0,12 * * 1-5 tar -zcf /var/backups/home.tgz /home/</code></p>
+
+    <p>El anterior código haría una copia de seguridad de lunes a viernes a las 12 de la noche y a las 12 del mediodía.</p>
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>

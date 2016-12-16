@@ -24,5 +24,5 @@ console.log(t.remainCoffee());
 console.log(t.total());
 console.log('\n');
 
-// console.log(s);
-// console.log(t);
+console.log(s);
+console.log(t);
