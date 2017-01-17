@@ -80,13 +80,14 @@
 
 
     <div id="main">
-      <h3 class="text-center">Números primos menores de 10.000 (<span id="cant"></span> números)</h3>
+      <h3 class="text-center">Números primos menores de <span id="lim"></span> (<span id="cant"></span> números)</h3>
       <p id="primos"></p>
     </div>
     <script>
       var primos = [];
       var aux = [];
-      var lim = 10000;
+      var lim = prompt("¿Hasta qué número quieres calcular números primos?");
+      document.getElementById('lim').innerHTML = lim;
       for (var i = 1; i <= lim; i++) {
         aux = [];
         for (var j = i; j > 0 ; j--) {
