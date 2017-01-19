@@ -2,7 +2,7 @@ var html = document.documentElement; //Elemento raíz de la página
 
 var head = html.firstChild;
 var body = html.lastChild;
-var nodes = [].slice.call(body.childNodes);
+var nodes = [].slice.call(body.childNodes); //Pasamos un HTMLCollection a un Array
 var html = [].slice.call(html.childNodes);
 /* Otra manera de coger el head y el body
 * var head = html.childNodes[0];
