@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Encuesta</title></head>
+<body>
+	<p><span style="font-family: verdana; font-size: 18px; color: #0022DD; font-weight: bold;">
+		¿Está de acuerdo con...?
+	</span></p>
+	
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+	<table>
+	<tr>
+	  <td>
+	  <input type="submit" name="si" value="SÍ" style="height: 24px; width: 50px; border-radius:2px 2px 2px 2px; border:1px solid #0000FF; background: #0000DD; font-family: Arial; font-size: 12px; color: #00FF00; text-shadow: 0 1px #aa4040; font-weight: bold;">
+	  </td>
+	  <td></td>
+	  <td>
+
+	  </td>
+	  <td>
+
+	  </td>
+	</tr>
+	<tr><td><br></td><td></td></tr>
+	<tr>
+	  <td>
+	  <input type="submit" name="no" value="NO" style="height: 24px; width: 50px; border-radius:2px 2px 2px 2px; border:1px solid #0000FF; background: #0000DD; font-family: Arial; font-size: 12px; color: #FF0000; text-shadow: 0 1px #aa4040; font-weight: bold;">
+	  </td>
+	  <td></td>
+	  <td>
+
+	  </td>
+	  <td>
+
+	  </td>
+	</tr>
+	</table>
+	</form>
+	<hr>
+</body>
+</html>

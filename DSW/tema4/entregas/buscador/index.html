@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Buscador de Coches</title>
+		<style>
+			.principal { font-family: verdana; font-size: 26px; color: #0088DD; font-weight: bold; }
+			.titulo { font-family: verdana; font-size: 15px; color: #0000DD; }
+			.parrafo { font-family: arial; font-size: 12px; color: #0000DD; }
+			.boton { height: 30px; width: 145px; border-radius:2px 2px 2px 2px; border:1px solid #00DDEE; background: #0088DD; font-family: Arial; font-size: 12px; color: #FFF; text-shadow: 0 1px #aa4040; font-weight: bold; }
+			th { font-family: verdana; font-size: 16px; color: #0088DD; }
+			.resaltado { font-family:verdana; font-size:15px; color:#000066; background:#CCCCCC; }
+			tr:hover > td{background-color: #cccccc; border: none;}
+			#coche {
+				position:absolute;
+				left:824px;
+				top:62px;
+				width: 465px;
+    		height: 300px;
+				border-collapse:collapse;
+				border:2px solid black;
+				text-align: left;;
+				padding:20px;
+				font-family: 'Helvetica'
+			}
+			#coche tr:hover{background-color: #DDDDEE}
+			#coche span{color:#0000DD;}
+			#coche td{border: 1px #000 solid; padding: 10px}
+			.btn{
+				padding: 20px;
+				color: white;
+				background: #0088DD;
+				text-decoration: none;
+				position: absolute;
+				left: 824px;
+				top: 400px;
+				font-family: sans-serif;
+			}
+		</style>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body bgcolor="#DDDDEE">
+	<p><span class="principal">
+		BUSCADOR DE COCHES
+	</span></p>
+
+	<table class="titulo" style="border: 1px solid black; width:800px; background:#CCCCCC;" border="0" cellpadding="10">
+		<tr>
+			<td>
+			  Marca:
+				<select id="marca" style="width:100px;"></select>
+			</td>
+			<td>
+			  Motor:
+				<select id="motor" style="width:100px;"></select>
+			</td>
+			<td>
+			  Año:
+				<select id="ano" style="width:100px;"></select>
+			</td>
+			<td>
+			  Km (hasta):
+				<select id="km" style="width:100px;"></select>
+			</td>
+			<td>
+			  Precio (hasta):
+				<select id="precio" style="width:100px;"></select>
+			</td>
+		</tr>
+	</table>
+	<br>
+
+
+
+	<!-- marco de la derecha donde se mostrará el coche seleccionado -->
+	<table id="coche"></table>
+	<div id="get-xml"></div>
+	 <table class="titulo" style="border:1px solid black; width:800px; text-align:center;"
+	 				border="0" cellpadding="2">
+			<thead>
+				<tr>
+					<th> </th>
+					<th>
+						Marca
+						<i id="marca-up" class="fa fa-chevron-up sort" aria-hidden="true"></i>
+						/ <i id="marca-down" class="fa fa-chevron-down sort" aria-hidden="true"></i>
+					</th>
+					<th>
+						Modelo
+						<i id="modelo-up" class="fa fa-chevron-up sort" aria-hidden="true"></i>
+						/ <i id="modelo-down" class="fa fa-chevron-down sort" aria-hidden="true"></i>
+					</th>
+					<th>
+						Motor
+						<i id="motor-up" class="fa fa-chevron-up sort" aria-hidden="true"></i>
+						/ <i id="motor-down" class="fa fa-chevron-down sort" aria-hidden="true"></i>
+					</th>
+					<th>
+						Año
+						<i id="ano-up" class="fa fa-chevron-up sort" aria-hidden="true"></i>
+						/ <i id="ano-down" class="fa fa-chevron-down sort" aria-hidden="true"></i>
+					</th>
+					<th>
+						Km
+						<i id="km-up" class="fa fa-chevron-up sort" aria-hidden="true"></i>
+						/ <i id="km-down" class="fa fa-chevron-down sort" aria-hidden="true"></i>
+					</th>
+					<th>
+						Precio
+						<i id="precio-up" class="fa fa-chevron-up sort" aria-hidden="true"></i>
+						/ <i id="precio-down" class="fa fa-chevron-down sort" aria-hidden="true"></i>
+					</th>
+				</tr>
+			</thead>
+		 <tbody id="coches"></tbody>
+	 </table>
+	<script
+  	src="https://code.jquery.com/jquery-3.1.1.min.js"
+  	integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  	crossorigin="anonymous"></script>
+	<script src="main.js" charset="utf-8"></script>
+</body>
+</html>

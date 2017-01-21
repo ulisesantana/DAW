@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+      <!DOCTYPE Coches [
+       <!ELEMENT Coches (Coche*)>
+       <!ELEMENT Coche (ID, Marca, Modelo, Motor, Año, Km, Precio, Descripcion, URLImagen)>
+       <!ELEMENT ID (#PCDATA)>
+       <!ELEMENT Marca (#PCDATA)>
+       <!ELEMENT Modelo (#PCDATA)>
+       <!ELEMENT Motor (#PCDATA)>
+       <!ELEMENT Año (#PCDATA)>
+       <!ELEMENT Km (#PCDATA)>
+       <!ELEMENT Precio (#PCDATA)>
+       <!ELEMENT Descripcion (#PCDATA)>
+       <!ELEMENT URLImagen (#PCDATA)>
+    ]>
+
+    <Coches>
+      <Coche>
+        <ID></ID>
+        <Marca></Marca>
+        <Modelo></Modelo>
+        <Motor></Motor>
+        <Año></Año>
+        <Km></Km>
+        <Precio></Precio>
+        <Descripcion></Descripcion>
+        <URLImagen></URLImagen>
+      </Coche>
+    </Coches>
