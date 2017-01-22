@@ -26,7 +26,7 @@ $(document).ready( () => {
 	$('.sort').on('click', (e) => {
 		renderCars(carsCache, e.target.id);
 		$('.sort').css('color', 'inherit');
-		$('#' + e.target.id).css('color', 'yellowgreen');
+		$('#' + e.target.id).css('color', 'black');
 	});
 
 });
@@ -49,38 +49,35 @@ function showCar(id) {
 		}
 	}
 	let table = `
-    <tr>
-      <td colspan="2" rowspan="3">
-        <img src="${car.URLImagen}" height="200px">
-      </td>
-      <td colspan="2"><span>Marca</span>: ${car.Marca}</td>
-    </tr>
-    <tr>
-      <td colspan="2"><span>Modelo</span>: ${car.Modelo}</td>
-    </tr>
-    <tr>
-      <td colspan="2"><span>Motor</span>: ${car.Modelo}</td>
-    </tr>
-    <tr>
-      <td><span>Año</span>: ${car.Año}</td>
-      <td><span>Km</span>: ${car.Km}</td>
-      <td colspan="2"><span>Precio</span>: ${car.Precio}</td>
-    </tr>
-    <tr>
-      <td colspan="4"><span>Descripción</span>: ${car.Descripcion}</td>
-    </tr>`;
-	$('#coche').html(table);
-	createXML(car.ID);
-}
+		<tbody>
+	    <tr>
+	      <td colspan="2" rowspan="3">
+	        <img src="${carToShow.URLImagen}" height="200px">
+	      </td>
+	      <td colspan="2"><span>Marca</span>: ${carToShow.Marca}</td>
+	    </tr>
+	    <tr>
+	      <td colspan="2"><span>Modelo</span>: ${carToShow.Modelo}</td>
+	    </tr>
+	    <tr>
+	      <td colspan="2"><span>Motor</span>: ${carToShow.Modelo}</td>
+	    </tr>
+	    <tr>
+	      <td><span>Año</span>: ${carToShow.Año}</td>
+	      <td><span>Km</span>: ${carToShow.Km}</td>
+	      <td colspan="2"><span>Precio</span>: ${carToShow.Precio}</td>
+	    </tr>
+	    <tr>
+	      <td colspan="4"><span>Descripción</span>: ${carToShow.Descripcion}</td>
+	    </tr>
+		</tbody>`;
 
-function createXML(id) {
-	$.get('ficha.php?id=' + id, (url) => {
-		$('#get-xml').html(
-			`<a href="${url}">
-        <div class="btn">DESCARGAR FICHA</div>
-      </a>`
-		);
-	});
+	$('#coche').html(table);
+	$('#get-xml').html(
+		`<a href="main.php?id=${carToShow.ID}">
+			<div class="btn">DESCARGAR FICHA</div>
+		</a>`
+	);
 }
 
 function writeRow(car) {
@@ -123,7 +120,7 @@ function carsFilter(id, cars) {
 			$('#km').html(selectFilter('km', cars));
 			$('#precio').html(selectFilter('precio', cars));
 			break;
-		case 'km' case 'precio':
+		case 'km|precio':
 			$('#precio').html(selectFilter('precio', cars));
 			break;
 		default:
@@ -178,7 +175,7 @@ function selectFilter(selectID, cars) {
 }
 
 // No me siento orgulloso de este switch, pero no me quedaba otra :-(
-function sortCars(cars, sortBy, way) {
+function sortCars(cars, sortBy) {
 	switch (sortBy) {
 		case 'marca-up':
 			cars = JSON.parse(cars).sort((a, b) => {
@@ -252,8 +249,8 @@ function sortCars(cars, sortBy, way) {
 			break;
 		case 'precio-up':
 			cars = JSON.parse(cars).sort((a, b) => {
-				if (a.Marca < b.Marca) return -1;
-				if (a.Marca > b.Marca) return 1;
+				if (a.Precio < b.Precio) return -1;
+				if (a.Precio > b.Precio) return 1;
 				return 0;
 			});
 			break;

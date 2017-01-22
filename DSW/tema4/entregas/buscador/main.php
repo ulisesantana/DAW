@@ -19,9 +19,22 @@
     // buscar coches
     $arrayCoches = buscarCoches($Coches->Coche, $marca, $motor, $km, $precio, $ano);
     echo json_encode($arrayCoches);
-  } elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_REQUEST['id'])) {
-    $fileName = 'coche'.$_REQUEST['id'].'.xml';
-    $coche = getCoche($Coches->Coche, $_REQUEST['id']);
+  }
+  elseif ($_SERVER["REQUEST_METHOD"] == "GET"
+      && (!isset($_GET['id']) && empty($_GET['id']))){
+    // mostrar todos los coches
+    echo json_encode(cars2Array($Coches));
+  }
+  else {
+    //Utilizamos basename por seguridad, devuelve el
+    //nombre del id eliminando cualquier ruta.
+    $id = basename($_GET['id']);
+
+    $file = 'coches'.$id;
+
+    $file = 'coche'.$id.'.xml';
+    $coche = getCar($Coches->Coche, $id);
+
 
     $xml = '<?xml version = "1.0" encoding = "UTF-8" ?>
       <!DOCTYPE Coches [
@@ -52,14 +65,21 @@
       </Coche>
     </Coches>';
 
-    $writeFile = fopen($fileName, 'w');
+    $writeFile = fopen($file, 'w');
     fputs($writeFile, $xml);
     fclose($writeFile);
 
-    echo $fileName;
-  } else{
-    // mostrar todos los coches
-    echo json_encode(cars2Array($Coches));
+    if (is_file($file)){
+       header('Content-Type: application/force-download');
+       header('Content-Disposition: attachment; filename='.$file);
+       header('Content-Transfer-Encoding: binary');
+       header('Content-Length: '.filesize($file));
+
+       readfile($file);
+    }
+    else {
+       exit();
+    }
   }
 
   function cars2Array($XML, $array = array()){
@@ -83,16 +103,10 @@
     return $arrayCochesEncontrados;
   }
 
-  function getCoche ($arrayCoches, $marca, $motor, $km, $precio, $ano) {
-    $array = array();
-    foreach ($arrayCoches as $Coche) {
-      if ($Coche->ID == $id) {
-          array_push($array, $Coche);
-      }
+  function getCar ($Coches, $id) {
+    foreach ($Coches as $Coche) {
+      if ($Coche->ID == $id) return $Coche;
     }
-    return $array[0];
   }
-
-
 
 ?>

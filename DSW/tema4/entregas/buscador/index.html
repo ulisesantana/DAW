@@ -9,7 +9,10 @@
 			.boton { height: 30px; width: 145px; border-radius:2px 2px 2px 2px; border:1px solid #00DDEE; background: #0088DD; font-family: Arial; font-size: 12px; color: #FFF; text-shadow: 0 1px #aa4040; font-weight: bold; }
 			th { font-family: verdana; font-size: 16px; color: #0088DD; }
 			.resaltado { font-family:verdana; font-size:15px; color:#000066; background:#CCCCCC; }
-			tr:hover > td{background-color: #cccccc; border: none;}
+			table.titulo{background-color: #cccccc; border-collapse: collapse;}
+			#coche tbody{background-color: #cccccc;}
+			#coches tr:hover > td{background-color: #DDDDEE; border-color: #DDDDEE;}
+			#coche tr:hover{background-color: none !important}
 			#coche {
 				position:absolute;
 				left:824px;
@@ -22,7 +25,6 @@
 				padding:20px;
 				font-family: 'Helvetica'
 			}
-			#coche tr:hover{background-color: #DDDDEE}
 			#coche span{color:#0000DD;}
 			#coche td{border: 1px #000 solid; padding: 10px}
 			.btn{
@@ -32,7 +34,7 @@
 				text-decoration: none;
 				position: absolute;
 				left: 824px;
-				top: 400px;
+				top: 410px;
 				font-family: sans-serif;
 			}
 		</style>
