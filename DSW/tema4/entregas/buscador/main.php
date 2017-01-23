@@ -17,19 +17,48 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // buscar coches
-    $arrayCoches = buscarCoches($Coches->Coche, $marca, $motor, $km, $precio, $ano);
+    $arrayCoches = searchCars($Coches->Coche, $marca, $motor, $km, $precio, $ano);
     echo json_encode($arrayCoches);
   }
   elseif ($_SERVER["REQUEST_METHOD"] == "GET"
-      && (!isset($_GET['id']) && empty($_GET['id']))){
+            && (!isset($_GET['id'])
+            && empty($_GET['id']))){
     // mostrar todos los coches
     echo json_encode(cars2Array($Coches));
   }
   else {
-    //Utilizamos basename por seguridad, devuelve el
-    //nombre del id eliminando cualquier ruta.
-    $id = basename($_GET['id']);
+    // crear el XML y devolverlo al cliente
+    sendXML($Coches, basename($_GET['id']));
+  }
 
+  function cars2Array($XML, $array = array()){
+    foreach ($XML as $value) {
+      $array[] = $value;
+    }
+    return $array;
+  }
+
+  function searchCars ($arrayCoches, $marca, $motor, $km, $precio, $ano) {
+    $arrayCochesEncontrados = array();
+    foreach ($arrayCoches as $Coche) {
+      if ((strtoupper($Coche->Marca) == $marca || $marca == "TODOS") &&
+        (strtoupper($Coche->Motor) == $motor || $motor == "TODOS") &&
+        ($Coche->Km <= $km || $km == "TODOS") &&
+        ($Coche->Precio <= $precio || $precio == "TODOS") &&
+        ($Coche->Año <= $ano || $ano == "TODOS")) {
+          array_push($arrayCochesEncontrados, $Coche);
+      }
+    }
+    return $arrayCochesEncontrados;
+  }
+
+  function getCar ($Coches, $id) {
+    foreach ($Coches as $Coche) {
+      if ($Coche->ID == $id) return $Coche;
+    }
+  }
+
+  function sendXML($Coches, $id){
     $file = 'coches'.$id;
 
     $file = 'coche'.$id.'.xml';
@@ -81,32 +110,4 @@
        exit();
     }
   }
-
-  function cars2Array($XML, $array = array()){
-    foreach ($XML as $value) {
-      $array[] = $value;
-    }
-    return $array;
-  }
-
-  function buscarCoches ($arrayCoches, $marca, $motor, $km, $precio, $ano) {
-    $arrayCochesEncontrados = array();
-    foreach ($arrayCoches as $Coche) {
-      if ((strtoupper($Coche->Marca) == $marca || $marca == "TODOS") &&
-        (strtoupper($Coche->Motor) == $motor || $motor == "TODOS") &&
-        ($Coche->Km <= $km || $km == "TODOS") &&
-        ($Coche->Precio <= $precio || $precio == "TODOS") &&
-        ($Coche->Año <= $ano || $ano == "TODOS")) {
-          array_push($arrayCochesEncontrados, $Coche);
-      }
-    }
-    return $arrayCochesEncontrados;
-  }
-
-  function getCar ($Coches, $id) {
-    foreach ($Coches as $Coche) {
-      if ($Coche->ID == $id) return $Coche;
-    }
-  }
-
 ?>

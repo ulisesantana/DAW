@@ -1,23 +1,23 @@
 let carsCache = '';
-$(document).ready( () => {
+$(document).ready(() => {
 	$.get('main.php', (cars) => {
-		carsFilter(null, cars);
+		carsFilter(cars);
 		renderCars(cars);
 		carsCache = cars;
 	});
 
 	$('select').on('change', (e) => {
 		let params = {
-			'marca': $('#marca').val(),
-			'motor': $('#motor').val(),
-			'ano': $('#ano').val(),
-			'km': $('#km').val(),
-			'precio': $('#precio').val(),
+			marca : $('#marca').val(),
+			motor : $('#motor').val(),
+			ano : $('#ano').val(),
+			km : $('#km').val(),
+			precio : $('#precio').val()
 		};
 
 		$.post('main.php', params, (cars) => {
 			$('.sort').css('color', 'inherit');
-			carsFilter(e.target.id, cars);
+			carsFilter(cars, e.target.id);
 			renderCars(cars);
 			carsCache = cars;
 		});
@@ -96,14 +96,14 @@ function writeRow(car) {
 }
 
 function writeOptions(options) {
-  let html = ``;
-  for (option of options) {
-    html += `<option value="${option}">${option}</option>`
-  }
-  return html;
+	let html = ``;
+	for (option of options) {
+		html += `<option value="${option}">${option}</option>`
+	}
+	return html;
 }
 
-function carsFilter(id, cars) {
+function carsFilter(cars, id) {
 	switch (id) {
 		case 'marca':
 			$('#motor').html(selectFilter('motor', cars));
@@ -120,9 +120,10 @@ function carsFilter(id, cars) {
 			$('#km').html(selectFilter('km', cars));
 			$('#precio').html(selectFilter('precio', cars));
 			break;
-		case 'km|precio':
+		case 'km':
 			$('#precio').html(selectFilter('precio', cars));
 			break;
+		case 'precio': break;
 		default:
 			$('#marca').html(selectFilter('marca', cars));
 			$('#motor').html(selectFilter('motor', cars));
@@ -134,7 +135,7 @@ function carsFilter(id, cars) {
 }
 
 function selectFilter(selectID, cars) {
-	let options = ['TODOS'];
+	let options = [];
 	switch (selectID) {
 		case 'marca':
 			for (car of JSON.parse(cars)) {
@@ -164,13 +165,10 @@ function selectFilter(selectID, cars) {
 			for (car of JSON.parse(cars)) {
 				if (!options.includes(car.Precio)) options.push(car.Precio);
 			}
-      if (options.length == 2) {
-        options.shift();
-      } else {
-        options.sort((a, b) => a - b);
-      }
+			options.sort((a, b) => a - b);
 			break;
 	}
+	options.unshift('TODOS');
 	return writeOptions(options);
 }
 
