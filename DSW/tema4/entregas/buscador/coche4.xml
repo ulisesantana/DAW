@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+      <!DOCTYPE Coches [
+       <!ELEMENT Coches (Coche*)>
+       <!ELEMENT Coche (ID, Marca, Modelo, Motor, Año, Km, Precio, Descripcion, URLImagen)>
+       <!ELEMENT ID (#PCDATA)>
+       <!ELEMENT Marca (#PCDATA)>
+       <!ELEMENT Modelo (#PCDATA)>
+       <!ELEMENT Motor (#PCDATA)>
+       <!ELEMENT Año (#PCDATA)>
+       <!ELEMENT Km (#PCDATA)>
+       <!ELEMENT Precio (#PCDATA)>
+       <!ELEMENT Descripcion (#PCDATA)>
+       <!ELEMENT URLImagen (#PCDATA)>
+    ]>
+
+    <Coches>
+      <Coche>
+        <ID>4</ID>
+        <Marca>Audi</Marca>
+        <Modelo>A4</Modelo>
+        <Motor>Diesel</Motor>
+        <Año>2014</Año>
+        <Km>55000</Km>
+        <Precio>20500</Precio>
+        <Descripcion>Techo solar. Llantas de aleación. Un único propietario.</Descripcion>
+        <URLImagen>http://st.motortrend.com/uploads/sites/10/2015/11/2016-audi-a4-premium-sedan-angular-front1.png</URLImagen>
+      </Coche>
+    </Coches>

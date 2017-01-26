@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+      <!DOCTYPE Coches [
+       <!ELEMENT Coches (Coche*)>
+       <!ELEMENT Coche (ID, Marca, Modelo, Motor, Año, Km, Precio, Descripcion, URLImagen)>
+       <!ELEMENT ID (#PCDATA)>
+       <!ELEMENT Marca (#PCDATA)>
+       <!ELEMENT Modelo (#PCDATA)>
+       <!ELEMENT Motor (#PCDATA)>
+       <!ELEMENT Año (#PCDATA)>
+       <!ELEMENT Km (#PCDATA)>
+       <!ELEMENT Precio (#PCDATA)>
+       <!ELEMENT Descripcion (#PCDATA)>
+       <!ELEMENT URLImagen (#PCDATA)>
+    ]>
+
+    <Coches>
+      <Coche>
+        <ID>6</ID>
+        <Marca>BMW</Marca>
+        <Modelo>Serie4</Modelo>
+        <Motor>Diesel</Motor>
+        <Año>2015</Año>
+        <Km>65000</Km>
+        <Precio>27000</Precio>
+        <Descripcion>Cinco puertas. Llantas de aleación y tapicería de cuero. Un único propietario.</Descripcion>
+        <URLImagen>http://gasp.com/wp-content/uploads/2015/06/serie4.png</URLImagen>
+      </Coche>
+    </Coches>
