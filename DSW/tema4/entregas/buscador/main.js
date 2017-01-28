@@ -1,10 +1,14 @@
-let carsCache = '';
 $(document).ready(() => {
-	$.get('main.php', (cars) => {
-		carsFilter(cars);
-		renderCars(cars);
-		carsCache = cars;
-	});
+	if (!localStorage.cars) {
+		$.get('main.php', (cars) => {
+			carsFilter(cars);
+			renderCars(cars);
+			localStorage.cars = cars;
+		});
+	} else{
+		carsFilter(localStorage.cars);
+		renderCars(localStorage.cars);
+	}
 
 	$('select').on('change', (e) => {
 		let params = {
@@ -19,12 +23,12 @@ $(document).ready(() => {
 			$('.sort').css('color', 'inherit');
 			carsFilter(cars, e.target.id);
 			renderCars(cars);
-			carsCache = cars;
+			localStorage.cars = cars;
 		});
 	});
 
 	$('.sort').on('click', (e) => {
-		renderCars(carsCache, e.target.id);
+		renderCars(localStorage.cars, e.target.id);
 		$('.sort').css('color', 'inherit');
 		$('#' + e.target.id).css('color', 'black');
 	});
@@ -42,7 +46,7 @@ function renderCars(cars, sortBy) {
 
 function showCar(id) {
 	let carToShow = '';
-	for (car of JSON.parse(carsCache)) {
+	for (car of JSON.parse(localStorage.cars)) {
 		if (car.ID == id) {
 			carToShow = car;
 			break;
@@ -168,7 +172,11 @@ function selectFilter(selectID, cars) {
 			options.sort((a, b) => a - b);
 			break;
 	}
-	options.unshift('TODOS');
+	if (options.length == 1) {
+		options.push('TODOS');
+	} else {
+		options.unshift('TODOS');
+	}
 	return writeOptions(options);
 }
 

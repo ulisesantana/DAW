@@ -14,4 +14,4 @@ apt-get install -y phpmyadmin
 # apt-get install -y mysql-server libaprutil1-dbd-mysql php7.1-mysql
 # apt-get install -y phpmyadmin
 
-# mysql reconfigure if you broke dpkg-reconfigure mysql-server-5.5
+# reconfigure mysql if you broke it dpkg-reconfigure mysql-server-5.5
