@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" href="estilos.css">
+
+		<script language="javascript" type="text/javascript">
+
+			function inicio () {
+				addAsignaturas();
+			}
+
+			function addAsignaturas(){
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText.includes('Error')) {
+								alert(this.responseText);
+							} else {
+								document.getElementById('asignatura').innerHTML = this.responseText; // la tabla me la devuelve hay
+								buscarAlumnos("TODOS");
+							}
+						}
+				};
+				xhr.open("GET", "listarAsignaturas.php", true);
+				xhr.send();
+			}
+
+			function buscarAlumnos (nota) {
+				var asignatura = document.getElementById('asignatura').value;
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText.includes('Error')) {
+								alert(this.responseText);
+							} else {
+								document.getElementById('divNotas').innerHTML = this.responseText; // la tabla me la devuelve hay
+							}
+
+						}
+					};
+				xhr.open("POST", "notas.php", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var parametros = "accion=buscar" + "&nota=" + nota + "&asignatura=" + asignatura;
+				xhr.send(parametros);
+			}
+
+			function modificarNota (alumno, nota) {
+				var asignatura = document.getElementById('asignatura').value;
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText.includes('Error')) {
+								alert(this.responseText);
+							} else {
+								document.getElementById('divNotas').innerHTML = this.responseText;
+							}
+
+						}
+					};
+				xhr.open("POST", "notas.php", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var listar = checkNota();
+				var parametros = "accion=modificar" + "&alumno=" + alumno + "&nota=" + nota
+													+ "&listar=" + listar + "&asignatura=" + asignatura; // el listar es para listar los suspendidos y aprovados
+				xhr.send(parametros);
+			}
+
+			function checkNota(){
+				var listar;
+				if (document.getElementById('TODOS').checked)
+					listar = document.getElementById('TODOS').value;
+				if (document.getElementById('aprobados').checked)
+					listar = document.getElementById('aprobados').value;
+				if (document.getElementById('suspensos').checked)
+					listar = document.getElementById('suspensos').value;
+				return listar;
+			}
+
+			function cambiarAsignatura() {
+				var nota = checkNota();
+				buscarAlumnos(nota);
+			}
+
+		</script>
+</head>
+<body bgcolor="#DDDDDD" onLoad="inicio();">
+
+	<br>
+	<div style="position:absolute; left:10px; top:10px; width:160px;">
+		<table style="border: 1px solid black; background:#CCCCCC; width:525px; height:105px;" border="0" cellpadding="3">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td class="titulo" colspan="3">
+							  Listar por asignatura:
+							</td>
+						</tr>
+						<tr>
+							<td class="texto" style="color:#222255;">
+								<select id="asignatura" style="width: 100%;" onchange="cambiarAsignatura()"></select>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td class="titulo" colspan="3">
+							  Listar alumnos:
+							</td>
+						</tr>
+						<tr>
+							<td class="texto" style="color:#222255;">
+							  <input id ="TODOS" type="radio" name="nota" value="TODOS" checked onClick="buscarAlumnos('TODOS')"> TODOS
+							</td>
+							<td class="texto" style="color:green;">
+							  <input id ="aprobados" type="radio" name="nota" value="aprobados" onClick="buscarAlumnos('aprobados')"> Aprobados
+							</td>
+							<td class="texto" style="color:red;">
+							  <input id ="suspensos" type="radio" name="nota" value="suspensos" onClick="buscarAlumnos('suspensos')"> Suspensos
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="divNotas" style="position:absolute; left:10px; top:120px; width:530px;">
+	</div>
+
+</body>
+</html>

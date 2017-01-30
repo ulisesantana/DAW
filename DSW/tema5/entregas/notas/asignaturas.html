@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" href="estilos.css">
+
+		<script language="javascript" type="text/javascript">
+
+			function inicio () {
+				selectAsignaturas();
+			}
+
+			function selectAsignaturas(){
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText.includes('Error')) {
+								alert(this.responseText);
+							} else {
+								document.getElementById('asignatura').innerHTML = this.responseText; // la tabla me la devuelve hay
+								document.getElementById('eliminar-asignatura').innerHTML = this.responseText; // la tabla me la devuelve hay
+								buscarAlumnos();
+							}
+						}
+				};
+				xhr.open("GET", "listarAsignaturas.php", true);
+				xhr.send();
+			}
+
+			function buscarAlumnos() {
+				var asignatura = document.getElementById('asignatura').value;
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText.includes('Error')) {
+								alert(this.responseText);
+							} else {
+								document.getElementById('alumnos').innerHTML = this.responseText; // la tabla me la devuelve hay
+							}
+
+						}
+					};
+				xhr.open("POST", "asignaturas.php", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var parametros = "accion=buscar" + "&asignatura=" + asignatura;
+				xhr.send(parametros);
+			}
+
+			function matricular(alumno){
+				var asignatura = document.getElementById('asignatura').value;
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText.includes('Error')) {
+								alert(this.responseText);
+							}
+					}
+				};
+				xhr.open("POST", "asignaturas.php", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var parametros = "accion=matricular" + "&asignatura=" + asignatura +
+													"&alumno=" + alumno;
+				xhr.send(parametros);
+			}
+
+			function eliminarAsignatura(){
+				var asignatura = document.getElementById('eliminar-asignatura').value;
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if (this.responseText.includes('Error')) {
+							alert(this.responseText);
+						}
+						else {
+							selectAsignaturas();
+						}
+					}
+				};
+				xhr.open("POST", "asignaturas.php", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var parametros = "accion=eliminar" + "&asignatura=" + asignatura;
+				xhr.send(parametros);
+			}
+
+			function addAsignatura(){
+				var asignatura = document.getElementById('add-asignatura').value;
+				var xhr	= new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						if (this.responseText.includes('Error')) {
+							alert(this.responseText);
+						}
+						else {
+							selectAsignaturas();
+						}
+					}
+				};
+				xhr.open("POST", "asignaturas.php", true);
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+				var parametros = "accion=add" + "&asignatura=" + asignatura;
+				xhr.send(parametros);
+			}
+
+
+
+		</script>
+</head>
+<body bgcolor="#DDDDDD" onLoad="inicio();">
+
+	<br>
+	<div style="position:absolute; left:10px; top:10px; width:160px;">
+		<table style="border: 1px solid black; background:#CCCCCC; width:525px; height:105px;" border="0" cellpadding="9">
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td class="titulo" colspan="3">
+							  Listar por asignatura:
+							</td>
+						</tr>
+						<tr>
+							<td >
+								<select id="asignatura" style="width: 100%;" onchange="buscarAlumnos()"></select>
+
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td class="titulo" colspan="3">
+							  Eliminar asignatura:
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select id="eliminar-asignatura" style="width: 75%;"></select>
+								<img src="imagenes/eliminar.png" alt="Eliminar"
+										onclick="eliminarAsignatura()" style="width:24px; height:24px">
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table>
+						<tr>
+							<td class="titulo" colspan="3">
+							  Añadir asignatura:
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" id="add-asignatura" style="width:50%;">
+								<img src="imagenes/anadir.png" alt="Añadir"
+											onclick="addAsignatura()" style="width:24px; height:24px">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="alumnos" style="position:absolute; left:10px; top:120px; width:530px;">
+	</div>
+
+</body>
+</html>
