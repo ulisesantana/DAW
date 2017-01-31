@@ -79,10 +79,20 @@
 
 	function addAsignatura($asignatura, $profesor){
 		global $conexion;
-		$consultaSQL = 'INSERT INTO `t_asignaturas` (`asignatura`, `profesor`)
-											VALUES ("'.$asignatura.'", "'.$profesor.'");';
-		if ($conexion->query($consultaSQL) === FALSE) {
-			echo "Error: ".$conexion->error;
+
+
+		$consultaSQL = 'SELECT * FROM `t_asignaturas`
+											WHERE asignatura = "'.$asignatura.'"
+											AND profesor = "'.$profesor.'";';
+		$find = $conexion->query($consultaSQL);
+		if ($find->num_rows > 0) {
+			echo "La asignatura que quieres insertar ya existe.";
+		} else{
+			$consultaSQL = 'INSERT INTO `t_asignaturas` (`asignatura`, `profesor`)
+			VALUES ("'.$asignatura.'", "'.$profesor.'");';
+			if ($conexion->query($consultaSQL) === FALSE) {
+				echo "Error: ".$conexion->error;
+			} 
 		}
 	}
 

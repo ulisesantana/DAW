@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+		<title>INVENTARIO DE PORT&Aacute;TILES</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style>
+			.principal { font-family: verdana; font-size: 20px; color: #0088DD; font-weight: bold; }
+			.titulo { font-family: verdana; font-size: 15px; color: #0000DD; }
+			.parrafo { font-family: arial; font-size: 12px; color: #0000DD; }
+			.boton { height: 30px; width: 145px; border-radius:2px 2px 2px 2px; border:1px solid #00DDEE; background: #00AAFF; font-family: Arial; font-size: 12px; color: #FFF; text-shadow: 0 1px #aa4040; font-weight: bold; }
+			th { font-family: verdana; font-size: 14px; color: #4444BB; }
+			.resaltado { font-family:verdana; font-size:15px; color:#000066; background:#DDDDDD; }
+		</style>
+
+		<script language="javascript" type="text/javascript">
+
+
+
+		</script>
+</head>
+
+<body bgcolor="#FFFFFF" >
+
+	<!-- CABECERA DE LA APLICACIÓN --------------------------------------------->
+	<div style="position:absolute; left:-5px; top:0px;">
+		<table border="0" cellpadding="10">
+			<tr>
+				<td>
+					<img src="imagenes/portatiles.png" width="175" height="100">
+				</td>
+				<td>
+					<p class="principal"> INVENTARIO DE PORT&Aacute;TILES </p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<!-------------------------------------------------------------------------->
+	<!-- EJERCICIO 1: BUSCAR PORTÁTILES ---------------------------------------->
+	<!-------------------------------------------------------------------------->
+	<div style="position:absolute; left:10px; top:125px;">
+		<table class="titulo"
+						style="border: 1px solid black; width:150px; height:70px; background:#F6F6F6"
+						border="0" cellpadding="10">
+			<tr>
+				<td>
+					Buscar por marca:
+					<input type="text" class="titulo"
+									name="marcaBuscar" id="marcaBuscar"
+									style="width:140px; background:#00AAFF; color:white;"
+									maxlength="10"
+									onblur="buscarPortatiles()"
+									autofocus>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<!-------------------------------------------------------------------------->
+	<!-- EJERCICIO 4: DESCARGAR CSV -------------------------------------------->
+	<!-------------------------------------------------------------------------->
+	<div style="position:absolute; left:195px; top:125px;">
+		<table class="titulo" style="border: 1px solid black; width:140px; height:70px; background:#F6F6F6;"
+						border="0" cellpadding="10">
+			<tr>
+				<td>
+					<a href="" id="csv">
+						<input type="submit" class="boton" name="descargar" id="descargar"
+										value="DESCARGAR CSV" style="width:120px; font-size:11px;"
+										onclick="exportarCSV()">
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<!-------------------------------------------------------------------------->
+	<!-- EJERCICIO 2: ELIMINAR PORTÁTILE/S ------------------------------------->
+	<!-------------------------------------------------------------------------->
+	<div style="position:absolute; left:355px; top:125px;">
+		<table class="titulo" style="border: 1px solid black; width:180px; height:70px; background:#F6F6F6;" border="0" cellpadding="10">
+			<tr>
+				<td>
+					<input type="submit" class="boton" name="eliminar"
+									id="eliminar" value="ELIMINAR MARCADOS"
+									style="width:150px; font-size:11px;"
+									onclick="eliminarPortatiles()">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<!-------------------------------------------------------------------------->
+	<!-- EJERCICIO 3: INSERTAR PORTÁTIL ---------------------------------------->
+	<!-------------------------------------------------------------------------->
+	<div style="position:absolute; left:10px; top:210px;">
+		<table class="parrafo" style="border: 1px solid black; width:400px; height:70px; background:#F6F6F6;"
+						border="0" cellpadding="10">
+			<tr>
+				<td>
+					Marca:
+					<input type="text" class="parrafo" name="marca" id="marca"
+									style="width:75px;" maxlength="10" required>
+				</td>
+				<td>
+					Procesador:
+					<input type="text" class="parrafo" name="procesador" id="procesador"
+									style="width:90px;" maxlength="12" required>
+				</td>
+				<td>
+					RAM (GB):
+					<input type="number" class="parrafo" name="RAM" id="RAM"
+									style="width:65px;" min="1" required>
+				</td>
+				<td>
+					Disco (GB):
+					<input type="number" class="parrafo" name="disco" id="disco"
+									style="width:70px;" min="1" required>
+				</td>
+				<td>
+					<input type="submit" class="boton" name="insertar" id="insertar"
+									value="INSERTAR" style="width:95px;"
+									onclick="insertarPortatil()">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<!-- TABLA DE RESULTADOS -------------------------------------------------------------------------------------->
+	<div id="divPortatiles" style="position:absolute; left:10px; top:300px; max-width:450px; min-width:450px;">
+
+	</div>
+
+<script src="inventario.js" charset="utf-8"></script>
+</body>
+</html>
