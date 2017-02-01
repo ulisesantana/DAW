@@ -90,7 +90,7 @@
 
 	<div style="position:absolute; left:10px; top:220px; width:560px; height:auto; border:2px solid gray; background:#CCCCCC;">
 		<?php
-			$conexion = new mysqli("localhost", "dsw", "dsw", "db_notas_varias_asignaturas");
+			$conexion = new mysqli("localhost", "root", "", "db_notas_varias_asignaturas");
 			if ($conexion->connect_error)
 				die("Conexión fallida: ".$conexion->connect_error);
 

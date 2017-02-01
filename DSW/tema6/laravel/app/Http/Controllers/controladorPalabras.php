@@ -9,6 +9,6 @@ class controladorPalabras extends Controller
     public function convertirAMayusculas(Request $request){
       $palabra = $request->palabra;
       $palabra = strtoupper($palabra);
-      echo $palabra;
+      return view('resultado', [ 'mensaje' => $palabra] );
     }
 }

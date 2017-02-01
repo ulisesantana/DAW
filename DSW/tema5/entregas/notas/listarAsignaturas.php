@@ -12,7 +12,7 @@ if (isset($_SESSION['usuario']) && isset($_SESSION['tipo'])) {
   header("Location: login.php");
 }
 
-$conexion = new mysqli("localhost", "dsw", "dsw", "db_notas_varias_asignaturas");
+$conexion = new mysqli("localhost", "root", "", "db_notas_varias_asignaturas");
 if ($conexion->connect_error)
 die("Conexión fallida: ".$conexion->connect_error);
 
