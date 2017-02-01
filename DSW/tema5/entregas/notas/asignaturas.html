@@ -16,8 +16,8 @@
 							if (this.responseText.includes('Error')) {
 								alert(this.responseText);
 							} else {
-								document.getElementById('asignatura').innerHTML = this.responseText; // la tabla me la devuelve hay
-								document.getElementById('eliminar-asignatura').innerHTML = this.responseText; // la tabla me la devuelve hay
+								document.getElementById('asignatura').innerHTML = this.responseText;
+								document.getElementById('eliminar-asignatura').innerHTML = this.responseText;
 								buscarAlumnos();
 							}
 						}
@@ -34,7 +34,7 @@
 							if (this.responseText.includes('Error')) {
 								alert(this.responseText);
 							} else {
-								document.getElementById('alumnos').innerHTML = this.responseText; // la tabla me la devuelve hay
+								document.getElementById('alumnos').innerHTML = this.responseText;
 							}
 
 						}
@@ -83,6 +83,7 @@
 
 			function addAsignatura(){
 				var asignatura = document.getElementById('add-asignatura').value;
+				document.getElementById('error').innerHTML = "";
 				var xhr	= new XMLHttpRequest();
 				xhr.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
@@ -90,6 +91,7 @@
 							alert(this.responseText);
 						}
 						else {
+							document.getElementById('error').innerHTML = this.responseText;
 							selectAsignaturas();
 						}
 					}
@@ -158,10 +160,13 @@
 					</table>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="9" id="error"></td>
+			</tr>
 		</table>
 	</div>
 
-	<div id="alumnos" style="position:absolute; left:10px; top:120px; width:530px;">
+	<div id="alumnos" style="position:absolute; left:10px; top:155px; width:530px;">
 	</div>
 
 </body>
