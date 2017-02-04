@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class controladorPalabras extends Controller
 {
-    public function convertirAMayusculas(Request $request){
+    public function convertir(Request $request){
       $palabra = $request->palabra;
       $palabra = strtoupper($palabra);
       return view('resultado', [ 'mensaje' => $palabra] );

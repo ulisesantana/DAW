@@ -15,4 +15,4 @@ Route::get('/formularios/palabras', function () {
     return view('formularioPalabra');
 });
 
-Route::get('/convertir/mayusculas', [ 'uses' => 'controladorPalabras@convertirAMayusculas']  );
+Route::get('/convertir', [ 'uses' => 'controladorPalabras@convertir']  );

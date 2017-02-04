@@ -39,7 +39,7 @@
       </div>
 
       <div class="col-md-6">
-        <form action="/convertir/mayusculas" method="get">
+        <form action="/convertir" method="get">
 
           <div class="form-group">
             {{ csrf_field() }}
