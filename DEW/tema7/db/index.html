@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contador por parte del cliente</title>
+    <title>Base de datos en el cliente</title>
 
 
     <!-- Bootstrap -->
@@ -80,25 +80,25 @@
 
 
     <div id="main">
-      Esta página ha sido visitada <span id="visitas"></span> veces.
+      <input type="text" id="dni" placeholder="introduce dni">
+      <input type="text" id="nombre" placeholder="introduce nombre">
+      <input type="text" id="apellido" placeholder="introduce apellido">
+      <button type="button" onclick="insertar();">Grabar</button>
+      <hr>
+      <div id="elementos">
+      	<table>
+      		<caption>Personas</caption>
+      		<thead>
+      			<tr>
+      				<th>DNI</th>
+      				<th>Nombre</th>
+      				<th>Apellido</th>
+      			</tr>
+      		</thead>
+      		<tbody id="elementoslista"></tbody>
+      	</table>
+      </div>
 
-      <script>
-        var contador = 0;
-        window.onload = function(){
-          if (!localStorage.getItem('contador')) {
-            localStorage.setItem('contador', contador);
-          } else {
-            contador = localStorage.getItem('contador');
-          }
-
-          document.getElementById('visitas').innerHTML = contador;
-
-          contador++;
-
-          localStorage.setItem('contador', contador);
-        };
-
-      </script>
     </div>
 
 
@@ -106,6 +106,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="indexedDB.js" charset="utf-8"></script>
 </body>
 
 
