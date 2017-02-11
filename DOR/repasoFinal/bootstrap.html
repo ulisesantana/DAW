@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repaso DOR | Bootstrap y HTML</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="https://ulisesantana.github.io/img/favicon.ico">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style media="screen">
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        body {
+            background-color: #eee;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #profile {
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            width: 21vw;
+            position: fixed;
+            overflow-y: scroll;
+        }
+
+        #profile img {
+            max-width: 150px;
+            margin: 20px auto;
+        }
+
+        #profile h3 {
+            text-align: center;
+            padding: 15px;
+        }
+
+        #profile li.active{
+          background-color: #eee;
+        }
+
+        #main {
+          width: 77.8vw;
+          padding: 2% 1%;
+          margin-left: 21vw;
+        }
+
+        .space{padding-top:5%;}
+        .target{margin-top: -40px;}
+    </style>
+</head>
+
+
+<body>
+
+
+    <div id="profile">
+        <a href="index.html">
+          <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        </a>
+        <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav">
+            <a href="#main">Bootstrap & HTML</a>
+            <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="collapse" data-target="#bootstrap-list"></i>
+              <div id="bootstrap-list" class="collapse in">
+                <li><a href="#datatables">Datatables</a></li>
+                <li><a href="#formulario-pago">Formulario de pago responsive</a></li>
+                <li><a href="#login">Login a full page</a></li>
+                <li><a href="#modal-load-page">Modal Load Page</a></li>
+                <li><a href="#panel-nav">Panel con Nav Tabs</a></li>
+                <li><a href="#register-page">Página de registro</a></li>
+                <li><a href="#validador-edad">Validador de Edad</a></li>
+                <li><a href="#snippet-modales">Snippet de ventanas modales</a></li>
+              </div>
+              <br>
+              <a href="jquery.html#main">jQuery</a>
+              <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="collapse" data-target="#jquery-list"></i>
+              <div id="jquery-list" class="collapse">
+                <li><a href="jquery.html#desactivar-btn-derecho">Desactivar botón derecho</a></li>
+                <li><a href="jquery.html#desactivar-scrolling">Desactivar scrolling</a></li>
+                <li><a href="jquery.html#detectar-navegador">Detectar Navegador</a></li>
+                <li><a href="jquery.html#limpiar-input">Limpiar inputs</a></li>
+                <li><a href="jquery.html#calcular-carga">Calcular tiempo de carga</a></li>
+                <li><a href="jquery.html#mensaje-top">Añadir mensaje en el top</a></li>
+                <li><a href="jquery.html#solo-numeros">Sólo números</a></li>
+                <li><a href="jquery.html#submits">Prevenir varios submit</a></li>
+                <li><a href="jquery.html#datalist">Autocompletar</a></li>
+              </div>
+              <br>
+              <a href="pdf/eventos_jQuery.pdf" target="_blank">Eventos con jQuery</a>
+              <br>
+              <a href="pdf/selectores_jQuery.pdf" target="_blank">Selectores con jQuery</a>
+          </ul>
+          <div class="space"></div>
+          <div class="space"></div>
+        </div>
+    </div>
+
+
+    <div id="main">
+      <h3 id="datatables">Datatables</h3>
+      <a href="html/bootstrap_snippet_for_datatable.html"
+          target="_blank"
+          class="pull-right">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/bootstrap_snippet_for_datatable.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="formulario-pago">Formulario de pago responsive</h3>
+      <a href="html/formulario_pago_responsive.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/formulario_pago_responsive.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="login">Login full page</h3>
+      <a href="html/login_fullPage.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/login_fullPage.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="modal-load-page">Modal que se lanza al cargar la página</h3>
+      <a href="html/modalLoadPage.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/modalLoadPage.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="panel-nav">Panel con Nav Tabs</h3>
+      <a href="html/panel_with_nav_tabs_and_buttons.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/panel_with_nav_tabs_and_buttons.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="register-page">Página de registro</h3>
+      <a href="html/register_page_design.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/register_page_design.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="validador-edad">Validador de Edad</h3>
+      <a href="html/validadorEdad.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/validadorEdad.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+      <h3 id="snippet-modales">Snippet de ventanas modales</h3>
+      <a href="html/ventanas_modales_spinnet.html"
+          target="_blank"
+          class="pull-right ">
+        <div class="btn btn-info target">ABRIR EN OTRA PESTAÑA</div>
+      </a>
+      <iframe src="html/ventanas_modales_spinnet.html" width="100%" height="600px"></iframe>
+      <div class="space"></div>
+
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,27 @@
+*{
+  --footer-background: #222;
+  --basic-margin: 20px;
+}
+
+footer{
+  background: var(--footer-background);
+  color: #fff;
+  width: 100%;
+  padding: 2%;
+  margin-top: var(--basic-margin);
+  height: 14%;
+}
+
+.center{
+  display: block;
+  margin: var(--basic-margin) auto;
+}
+
+.row{margin-top: var(--basic-margin);}
+
+
+
+/* OCULTA TODO AL IMPRIMIR*/
+@media print {
+  *{display: none;}
+}

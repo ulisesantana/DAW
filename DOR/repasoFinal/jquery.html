@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repaso DOR | jQuery</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <link rel="shortcut icon" href="https://ulisesantana.github.io/img/favicon.ico">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Montserrat');
+      body {
+          background-color: #eee;
+          font-family: "Montserrat", sans-serif;
+      }
+
+      #profile {
+          background-color: #333;
+          color: #fff;
+          height: 100vh;
+          width: 21vw;
+          position: fixed;
+          overflow-y: scroll;
+      }
+
+      #profile img {
+          max-width: 150px;
+          margin: 20px auto;
+      }
+
+      #profile h3 {
+          text-align: center;
+          padding: 15px;
+      }
+
+      #profile li.active{
+        background-color: #eee;
+      }
+
+      #main {
+        width: 77.5vw;
+        padding: 2% 1%;
+        margin-left: 21vw;
+      }
+
+      .space{padding-top:5%;}
+      .target{margin-top: -40px;}
+      #bootstrap-list, #jquery-list, #pdf-list{margin-left: 10px;}
+      i.fa{cursor: pointer}
+    </style>
+</head>
+
+
+<body>
+
+
+    <div id="profile">
+        <a href="index.html">
+          <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        </a>
+        <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav">
+              <a href="bootstrap.html#main">Bootstrap & HTML</a>
+              <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="collapse" data-target="#bootstrap-list"></i>
+                <div id="bootstrap-list" class="collapse">
+                  <li><a href="bootstrap.html#datatables">Datatables</a></li>
+                  <li><a href="bootstrap.html#formulario-pago">Formulario de pago responsive</a></li>
+                  <li><a href="bootstrap.html#login">Login a full page</a></li>
+                  <li><a href="bootstrap.html#modal-load-page">Modal Load Page</a></li>
+                  <li><a href="bootstrap.html#panel-nav">Panel con Nav Tabs</a></li>
+                  <li><a href="bootstrap.html#register-page">Página de registro</a></li>
+                  <li><a href="bootstrap.html#validador-edad">Validador de Edad</a></li>
+                  <li><a href="bootstrap.html#snippet-modales">Snippet de ventanas modales</a></li>
+                </div>
+                <br>
+                <a href="#main">jQuery</a>
+                <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="collapse" data-target="#jquery-list"></i>
+                <div id="jquery-list" class="collapse in">
+                  <li><a href="#desactivar-btn-derecho">Desactivar botón derecho</a></li>
+                  <li><a href="#desactivar-scrolling">Desactivar scrolling</a></li>
+                  <li><a href="#detectar-navegador">Detectar Navegador</a></li>
+                  <li><a href="#limpiar-input">Limpiar inputs</a></li>
+                  <li><a href="#calcular-carga">Calcular tiempo de carga</a></li>
+                  <li><a href="#mensaje-top">Añadir mensaje en el top</a></li>
+                  <li><a href="#solo-numeros">Sólo números</a></li>
+                  <li><a href="#submits">Prevenir varios submit</a></li>
+                  <li><a href="#datalist">Autocompletar</a></li>
+                </div>
+                <br>
+                <a href="pdf/eventos_jQuery.pdf" target="_blank">Eventos con jQuery</a>
+                <br>
+                <a href="pdf/selectores_jQuery.pdf" target="_blank">Selectores con jQuery</a>
+            </ul>
+            <div class="space"></div>
+            <div class="space"></div>
+        </div>
+    </div>
+
+
+    <div id="main">
+      <h3 id="desactivar-btn-derecho">Desactivar botón derecho</h3>
+      <pre><code class="language-javascript">
+$(document).ready(function(){
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+});
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="desactivar-scrolling">Desactivar scrolling</h3>
+      <pre><code class="language-javascript">
+$(document).bind("touchmove",function(event){
+	event.preventDefault();
+});
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="detectar-navegador">Detectar Navegador</h3>
+      <p>
+        He estado testeando esto y la verdad es que no he conseguido que tire.
+        Más info en <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent" target="_blank">MDN</a>
+      </p>
+      <pre><code class="language-javascript">
+// Opera
+if ($.browser.opera) {
+  $(".yourclass").remove();
+}
+
+// Webkit
+if ($.browser.webkit) {
+  alert( "Este es webkit!" );
+}
+
+ // MSI
+if ($.browser.msie) {
+  alert( "Este es Internet Explorer!" );
+}
+
+  // Mozila
+if ($.browser.mozilla) {
+  alert( "Este es Mozilla!" );
+}
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="limpiar-input">Limpiar inputs añadiendo un valor por defecto</h3>
+      <pre><code class="language-javascript">
+$("input").focus(function (){
+  if( this.value == this.defaultValue ) {
+          this.value = "";
+      }
+  }).blur(function() {
+      if( !this.value.length ) {
+          this.value = this.defaultValue;
+      }
+});
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="calcular-carga">Calcular tiempo de carga de una página</h3>
+      <pre><code class="language-javascript">
+var beforeload = (new Date()).getTime();
+
+function getPageLoadTime(){
+  var afterload = (new Date()).getTime();
+  seconds = (afterload-beforeload) / 1000;
+  $('#load_time').text('Tiempo de carga de la página ::  ' + seconds + ' sec(s).');
+}
+
+window.onload = getPageLoadTime;
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="mensaje-top">Añadir mensaje en la parte superior de la página</h3>
+      <pre><code class="language-javascript">
+function messageAjax (msg) {
+    if (jQuery("body").find("#infoBox").length == 0) {
+		jQuery("body").prepend("<div id=\"infoBox\" style=\"height: 20px;background-color:#ffffff;width:100%;display:none;text-align:center;border-bottom:#2BBAE4 1px solid;\"></div>");
+	} // END IF
+
+	jQuery("body").find("#infoBox").text(msg).slideDown().delay(3000).slideUp();
+}
+messageAjax('Mensaje en el top');
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="solo-numeros">Que un input sólo acepte números</h3>
+      <pre><code class="language-javascript">
+$(".classInput").keypress(function(e){
+     if((e.which!=8) && (e.which!=0) && (e.which<48 || e.which>57)) {
+	return false;
+     }
+});
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="submits">Prevenir varios submits</h3>
+      <p>
+        Para entender mejor este snippet leer la documentación de <a href="https://api.jquery.com/jquery.data/" target="_blank">jQuery</a>
+      </p>
+      <pre><code class="language-javascript">
+$(document).ready(function() {
+  $('form').submit(function() {
+    if(typeof jQuery.data(this, "disabledOnSubmit") == 'undefined') {
+
+      jQuery.data(this, "disabledOnSubmit", { submited: true });
+
+      $('input[type=submit], input[type=button]', this).each(function() {
+        $(this).attr("disabled", "disabled");
+      });
+
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  });
+});
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="datalist">Alternativa de HTML5 para el autocompletar</h3>
+      <p>
+        Juan propuso una librería para autocompletar. Sin embargo, HTML5 viene
+        con una etiqueta llamada <code>datalist</code> que facilita bastante las cosas.
+        Es una especie de input con opciones.
+      </p>
+      <label for="chocolate">Mi chocolate favorito</label>
+      <input type="text" name="fav-choc" id="chocolate" list="tipo-de-chocolate">
+      <datalist id="tipo-de-chocolate">
+        <option value="blanco">
+        <option value="con leche">
+        <option value="negro">
+      </datalist>
+      <pre class="language-markup"><code class="language-markup">
+&lt;label for="chocolate">Mi chocolate favorito&lt;/label>
+&lt;input type="text" name="fav-choc" id="chocolate" list="tipo-de-chocolate">
+&lt;datalist id="tipo-de-chocolate">
+  &lt;option value="blanco">
+  &lt;option value="con leche">
+  &lt;option value="negro">
+&lt;/datalist>
+      </code></pre>
+      <div class="space"></div>
+
+      <h3 id="json">Acceder a un JSON</h3>
+      <pre class="language-markup"><code class="language-javascript">
+var miJSON = null;
+$.getJSON("ruta/archivo.json", function (data) {
+    miJSON = data;
+});
+      </code></pre>
+      <div class="space"></div>
+
+
+
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="prism/prism.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var miJSON = null;
+      $.getJSON("test.json", function (data) {
+          miJSON = data;
+      });
+    </script>
+</body>
+
+
+</html>
