@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repaso DOR</title>
+
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="https://ulisesantana.github.io/img/favicon.ico">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style media="screen">
+      @import url('https://fonts.googleapis.com/css?family=Montserrat');
+      body {
+          background-color: #eee;
+          font-family: "Montserrat", sans-serif;
+      }
+
+      #profile {
+          background-color: #333;
+          color: #fff;
+          height: 100vh;
+          width: 21vw;
+          position: fixed;
+          overflow-y: scroll;
+      }
+
+      #profile img {
+          max-width: 150px;
+          margin: 20px auto;
+      }
+
+      #profile h3 {
+          text-align: center;
+          padding: 15px;
+      }
+
+      #profile li.active{
+        background-color: #eee;
+      }
+
+      #main {
+        width: 78vw;
+        padding: 2% 1%;
+        margin-left: 21vw;
+      }
+
+      .space{padding-top:5%;}
+      .target{margin-top: -40px;}
+      #bootstrap-list, #jquery-list, #pdf-list{margin-left: 10px;}
+      i.fa{cursor: pointer}
+    </style>
+</head>
+
+
+<body>
+
+
+    <div id="profile">
+        <a href="index.html">
+          <img src="https://avatars3.githubusercontent.com/u/17091490?v=3&s=466" alt="" class="img-responsive img-circle">
+        </a>
+        <h3 class="text-center">Ulises Santana Suárez <br><small>2º DAW</small></h3>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav">
+              <a href="#bootstrap">Bootstrap & HTML</a>
+              <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="collapse" data-target="#bootstrap-list"></i>
+                <div id="bootstrap-list" class="collapse">
+                  <li><a href="bootstrap.html#datatables">Datatables</a></li>
+                  <li><a href="bootstrap.html#formulario-pago">Formulario de pago responsive</a></li>
+                  <li><a href="bootstrap.html#login">Login a full page</a></li>
+                  <li><a href="bootstrap.html#modal-load-page">Modal Load Page</a></li>
+                  <li><a href="bootstrap.html#panel-nav">Panel con Nav Tabs</a></li>
+                  <li><a href="bootstrap.html#register-page">Página de registro</a></li>
+                  <li><a href="bootstrap.html#validador-edad">Validador de Edad</a></li>
+                  <li><a href="bootstrap.html#snippet-modales">Snippet de ventanas modales</a></li>
+                </div>
+                <br>
+                <a href="#jquery">jQuery</a>
+                <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="collapse" data-target="#jquery-list"></i>
+                <div id="jquery-list" class="collapse">
+                  <li><a href="jquery.html#desactivar-btn-derecho">Desactivar botón derecho</a></li>
+                  <li><a href="jquery.html#desactivar-scrolling">Desactivar scrolling</a></li>
+                  <li><a href="jquery.html#detectar-navegador">Detectar Navegador</a></li>
+                  <li><a href="jquery.html#limpiar-input">Limpiar inputs</a></li>
+                  <li><a href="jquery.html#calcular-carga">Calcular tiempo de carga</a></li>
+                  <li><a href="jquery.html#mensaje-top">Añadir mensaje en el top</a></li>
+                  <li><a href="jquery.html#solo-numeros">Sólo números</a></li>
+                  <li><a href="jquery.html#submits">Prevenir varios submit</a></li>
+                  <li><a href="jquery.html#datalist">Autocompletar</a></li>
+                </div>
+                <br>
+                <a href="pdf/eventos_jQuery.pdf" target="_blank">Eventos con jQuery</a>
+                <br>
+                <a href="pdf/selectores_jQuery.pdf" target="_blank">Selectores con jQuery</a>
+            </ul>
+            <div class="space"></div>
+            <div class="space"></div>
+        </div>
+    </div>
+
+
+    <div id="main">
+      <!-- BOOTSTRAP & HTML -->
+
+      <h3 id="bootstrap" class="text-center">Bootstrap & HTML</h3>
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Datatables</h3>
+            </div>
+            <div class="panel-body">
+              <p>Ejemplo de Datatables con modales, selección múltiple, seleccionar todo, editar y eliminar.</p>
+            </div>
+            <a href="bootstrap.html#datatables" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Formulario de pago</h3>
+            </div>
+            <div class="panel-body">
+              <p>Formulario de pago responsive que por tener, tiene hasta Stripe.</p>
+            </div>
+            <a href="bootstrap.html#formulario-pago" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Login full page</h3>
+            </div>
+            <div class="panel-body">
+              <p>Una paǵina de login a todo el ancho y todo el alto</p>
+            </div>
+            <a href="bootstrap.html#login" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Modal on load</h3>
+            </div>
+            <div class="panel-body">
+              <p>Modal que se lanza al cargar la página. Típico con formularios de subscripción y cosas por el estilo.</p>
+            </div>
+            <a href="bootstrap.html#modal-load-page" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Panel con Nav Tabs</h3>
+            </div>
+            <div class="panel-body">
+              <p>Panel con pestañas. Es algo que usa mucho Juan Ramírez. Comentó que podría caer en el examen... guiño,guiño,codo,codo.</p>
+            </div>
+            <a href="bootstrap.html#panel-nav" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Página de registro</h3>
+            </div>
+            <div class="panel-body">
+              <p>Ejemplo de página de registro sencilla.</p>
+            </div>
+            <a href="bootstrap.html#register-page" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Validador de edad</h3>
+            </div>
+            <div class="panel-body">
+              <p>No hay mucho que explicar aquí...</p>
+            </div>
+            <a href="bootstrap.html#validador-edad" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Modales</h3>
+            </div>
+            <div class="panel-body">
+              <p>Varios snippets de ventanas modales</p>
+            </div>
+            <a href="bootstrap.html#snippet-modales" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER EJEMPLO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- JQUERY -->
+
+      <h3 id="jquery" class="text-center">jQuery</h3>
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Desactivar botón derecho</h3>
+            </div>
+            <a href="jquery.html#desactivar-btn-derecho" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Desactivar scrolling</h3>
+            </div>
+            <a href="jquery.html#desactivar-scrolling" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Detectar navegador</h3>
+            </div>
+            <a href="jquery.html#detectar-navegador" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Limpiar inputs</h3>
+            </div>
+            <a href="jquery.html#limpiar-inputs" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Calcular tiempo de carga</h3>
+            </div>
+            <a href="jquery.html#calcular-carga" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Añadir mensaje en el top</h3>
+            </div>
+            <a href="jquery.html#mensaje-top" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Sólo números</h3>
+            </div>
+            <a href="jquery.html#solo-numeros" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Prevenir varios submits</h3>
+            </div>
+            <a href="jquery.html#submits" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Autocompletar</h3>
+            </div>
+            <a href="jquery.html#datalist" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER CÓDIGO</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Eventos en jQuery</h3>
+            </div>
+            <a href="pdf/eventos_jQuery.pdf" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER PDF</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="" class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Selectores en jQuery</h3>
+            </div>
+            <a href="pdf/selectores_jQuery.pdf" target="_blank">
+              <div class="panel-footer">
+                <p class="text-center">VER PDF</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
