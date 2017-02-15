@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dados</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <style>
+      #lanzar{margin: 5vh auto; display:block;}
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="text-center">Pulsa el botón para tirar los dados<br><small id="resultado"></small></h2>
+      <div id="lanzar" class="btn btn-success btn-lg">Lanzar</div>
+
+
+      <h3>Script en esta página <small>Lo que vendría a ser el main en Java</small></h3>
+      <pre><code class="language-javascript">
+const ulises = new Player;
+document.getElementById('lanzar').addEventListener('click', function(){
+  document.getElementById('resultado').innerHTML = ulises.win();
+});
+      </code></pre>
+      <h3>oop.js</h3>
+      <pre><code class="language-javascript">
+class Dice{
+  constructor(sides){
+    this.sides = sides;
+  }
+
+  roll(){
+    let num = Math.floor(Math.random() * this.sides + 1);
+    return num;
+  }
+}
+
+class Player {
+  constructor(){
+    this.dice1 = new Dice(6);
+    this.dice2 = new Dice(6);
+    this.dice3 = new Dice(12);
+  }
+
+  rollDices(){
+    let roll = [
+      this.dice1.roll(),
+      this.dice2.roll(),
+      this.dice3.roll()
+    ];
+
+    return roll;
+  }
+
+  win(){
+    let roll = this.rollDices();
+    let result = '';
+
+    //true si la suma de los dados es mayor o igual a 20
+    let sum = (20 <= (roll[0] + roll[1] + roll[2]));
+
+    //true si los tres dados tienen el mismo valor
+    let equals = (roll[0] == roll[1] && roll[1] == roll[2]);
+
+    //true si la suma de los dos D6 es igual al valor del D12
+    let luck = (roll[2] == (roll[0] + roll[1]));
+
+    if (sum || equals || luck) {
+      result = 'Has ganado!! La tirada fue: ' + roll;
+    } else {
+      result = 'Has perdido!! La tirada fue: ' + roll;
+    }
+
+    console.log(roll);
+    return result;
+  }
+}
+      </code></pre>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="prism/prism.js" charset="utf-8"></script>
+    <script src="oop.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      const ulises = new Player;
+      document.getElementById('lanzar').addEventListener('click', function(){
+        document.getElementById('resultado').innerHTML = ulises.win();
+      });
+    </script>
+  </body>
+</html>

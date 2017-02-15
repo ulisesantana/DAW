@@ -18,6 +18,7 @@ class Numeros extends Controller
           break;
         }
       }
+
       if($sonNumeros){
         usort($numeros, function($a, $b){
           if ($a == $b) {
@@ -26,7 +27,7 @@ class Numeros extends Controller
           return ($a > $b) ? -1 : 1;
         });
 
-        return view('numeros', ['numero' => $numeros[0]]);
+        return view('numeros/numeros', ['numero' => $numeros[0]]);
       } else {
         return view('error', ['error' => 'No todos los parámetros son números']);
       }
