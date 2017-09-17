@@ -98,7 +98,7 @@ Posibilidad de que el servidor se viese saturado por no conttar con recursos par
 
   Son las aplicaciones que más se utilizan en Internet actualmente.
 
-  En el *lado del cliente* se usan tecnologías como HTML, controles, ActiveX, Flash, applets, JavaScript, etc.
+  En el *lado del cliente* se usan tecnologías como HTML, CSS, ActiveX, Flash, applets, JavaScript, etc.
 
   En *el lado del servidor* se utilizan lenguajes embebidos en código HTML como PHP, ASP.NET, JSP, etc.
 
